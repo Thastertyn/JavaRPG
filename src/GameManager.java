@@ -1,10 +1,12 @@
-package Main.src;
+//package Main.src;
 
-import static Main.src.BattleManager.StartBattle;
+//import static Main.src.BattleManager.StartBattle;
 
 import java.io.Console;
 import java.util.Random;
 import java.util.Scanner;
+
+import Classes.Properties;
 
 public class GameManager {
 
@@ -325,7 +327,7 @@ class EnemyManager {
                 enemyType = null;
         }
 
-        StartBattle(enemyType, enemyID);
+        //StartBattle(enemyType, enemyID);
     }
 }
 // #endregion
