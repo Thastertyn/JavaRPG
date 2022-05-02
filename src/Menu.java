@@ -97,6 +97,7 @@ public class Menu extends Player{
         String classInput = sc.nextLine();
         classInput.toLowerCase();
 
+        // A flag wanna-be
         switch(classInput)
         {
             case "wizard":
