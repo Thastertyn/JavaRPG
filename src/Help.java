@@ -6,7 +6,12 @@ public class Help {
     
     Scanner sc = new Scanner(System.in);
 
-    public void mainHelp()
+    public static void getHelp(String classToBeHelpedWith)
+    {
+        System.out.println("Some useful help with " + classToBeHelpedWith);
+    }
+
+    public static void fullHelp()
     {
         System.out.println("JavaRPG - The best game of all time");
         System.out.println("\n");

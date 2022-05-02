@@ -42,7 +42,6 @@ public class Menu extends Player{
             // Start cases
             case "s":
                 classChoose(false);
-                //System.out.println("Exiting...");
                 break;
             case "start":
                 classChoose(false);
@@ -79,20 +78,25 @@ public class Menu extends Player{
             System.err.println("Incorrect input, try again.");
         }
 
-        System.out.println(retry);
-
         System.out.println("Choose your class. \nYou can choose from " + 
-        "\n 1. " + Colorize.MAGENTA + "Wizard" + Colorize.RESET + 
-        "\n 2. " + Colorize.CYAN + "Dwarf" + Colorize.RESET +
-        "\n 3. " + Colorize.WHITE + "Elf " + Colorize.RESET +
-        "\n 4. " + Colorize.YELLOW + "Human" + Colorize.RESET
+        "\n1.> " + Colorize.MAGENTA + "Wizard" + Colorize.RESET + 
+        "\n2.> " + Colorize.CYAN + "Dwarf" + Colorize.RESET +
+        "\n3.> " + Colorize.WHITE + "Elf " + Colorize.RESET +
+        "\n4.> " + Colorize.YELLOW + "Human" + Colorize.RESET
         );
         System.out.println("\n If you are unsure type \"info [classname]\" (eg. info wizard), or \"info\" for specifics about stats");
+
+        // https://stackoverflow.com/questions/13102045/scanner-is-skipping-nextline-after-using-next-or-nextfoo
+        sc.nextLine(); // WTF
+        /*
+        int option = input.nextInt();
+        input.nextLine();  // Consume newline left-over
+        String str1 = input.nextLine();
+        */
 
         String classInput = sc.nextLine();
         classInput.toLowerCase();
 
-        // A flag wanna-be
         switch(classInput)
         {
             case "wizard":
@@ -124,9 +128,41 @@ public class Menu extends Player{
                 System.out.println(Player.infoAboutPlayer());
                 break;
             default:
-                classChoose(true);
+
+                String trimmedOfSpaces = classInput.replaceAll("\s", "");
+
+                System.out.println(trimmedOfSpaces);
+
+                // https://howtodoinjava.com/java/string/get-first-4-characters/
+                if(trimmedOfSpaces.substring(0, 4).equals("info"))
+                {
+                    Help.getHelp(trimmedOfSpaces.substring(4, trimmedOfSpaces.length()));
+                }else{
+                    classChoose(true);
+                }
+
+
+                /*
+                !I like this stuff so it's staying, it's just comments, so nothing much, not much of a space hurry atm (there kinda is, but not rn)
+
+                String[] split = classInput.split("\\s+");
+
+                String trimmedOfSpacesInput = classInput.replaceAll("\\s", "");
+                char[] trimmedOfSpacesInputCharArray = trimmedOfSpacesInput.toCharArray();
+
+                System.out.println(trimmedOfSpacesInput);
+
+                if(trimmedOfSpacesInputCharArray[0] == 'i' && trimmedOfSpacesInputCharArray[1] == 'n' && trimmedOfSpacesInputCharArray[2] == 'f' && trimmedOfSpacesInputCharArray[3] == 'o')
+                {
+                    Help.getHelp(trimmedOfSpacesInput);
+                }
+
+                if(split[0].equals("info"))
+                {
+                }else{
+                    //classChoose(true);
+                }*/
                 break;
         }
-
     }
 }
