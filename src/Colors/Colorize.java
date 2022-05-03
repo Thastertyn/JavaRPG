@@ -2,6 +2,8 @@ package Colors;
 
 public class Colorize {
 
+    public static final String PROMPT = "$~> ";
+
     public static final String CLEAR              = "\033[H\033[2J";
 
     public static final String RESET              = "\u001B[0m";

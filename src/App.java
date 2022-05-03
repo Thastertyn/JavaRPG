@@ -13,12 +13,6 @@ public class App {
         
         System.out.println(Colorize.MAGENTA +  "Hello, World!" + Colorize.RESET);
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        
         Menu menu = new Menu();
 
         menu.mainMenu(false);

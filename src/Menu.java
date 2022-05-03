@@ -25,7 +25,7 @@ public class Menu extends Player{
 
         if(retry)
         {
-            System.err.println("Incorrect input, try again");
+            System.err.println(Colorize.RED + "Incorrect input, try again." + Colorize.RESET + "\n");
         }else
         {
             System.out.println("Welcome to the RPG game");
@@ -35,6 +35,7 @@ public class Menu extends Player{
         System.out.println(Colorize.GREEN + "> Start" + Colorize.RESET);
         System.out.println(Colorize.RED + "> Quit" + Colorize.RESET);
 
+        System.out.print(Colorize.PROMPT);
         String choice = sc.next();
 
         switch(choice)
@@ -75,7 +76,7 @@ public class Menu extends Player{
 
         if(retry)
         {
-            System.err.println("Incorrect input, try again.");
+            System.err.println(Colorize.RED + "Incorrect input, try again." + Colorize.RESET + "\n");
         }
 
         System.out.println("Choose your class. \nYou can choose from " + 
@@ -84,16 +85,21 @@ public class Menu extends Player{
         "\n3.> " + Colorize.WHITE + "Elf " + Colorize.RESET +
         "\n4.> " + Colorize.YELLOW + "Human" + Colorize.RESET
         );
-        System.out.println("\n If you are unsure type \"info [classname]\" (eg. info wizard), or \"info\" for specifics about stats");
+        System.out.println("\n If you are unsure type \"help [classname]\" (eg. info wizard), or \"info\" for specifics about stats");
 
         // https://stackoverflow.com/questions/13102045/scanner-is-skipping-nextline-after-using-next-or-nextfoo
-        sc.nextLine(); // WTF
+        if(!retry)
+        {
+            sc.nextLine(); // WTF
+        }
+        
         /*
         int option = input.nextInt();
         input.nextLine();  // Consume newline left-over
         String str1 = input.nextLine();
         */
 
+        System.out.print(Colorize.PROMPT);
         String classInput = sc.nextLine();
         classInput.toLowerCase();
 
@@ -129,19 +135,15 @@ public class Menu extends Player{
                 System.out.println(Player.infoAboutPlayer());
                 break;
             default:
-
                 String trimmedOfSpaces = classInput.replaceAll("\s", "");
 
-                System.out.println(trimmedOfSpaces);
-
                 // https://howtodoinjava.com/java/string/get-first-4-characters/
-                if(trimmedOfSpaces.substring(0, 4).equals("info"))
+                if(trimmedOfSpaces.substring(0, 4).equals("help"))
                 {
                     Help.getHelp(trimmedOfSpaces.substring(4, trimmedOfSpaces.length()));
                 }else{
                     classChoose(true);
                 }
-
 
                 /*
                 !I like this stuff so it's staying, it's just comments, so nothing much, not much of a space hurry atm (there kinda is, but not rn)

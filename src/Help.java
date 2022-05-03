@@ -4,23 +4,28 @@ import Colors.Colorize;
 
 public class Help {
     
-    Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
 
     public static void getHelp(String classToBeHelpedWith)
     {
+        if(classToBeHelpedWith.isEmpty())
+        {
+            fullHelp();
+        }else{
+            classHelp(classToBeHelpedWith);
+        }
         System.out.println("Some useful help with " + classToBeHelpedWith);
     }
 
     public static void fullHelp()
     {
         System.out.println("JavaRPG - The best game of all time");
-        System.out.println("\n");
-        System.out.println("Usage: \n    javarpg [" + Colorize.UNDERLINE + "FLAGS" + Colorize.RESET + "]");
-        System.out.println("\n\n");
-        System.out.println("Options: \n    -h or --help\n    -g or --god\n    -c or --color");
+        System.out.print("\n");
+        System.out.println("Usage: \n\tjavarpg [" + Colorize.UNDERLINE + "FLAGS" + Colorize.RESET + "]");
+        System.out.println("Options: \n\t-h or --help\n\t-g or --god\n\t-c or --color");
     }
 
-    public void classHelp(String classString)
+    public static void classHelp(String classString)
     {
         switch (classString) {
             case "wizard":
