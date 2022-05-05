@@ -1,7 +1,10 @@
 package Classes;
 
 // Just store the properties of all the classes + enemies
-public class Properties {
+public class DataAndOtherStuff {
+
+    // Exploration POIs
+    public static final String[] pois = {"campsite", "cottage", "cave", "ruin", "castle", "lair"};
 
     // Ids
     public final String[] enemyId = {"bear", "centaur", "witch", "ogre", "mage", "goblin", "noone", "duck"};

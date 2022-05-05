@@ -1,11 +1,15 @@
+package MenusAndUIs;
+
 import Colors.Colorize;
+import Help.Help;
 
 import java.util.Scanner;
 
+import Managers.GameManager;
 import Classes.Player;
-import Classes.Properties;
+import Classes.DataAndOtherStuff;
 
-public class Menu extends Player{
+public class Menu {
 
     // Each menu will have its own method
 
@@ -14,52 +18,48 @@ public class Menu extends Player{
         Class choose
     */
 
+    static int failedTimes = 0;
+
     static Scanner sc = new Scanner(System.in);
 
     // Boolean for retrying - if the input was invalid, give true, to change the text
     // Sort of like my own try/catch
-    public void mainMenu(boolean retry)
+    public static void mainMenu(boolean retry)
     {
 
         System.out.print(Colorize.RESET + Colorize.CLEAR);
+		System.out.println("----------------------------------");
 
         if(retry)
         {
-            System.err.println(Colorize.RED + "Incorrect input, try again." + Colorize.RESET + "\n");
+            failedTimes++;
+            System.err.println(Colorize.RED + "Incorrect input, try again.\nFailed " + failedTimes  + " times" + Colorize.RESET + "\n");
         }else
         {
             System.out.println("Welcome to the RPG game");
             System.out.println("If you want help, run this program again with a \"--help\" flag (without the quotes)");
+            failedTimes = 0;
         }
 
-        System.out.println(Colorize.GREEN + "> Start" + Colorize.RESET);
-        System.out.println(Colorize.RED + "> Quit" + Colorize.RESET);
+        System.out.println(Colorize.GREEN + " 1.> Start" + Colorize.RESET);
+        System.out.println(Colorize.MAGENTA + " 2.> Quit" + Colorize.RESET);
 
         System.out.print(Colorize.PROMPT);
         String choice = sc.next();
+        choice.toLowerCase();
 
         switch(choice)
         {
             // Start cases
             case "s":
-                classChoose(false);
-                break;
             case "start":
-                classChoose(false);
-                break;
             case "1":
                 classChoose(false);
                 break;
 
             // Quit cases
             case "q":
-                System.out.println("Exiting...");
-                System.exit(0);
-                break;
             case "quit":
-                System.out.println("Exiting...");
-                System.exit(0);
-                break;
             case "2":
                 System.out.println("Exiting...");
                 System.exit(0);
@@ -70,24 +70,31 @@ public class Menu extends Player{
         }
     }
 
-    public void classChoose(boolean retry)
+    public static void classChoose(boolean retry)
     {
         System.out.print(Colorize.CLEAR + Colorize.RESET);
+		System.out.println("----------------------------------");
 
         if(retry)
         {
-            System.err.println(Colorize.RED + "Incorrect input, try again." + Colorize.RESET + "\n");
+            failedTimes++;
+            System.err.println(Colorize.RED + "Incorrect input, try again.\nFailed " + failedTimes  + " times" + Colorize.RESET + "\n");
+        }else{
+            failedTimes = 0;
         }
 
         System.out.println("Choose your class. \nYou can choose from " + 
-        "\n1.> " + Colorize.MAGENTA + "Wizard" + Colorize.RESET + 
-        "\n2.> " + Colorize.CYAN + "Dwarf" + Colorize.RESET +
-        "\n3.> " + Colorize.WHITE + "Elf " + Colorize.RESET +
-        "\n4.> " + Colorize.YELLOW + "Human" + Colorize.RESET
+        "\n 1.> " + Colorize.MAGENTA + "Wizard" + Colorize.RESET + 
+        "\n 2.> " + Colorize.CYAN + "Dwarf" + Colorize.RESET +
+        "\n 3.> " + Colorize.WHITE + "Elf " + Colorize.RESET +
+        "\n 4.> " + Colorize.YELLOW + "Human" + Colorize.RESET
         );
-        System.out.println("\n If you are unsure type \"help [classname]\" (eg. info wizard), or \"info\" for specifics about stats");
+        System.out.println("\n If you are unsure type \"help [classname]\" (eg. help wizard), or \"info\" for specifics about the class");
 
         // https://stackoverflow.com/questions/13102045/scanner-is-skipping-nextline-after-using-next-or-nextfoo
+        // NextLine() uses the previous prompt of scanner that was used, so when a nextInt() or something has been used
+        // before nextLine(), it will use the nextInt()'s prompt, not making a new one, only after the second one the prompt is made
+        // (dumb)
         if(!retry)
         {
             sc.nextLine(); // WTF
@@ -106,39 +113,57 @@ public class Menu extends Player{
         // A flag wanna-be
         switch(classInput)
         {
+            case "w":
             case "wizard":
-                Player.hp = Properties.wizardHP;
-                Player.strength = Properties.wizardStrength;
+            case "1":
+                failedTimes = 0;
+                Player.hp = DataAndOtherStuff.wizardHP;
+                Player.strength = DataAndOtherStuff.wizardStrength;
                 Player.hasMana = true;
                 Player.playerClass = "wizard";
-                System.out.println(Player.infoAboutPlayer());
+                System.out.println(Player.playerInfoString());
+                GameManager.start();
                 break;
+            case "d":
             case "dwarf":
-                Player.hp = Properties.dwarfHP;
-                Player.strength = Properties.dwarfStrength;
+            case "2":
+                failedTimes = 0;
+                Player.hp = DataAndOtherStuff.dwarfHP;
+                Player.strength = DataAndOtherStuff.dwarfStrength;
                 Player.hasMana = false;
                 Player.playerClass = "dwarf";
-                System.out.println(Player.infoAboutPlayer());
+                System.out.println(Player.playerInfoString());
+                GameManager.start();
                 break;
+            case "e":
             case "elf":
-                Player.hp = Properties.elfHP;
-                Player.strength = Properties.elfStrength;
+            case "3":
+                failedTimes = 0;
+                Player.hp = DataAndOtherStuff.elfHP;
+                Player.strength = DataAndOtherStuff.elfStrength;
                 Player.hasMana = false;
                 Player.playerClass = "elf";
-                System.out.println(Player.infoAboutPlayer());
+                System.out.println(Player.playerInfoString());
+                GameManager.start();
                 break;
+            case "h":
             case "human":
-                Player.hp = Properties.humanHP;
-                Player.strength = Properties.humanStrength;
+            case "4":
+                failedTimes = 0;
+                Player.hp = DataAndOtherStuff.humanHP;
+                Player.strength = DataAndOtherStuff.humanStrength;
                 Player.hasMana = false;
                 Player.playerClass = "human";
-                System.out.println(Player.infoAboutPlayer());
+                System.out.println(Player.playerInfoString());
+                GameManager.start();
                 break;
             default:
                 String trimmedOfSpaces = classInput.replaceAll("\s", "");
 
                 // https://howtodoinjava.com/java/string/get-first-4-characters/
-                if(trimmedOfSpaces.substring(0, 4).equals("help"))
+                // check if the string more than 4 characters in length, since the term after breaks if it isn't
+                // since there won't be any indexes for remaining characters (smort)
+                if(trimmedOfSpaces.length() > 4 && trimmedOfSpaces.substring(0, 4).equals("help"))
                 {
                     Help.getHelp(trimmedOfSpaces.substring(4, trimmedOfSpaces.length()));
                 }else{

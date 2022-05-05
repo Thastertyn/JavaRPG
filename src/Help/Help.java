@@ -1,6 +1,10 @@
+package Help;
+
 import java.util.Scanner;
 
 import Colors.Colorize;
+import MenusAndUIs.Menu;
+import Classes.ASCII;
 
 public class Help {
     
@@ -15,10 +19,15 @@ public class Help {
             classHelp(classToBeHelpedWith);
         }
         System.out.println("Some useful help with " + classToBeHelpedWith);
+        
+        sc.next();
+        
+        Menu.classChoose(false);
     }
 
     public static void fullHelp()
     {
+		System.out.println("----------------------------------");
         System.out.println("JavaRPG - The best game of all time");
         System.out.print("\n");
         System.out.println("Usage: \n\tjavarpg [" + Colorize.UNDERLINE + "FLAGS" + Colorize.RESET + "]");
@@ -30,7 +39,7 @@ public class Help {
         switch (classString) {
             case "wizard":
                 System.out.print(Colorize.CLEAR);
-                System.out.println(Classes.ASCII.WIZARD);
+                System.out.println(ASCII.WIZARD);
                 System.out.println("Wizard is low hp, high damage and medium speed. \n Press enter to continue");
                 sc.next();
                 //GetClass();

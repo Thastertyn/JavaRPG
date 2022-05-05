@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import Colors.Colorize;
+import MenusAndUIs.Menu;
 
 public class App {
 
@@ -13,10 +14,8 @@ public class App {
         
         System.out.println(Colorize.MAGENTA +  "Hello, World!" + Colorize.RESET);
 
-        Menu menu = new Menu();
-
-        menu.mainMenu(false);
-
+        Menu.mainMenu(false);
+        
         sc.close();
     }
 }

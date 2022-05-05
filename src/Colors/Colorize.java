@@ -4,6 +4,7 @@ public class Colorize {
 
     public static final String PROMPT = "$~> ";
 
+    // Should be printed with System.out.print(), not println()
     public static final String CLEAR              = "\033[H\033[2J";
 
     public static final String RESET              = "\u001B[0m";

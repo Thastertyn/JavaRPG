@@ -1,3 +1,4 @@
+package Managers;
 //package Main.src;
 
 //import static Main.src.BattleManager.StartBattle;
@@ -6,6 +7,7 @@ import java.io.Console;
 import java.util.Random;
 import java.util.Scanner;
 
+import App;
 import Classes.Properties;
 
 public class GameManager {
