@@ -1,21 +1,22 @@
 package Searching;
 
 import java.util.Random;
+import java.util.Scanner;
 
-import Classes.Player;
-import Managers.BattleManager;
+import MenusAndUIs.ActionMenu;
 
 public class SearchManager {
 	
 	static Random rnd = new Random();
+	static Scanner sc = new Scanner(System.in);
 
-	public void search()
+	public static void search()
 	{
-		int chanceOfPlace = rnd.nextInt(3);
+		int chanceOfPlace = rnd.nextInt(2);
 
 		// If a player finds a POI, they will get a couple guaranteed items
 		// If not, then just low chances for something, but no enemies
-		if(chanceOfPlace == 3)
+		if(chanceOfPlace == 1)
 		{
 			// campsite has 50% chance
 			// cottage 20%
@@ -63,5 +64,8 @@ public class SearchManager {
 				int addedItem = 0;
 			}
 		}
+		
+		sc.next();
+		ActionMenu.mainMenu();
 	}
 }

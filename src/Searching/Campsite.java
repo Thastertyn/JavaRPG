@@ -1,13 +1,21 @@
 package Searching;
 
+import java.util.Random;
+
+import Classes.Player;
+import Managers.BattleManager;
+
 public class Campsite {
 	
+	static Random rnd = new Random();
+
 	public static void wasFound()
 	{
 		int addedItems;
 		int actuallyGotItems;
 		System.out.println("You stumbled upon a campsite and found the following:");
 		// Wood and Stone
+		//TODO Need to call Player.init() somewhere, since now the inventory isn't even initialized
 		addedItems = rnd.nextInt(10, 21);
 		Player.inventory.add(2, (Player.inventory.get(2) + addedItems));
 		System.out.println(addedItems + " Wood,");

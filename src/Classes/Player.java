@@ -23,9 +23,13 @@ public class Player {
 
     public static void init(String classString)
     {
-        // Set the weapon and armor to nothing
+        // Set the all items to zero
         inventory.add(0, 0);
         inventory.add(1, 0);
+        inventory.add(2, 0);
+        inventory.add(3, 0);
+        inventory.add(4, 0);
+        inventory.add(5, 0);
     }
 
     public static void attack()

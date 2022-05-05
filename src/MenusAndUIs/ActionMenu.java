@@ -2,6 +2,7 @@
 package MenusAndUIs;
 
 import Colors.Colorize;
+import Searching.SearchManager;
 
 import java.util.Scanner;
 
@@ -27,6 +28,7 @@ public class ActionMenu {
 			case "search":
 			case "1":
 				System.out.println("You went to search for something");
+				SearchManager.search();
 				break;
 			case "h":
 			case "hunt":
@@ -39,6 +41,10 @@ public class ActionMenu {
 				System.out.println("You opened your inventory");
 				break;
 		}
+
+		sc.next();
+
+		mainMenu();
 
 	}
 }

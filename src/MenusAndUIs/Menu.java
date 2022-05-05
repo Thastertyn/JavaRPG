@@ -92,7 +92,7 @@ public class Menu {
         System.out.println("\n If you are unsure type \"help [classname]\" (eg. help wizard), or \"info\" for specifics about the class");
 
         // https://stackoverflow.com/questions/13102045/scanner-is-skipping-nextline-after-using-next-or-nextfoo
-        // NextLine() uses the previous prompt of scanner that was used, so when a nextInt() or something has been used
+        // NextLine() uses the previous prompt of scanner that was used, or so I understand, so when a nextInt() or something has been used
         // before nextLine(), it will use the nextInt()'s prompt, not making a new one, only after the second one the prompt is made
         // (dumb)
         if(!retry)
