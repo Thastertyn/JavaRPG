@@ -4,6 +4,9 @@ public class Colorize {
 
     public static final String PROMPT = "$~> ";
 
+    public static final String SEPARATOR_SMALL = "----";
+    public static final String SEPARATOR_LARGE = "----------------------------------";
+
     // Should be printed with System.out.print(), not println()
     public static final String CLEAR              = "\033[H\033[2J";
 

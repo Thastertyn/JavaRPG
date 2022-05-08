@@ -10,6 +10,6 @@ public class GameManager {
 	// Static FTW
 	public static void start()
 	{
-		ActionMenu.mainMenu();
+		ActionMenu.mainMenu(false);
 	}
 }

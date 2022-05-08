@@ -1,8 +1,8 @@
-package Searching;
+package Managers.Searching;
 
 import java.util.Random;
 
-import Classes.Player;
+import Classes.Inventory;
 import Managers.BattleManager;
 
 public class Campsite {
@@ -14,32 +14,27 @@ public class Campsite {
 		int addedItems;
 		int actuallyGotItems;
 		System.out.println("You stumbled upon a campsite and found the following:");
-		// Wood and Stone
-		//TODO Need to call Player.init() somewhere, since now the inventory isn't even initialized
+
+		// Wood and Iron, no Leather
 		addedItems = rnd.nextInt(10, 21);
-		Player.inventory.add(2, (Player.inventory.get(2) + addedItems));
+		Inventory.add("wood", (Inventory.get("wood") + addedItems));
 		System.out.println(addedItems + " Wood,");
 		
-		addedItems = rnd.nextInt(5, 11);
-		Player.inventory.add(3, (Player.inventory.get(2) + addedItems));
-		System.out.println(addedItems + " Stone,");
+		addedItems = rnd.nextInt(1, 2);
+		Inventory.add("iron", (Inventory.get("iron") + addedItems));
+		System.out.println(addedItems + " Iron,");
 
-		// Potions and Gems
+		// Potions, no Gems
 		actuallyGotItems = rnd.nextInt(20);
 		if(actuallyGotItems == 19)
 		{
 			addedItems = rnd.nextInt(3);
-			Player.inventory.add(4, (Player.inventory.get(4) + addedItems));
+			Inventory.add("potions", (Inventory.get("potions") + addedItems));
 			System.out.println(addedItems + " Potions,");
+		}else{
+			System.out.println("No Potions,");
 		}
-
-		actuallyGotItems = rnd.nextInt(20);
-		if(actuallyGotItems == 19)
-		{
-			Player.inventory.add(5, (Player.inventory.get(4) + addedItems));
-			System.out.println(1 + " Potion,");
-		}
-
+		
 		// Monsters
 		actuallyGotItems = rnd.nextInt(5);
 		if(actuallyGotItems == 4)
@@ -48,7 +43,8 @@ public class Campsite {
 			addedItems = rnd.nextInt(3);
 			addedItems++;
 			BattleManager.startBattle(addedItems, 1);
+		}else{
+			System.out.println("No Enemies");
 		}
-
 	}
 }

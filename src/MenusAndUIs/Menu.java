@@ -6,8 +6,9 @@ import Help.Help;
 import java.util.Scanner;
 
 import Managers.GameManager;
-import Classes.Player;
 import Classes.DataAndOtherStuff;
+import Classes.Inventory;
+import Classes.Player;
 
 public class Menu {
 
@@ -117,45 +118,37 @@ public class Menu {
             case "wizard":
             case "1":
                 failedTimes = 0;
-                Player.hp = DataAndOtherStuff.wizardHP;
-                Player.strength = DataAndOtherStuff.wizardStrength;
-                Player.hasMana = true;
+                Player.hp = DataAndOtherStuff.WIZARD_HP;
+                Player.maxHP = DataAndOtherStuff.WIZARD_HP;
+                Player.strength = DataAndOtherStuff.WIZARD_STRENGTH;
                 Player.playerClass = "wizard";
-                System.out.println(Player.playerInfoString());
-                GameManager.start();
                 break;
             case "d":
             case "dwarf":
             case "2":
                 failedTimes = 0;
-                Player.hp = DataAndOtherStuff.dwarfHP;
-                Player.strength = DataAndOtherStuff.dwarfStrength;
-                Player.hasMana = false;
+                Player.hp = DataAndOtherStuff.DWARF_HP;
+                Player.maxHP = DataAndOtherStuff.DWARF_HP;
+                Player.strength = DataAndOtherStuff.DWARF_STRENGTH;
                 Player.playerClass = "dwarf";
-                System.out.println(Player.playerInfoString());
-                GameManager.start();
                 break;
             case "e":
             case "elf":
             case "3":
                 failedTimes = 0;
-                Player.hp = DataAndOtherStuff.elfHP;
-                Player.strength = DataAndOtherStuff.elfStrength;
-                Player.hasMana = false;
+                Player.hp = DataAndOtherStuff.ELF_HP;
+                Player.maxHP = DataAndOtherStuff.ELF_HP;
+                Player.strength = DataAndOtherStuff.ELF_STRENGTH;
                 Player.playerClass = "elf";
-                System.out.println(Player.playerInfoString());
-                GameManager.start();
                 break;
             case "h":
             case "human":
             case "4":
                 failedTimes = 0;
-                Player.hp = DataAndOtherStuff.humanHP;
-                Player.strength = DataAndOtherStuff.humanStrength;
-                Player.hasMana = false;
+                Player.hp = DataAndOtherStuff.HUMAN_HP;
+                Player.maxHP = DataAndOtherStuff.HUMAN_HP;
+                Player.strength = DataAndOtherStuff.HUMAN_STRENGTH;
                 Player.playerClass = "human";
-                System.out.println(Player.playerInfoString());
-                GameManager.start();
                 break;
             default:
                 String trimmedOfSpaces = classInput.replaceAll("\s", "");
@@ -170,27 +163,11 @@ public class Menu {
                     classChoose(true);
                 }
 
-                /*
-                !I like this stuff so it's staying, it's just comments, so nothing much, not much of a space hurry atm (there kinda is, but not rn)
-
-                String[] split = classInput.split("\\s+");
-
-                String trimmedOfSpacesInput = classInput.replaceAll("\\s", "");
-                char[] trimmedOfSpacesInputCharArray = trimmedOfSpacesInput.toCharArray();
-
-                System.out.println(trimmedOfSpacesInput);
-
-                if(trimmedOfSpacesInputCharArray[0] == 'i' && trimmedOfSpacesInputCharArray[1] == 'n' && trimmedOfSpacesInputCharArray[2] == 'f' && trimmedOfSpacesInputCharArray[3] == 'o')
-                {
-                    Help.getHelp(trimmedOfSpacesInput);
-                }
-
-                if(split[0].equals("info"))
-                {
-                }else{
-                    //classChoose(true);
-                }*/
                 break;
         }
+        
+        Inventory.init();
+        System.out.println(Player.playerInfoString());
+        GameManager.start();
     }
 }

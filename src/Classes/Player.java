@@ -1,45 +1,69 @@
 package Classes;
 
-import java.util.ArrayList;
+import java.util.Random;
+
+import Colors.Colorize;
 
 public class Player {
-    
-    public static int hp;
-    public static int strength;
+	
+	// can be buffed by crafting a 
+	public static int maxHP;
+	public static int hp;
 
-    public static String playerClass;
+	// 8 Levels of weapons
+	public static int strength;
 
-    public static boolean hasMana;
+	// 6 Tiers or armor
+	public static int armor;
+	
+	public static String playerClass;
 
-    // Item Positions
-    // 0. Weapon
-    // 1. Armor
-    // 2. Wood
-    // 3. Stone
-    // 4. Potions
-    // 5. Gems
-    // There won't be any size limit, at least for now
-    public static ArrayList<Integer> inventory = new ArrayList<>();
+	static Random rnd = new Random();
 
-    public static void init(String classString)
-    {
-        // Set the all items to zero
-        inventory.add(0, 0);
-        inventory.add(1, 0);
-        inventory.add(2, 0);
-        inventory.add(3, 0);
-        inventory.add(4, 0);
-        inventory.add(5, 0);
-    }
+	public static void attack(Enemy enemy)
+	{
+		int hitOrMiss = rnd.nextInt(99);
 
-    public static void attack()
-    {
-        
-    }
+		if(hitOrMiss < 5)
+		{
+			System.out.println("You missed");
+		}else{
+			enemy.hp -= strength;
+		}
 
-    // toString can't be static, which it has to be if there is only one player, therefore everything else being static
-    public static String playerInfoString()
-    {
-        return "Player has class:" + playerClass + "\nHP:" + hp + "\nStrength:" + strength;
-    }
+	}
+
+	static boolean isDefending = false;
+
+	public static void defend(boolean usePotion)
+	{
+		int hitOrMiss = rnd.nextInt(99);
+
+		if(hitOrMiss >= 5)
+		{
+			isDefending = true;
+		}else{
+			isDefending = false;
+		}
+
+	}
+
+	public static void escape()
+	{
+
+	}
+
+	static void wasHit(Enemy e)
+	{
+		if(!isDefending)
+		{
+			hp -= e.strength;
+		}
+	}
+
+	// toString can't be static, which it has to be if there is only one player, therefore everything else is being static
+	public static String playerInfoString()
+	{
+		return "Player has class:" + playerClass + "\nHP:" + hp + "\nStrength:" +  strength + "\n" + Colorize.SEPARATOR_SMALL + "Inventory:\n" + "Gems" + Inventory.get("gems") + "\nPotions" + Inventory.get("potions");
+	}
 }
