@@ -2,8 +2,11 @@ package MenusAndUIs;
 
 import java.util.Scanner;
 
+import Classes.DataAndOtherStuff;
 import Classes.Player;
 import Colors.Colorize;
+import Managers.BattleManager;
+import MenusAndUIs.Menu;
 
 public class BattleMenu {
 
@@ -43,7 +46,7 @@ public class BattleMenu {
 			case "d":
 			case "defend":
 			case "2":
-
+				Menu.mainMenu(false);
 				break;
 			case "f":
 			case "flee":
@@ -58,7 +61,23 @@ public class BattleMenu {
 
 	public static void chooseEnemy(boolean retry)
 	{
+		System.out.println("You can choose from:");
 		
+		int enemyPos = 1;
+		for(int i = 0; i < BattleManager.enemyCounts.length; i++)
+		{
+			if(BattleManager.enemyCounts[i] != 0)
+			{
+				if(BattleManager.enemyCounts[i] == 1)
+				{
+					System.out.println(" " + enemyPos + ".> " + BattleManager.enemyCounts[i] + " " + DataAndOtherStuff.ENEMY_IDS[i]);
+				}else{
+					String plural = (DataAndOtherStuff.ENEMY_IDS[i].equals("witch")) ? "es" : "s";
+					System.out.println(" " + enemyPos + ".> " + BattleManager.enemyCounts[i] + " " + DataAndOtherStuff.ENEMY_IDS[i] + plural);
+				}
+				enemyPos++;
+			}
+		}
 	}
 
 	public static void usePotion()

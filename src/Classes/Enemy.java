@@ -56,7 +56,7 @@ public class Enemy {
 				break;
 		}
 
-		enemyString = enemyString.substring(0, 1).toUpperCase() + enemyString.substring(1);
+		//enemyString = enemyString.substring(0, 1).toUpperCase() + enemyString.substring(1);
 	}
 
 	public void attack()

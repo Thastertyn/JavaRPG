@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Colors.Colorize;
+import Managers.BattleManager;
 import MenusAndUIs.ActionMenu;
 
 public class SearchManager {
@@ -18,6 +19,8 @@ public class SearchManager {
 
 		int chanceOfPlace = rnd.nextInt(10);
 
+		BattleManager.startBattle(15, 5);
+/*
 		// If a player finds a POI, they will get a couple guaranteed items
 		// If not, then just low chances for something, but no enemies
 		if(chanceOfPlace > 0)
@@ -26,8 +29,11 @@ public class SearchManager {
 			// cottage 20%
 			// cave 12.5%
 			// ruin 7.5%
-			// castle 7.5%
+			// castle 6.5%
 			// lair 2.5%
+
+			// TODO Add boss
+			// final boss 1%
 
 			int poi = rnd.nextInt(999);
 			poi++;
@@ -59,7 +65,7 @@ public class SearchManager {
 			}
 		}else{
 			NoPlace.wasFound();
-		}
+		}*/
 
 		sc.nextLine();
 		

@@ -9,12 +9,12 @@ public class DataAndOtherStuff {
     // Ids
     public final String[] playerId = {"wizard", "dwarf", "elf", "human"};
     
+    public static final String[] ENEMY_IDS = {"slime", "hog", "bear", "goblin", "zombie", "skeleton", "ogre", "witch", "mage", "centaur", "noone", "duck"};
     public static final String[] TIER1IDS = {"slime", "hog"};
     public static final String[] TIER2IDS = {"bear", "goblin", "zombie"};
     public static final String[] TIER3IDS = {"skeleton", "ogre"};
     public static final String[] TIER4IDS = {"witch", "mage"};
     public static final String[] TIER5IDS = {"centaur", "noone"};
-    public final String[] enemyId = {"slime", "hog", "bear", "goblin", "zombie", "skeleton", "ogre", "witch", "mage", "centaur", "noone", "duck"};
 
 //#region HP
     // Player HP
