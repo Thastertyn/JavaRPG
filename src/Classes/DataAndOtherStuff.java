@@ -4,7 +4,8 @@ package Classes;
 public class DataAndOtherStuff {
 
     // Exploration POIs
-    public static final String[] pois = {"campsite", "cottage", "cave", "ruin", "castle", "lair"};
+    public static final String[] POIS = {"campsite", "cottage", "cave", "ruin", "castle", "lair"};
+    public static final String[] POI_MESSAGES = {"You stumbled upon a ", "You found a ", "You find yourself in a", "Your senses lead you to a ", "After countles hours, you saw it, a "};
     
     // Ids
     public final String[] playerId = {"wizard", "dwarf", "elf", "human"};
@@ -18,8 +19,8 @@ public class DataAndOtherStuff {
 
 //#region HP
     // Player HP
-    public static final int ELF_HP = 50;
-    public static final int WIZARD_HP = 75;
+    public static final int ELF_HP = 75;
+    public static final int WIZARD_HP = 50;
     public static final int DWARF_HP = 150;
     public static final int HUMAN_HP = 100;
 
@@ -45,10 +46,10 @@ public class DataAndOtherStuff {
 
 //#region Strength
     // Player Strength
-    public static final int HUMAN_STRENGTH = 60;
-    public static final int WIZARD_STRENGTH = 100;
-    public static final int DWARF_STRENGTH = 85;
-    public static final int ELF_STRENGTH = 40; 
+    public static final int HUMAN_STRENGTH = 10;
+    public static final int WIZARD_STRENGTH = 35;
+    public static final int DWARF_STRENGTH = 25;
+    public static final int ELF_STRENGTH = 20; 
 
     // Enemy Strength
     public static final int slimeStrength = 5;

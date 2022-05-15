@@ -7,15 +7,15 @@ import Classes.Inventory;
 import Colors.Colorize;
 import Managers.BattleManager;
 
-public class Cottage {
-
+public class Cave {
+	
 	static Random rnd = new Random();
 
 	public static void wasFound()
 	{
 		int addedItems;
 		int actuallyGotItems;
-		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "cottage");
+		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "cave");
 
 		// Wood and Iron and Leather
 		addedItems = rnd.nextInt(25, 51);

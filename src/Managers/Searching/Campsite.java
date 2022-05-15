@@ -2,6 +2,7 @@ package Managers.Searching;
 
 import java.util.Random;
 
+import Classes.DataAndOtherStuff;
 import Classes.Inventory;
 import Managers.BattleManager;
 
@@ -13,7 +14,7 @@ public class Campsite {
 	{
 		int addedItems;
 		int actuallyGotItems;
-		System.out.println("You stumbled upon a campsite and found the following:");
+		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "campsite");
 
 		// Wood and Iron, no Leather
 		addedItems = rnd.nextInt(10, 21);

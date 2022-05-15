@@ -5,6 +5,7 @@ public class Colorize {
     public static final String PROMPT = "$~> ";
 
     public static final String SEPARATOR_SMALL = "----";
+    public static final String SEPARATOR_MEDIUM = "-----------------";
     public static final String SEPARATOR_LARGE = "----------------------------------";
 
     // Should be printed with System.out.print(), not println()
@@ -38,6 +39,11 @@ public class Colorize {
     public static final String BACKGROUND_MAGENTA = "\u001B[45m";
     public static final String BACKGROUND_CYAN    = "\u001B[46m";
     public static final String BACKGROUND_WHITE   = "\u001B[47m";
+
+    public static String capitalize(String text)
+    {
+        return text.substring(0, 1).toUpperCase() + text.substring(1);
+    }
 
     /*
     private String TMP_CLEAR;

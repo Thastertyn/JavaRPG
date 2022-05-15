@@ -1,16 +1,17 @@
 package MenusAndUIs;
 
+import java.util.Random;
 import java.util.Scanner;
 
-import Classes.DataAndOtherStuff;
 import Classes.Player;
 import Colors.Colorize;
 import Managers.BattleManager;
-import MenusAndUIs.Menu;
+import Managers.EnemyManager;
 
 public class BattleMenu {
 
 	static Scanner sc = new Scanner(System.in);
+	static Random rnd = new Random();
 
 	static int failedTimes = 0;
 
@@ -24,15 +25,15 @@ public class BattleMenu {
 			failedTimes = 0;
 		}
 
-		System.out.println(Colorize.RED + "! You were attacked !" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
+		System.out.println(Player.playerInfoString());
+		System.out.println(Colorize.SEPARATOR_MEDIUM);
 		System.out.println("You can now do the following:");
 		System.out.println(" 1.> Attack");
 		System.out.println(" 2.> Defend (allows taking a potion item)");
 		System.out.println(" 3.> Flee");
 
 		System.out.print(Colorize.PROMPT);
-
 		String input = sc.next();
 		input.toLowerCase();
 
@@ -46,12 +47,12 @@ public class BattleMenu {
 			case "d":
 			case "defend":
 			case "2":
-				Menu.mainMenu(false);
+				usePotion();
 				break;
 			case "f":
 			case "flee":
 			case "3":
-				Player.escape();
+				escape();
 				break;
 			default:
 				battleMenu(true);
@@ -61,22 +62,33 @@ public class BattleMenu {
 
 	public static void chooseEnemy(boolean retry)
 	{
+		System.out.println(Colorize.RED + ">> BATTLE <<" + Colorize.RESET);
+		System.out.println(Colorize.SEPARATOR_LARGE);
 		System.out.println("You can choose from:");
 		
-		int enemyPos = 1;
-		for(int i = 0; i < BattleManager.enemyCounts.length; i++)
+		EnemyManager.writeEnemies(true);
+
+		System.out.print(Colorize.PROMPT);
+		String enemyInput = sc.next();
+		enemyInput.toLowerCase();
+
+		int index = EnemyManager.getEnemyIndex(enemyInput);
+		System.out.println(index);
+
+		BattleManager.playerAttack(index);
+	}
+
+	public static void escape()
+	{
+		int escaped = rnd.nextInt(1);
+
+		if(escaped == 0)
 		{
-			if(BattleManager.enemyCounts[i] != 0)
-			{
-				if(BattleManager.enemyCounts[i] == 1)
-				{
-					System.out.println(" " + enemyPos + ".> " + BattleManager.enemyCounts[i] + " " + DataAndOtherStuff.ENEMY_IDS[i]);
-				}else{
-					String plural = (DataAndOtherStuff.ENEMY_IDS[i].equals("witch")) ? "es" : "s";
-					System.out.println(" " + enemyPos + ".> " + BattleManager.enemyCounts[i] + " " + DataAndOtherStuff.ENEMY_IDS[i] + plural);
-				}
-				enemyPos++;
-			}
+			System.out.println("You successfully escaped");
+			ActionMenu.mainMenu(false);
+		}else{
+			System.out.println("You tried escaping, but failed");
+			BattleManager.enemyAttack();
 		}
 	}
 
@@ -87,7 +99,6 @@ public class BattleMenu {
 		System.out.println(" 2.> No");
 
 		System.out.print(Colorize.PROMPT);
-
 		String input = sc.next();
 		input.toLowerCase();
 

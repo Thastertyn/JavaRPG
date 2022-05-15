@@ -10,6 +10,8 @@ public class Enemy {
 	public int strength;
 	public String enemyString;
 
+	public boolean wasAttacked = false;
+
 	public Enemy(int rarity)
 	{
 		// Random enemy inbetween the lowest and highest given rarity
@@ -55,18 +57,6 @@ public class Enemy {
 				strength = DataAndOtherStuff.duckStrength;
 				break;
 		}
-
-		//enemyString = enemyString.substring(0, 1).toUpperCase() + enemyString.substring(1);
-	}
-
-	public void attack()
-	{
-		
-	}
-
-	public void die()
-	{
-		
 	}
 
 	@Override

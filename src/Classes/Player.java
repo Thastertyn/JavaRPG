@@ -15,7 +15,8 @@ public class Player {
 
 	// 6 Tiers or armor
 	public static int armor;
-	
+
+	public static int tier = 1;
 	public static String playerClass;
 
 	static Random rnd = new Random();
@@ -48,11 +49,6 @@ public class Player {
 
 	}
 
-	public static void escape()
-	{
-
-	}
-
 	static void wasHit(Enemy e)
 	{
 		if(!isDefending)
@@ -64,6 +60,6 @@ public class Player {
 	// toString can't be static, which it has to be if there is only one player, therefore everything else is being static
 	public static String playerInfoString()
 	{
-		return "Player has class:" + playerClass + "\nHP:" + hp + "\nStrength:" +  strength + "\n" + Colorize.SEPARATOR_SMALL + "Inventory:\n" + "Gems" + Inventory.get("gems") + "\nPotions" + Inventory.get("potions");
+		return " > Player:" + "\n > HP:" + hp + "\n > Strength:" + strength + "\n" + Colorize.SEPARATOR_SMALL + "\n > Potions: " + Inventory.get("potions");
 	}
 }

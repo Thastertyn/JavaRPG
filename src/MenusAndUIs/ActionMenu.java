@@ -2,15 +2,18 @@
 package MenusAndUIs;
 
 import Colors.Colorize;
+import Managers.BattleManager;
 import Managers.Searching.SearchManager;
 import Classes.Inventory;
 import Classes.Player;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class ActionMenu {
 
 	static Scanner sc = new Scanner(System.in);
+	static Random rnd = new Random();
 
 	static int failedTimes = 0;
 
@@ -48,6 +51,7 @@ public class ActionMenu {
 			case "hunt":
 			case "2":
 				System.out.println("You went hunting something");
+				BattleManager.startBattle(rnd.nextInt(1, 5), Player.tier);
 				break;
 			case "i":
 			case "inventory":

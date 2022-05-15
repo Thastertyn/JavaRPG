@@ -5,6 +5,7 @@ import java.util.Scanner;
 import Colors.Colorize;
 import MenusAndUIs.Menu;
 import Classes.ASCII;
+import Classes.DataAndOtherStuff;
 
 public class Help {
     
@@ -27,7 +28,27 @@ public class Help {
 
     public static void fullHelp()
     {
-		System.out.println("----------------------------------");
+        System.out.println("JavaRPG - The best game of all time");
+        System.out.println("You are in role of a player, wandering around an RPG-like world");
+        System.out.println("Your goal is to get as far as you possibly can");
+        System.out.print("\n");
+        System.out.println("!! When it seems like nothing is happening, you most likely need to press enter !!");
+        System.out.print("\n");
+        System.out.println("The classes give you different ammounts of hp and strength, maybe even armor (not as of right now)");
+        System.out.println("The enemies are ranked by \"tier\", aka their strength and hp");
+        System.out.println("Player actions are pretty simple, allowing you to do 3 things,\nexplore (not as fancy as it sounds)\nhunt for enemies\nand craft (upgrade) items");
+        System.out.print("\n");
+        System.out.println("Exploring is easy, you just find a random location, get some loot and maybe fight some enemies");
+        System.out.println("Hunting is just explicitely looking for trouble, you get 100% chance to meet enemies,\n");
+        System.out.println("Crafting, though still WIP, will allow you to upgrade your gear, giving you more strength or hp");
+        System.out.println("Thats pretty much it to this game");
+        sc.nextLine();
+
+        Menu.mainMenu(false);
+    }
+
+    public static void flagHelp()
+    {
         System.out.println("JavaRPG - The best game of all time");
         System.out.print("\n");
         System.out.println("Usage: \n\tjavarpg [" + Colorize.UNDERLINE + "FLAGS" + Colorize.RESET + "]");
@@ -40,15 +61,13 @@ public class Help {
             case "wizard":
                 System.out.print(Colorize.CLEAR);
                 System.out.println(ASCII.WIZARD);
-                System.out.println("Wizard is low hp, high damage and medium speed. \n Press enter to continue");
-                sc.next();
-                //GetClass();
+                System.out.println("Wizard has \nHP of " + DataAndOtherStuff.WIZARD_HP + ",\nDamage of " + DataAndOtherStuff.WIZARD_STRENGTH + "");
+                sc.nextLine();
                 break;
             case "dwarf":
                 System.out.print("\033[H\033[2J");
                 System.out.println("Dwarf is slow, strong and medium on hp. \n Press enter to continue");
                 sc.next();
-                //GetClass();
                 break;
             case "info elf":
                 System.out.print("\033[H\033[2J");
@@ -56,12 +75,14 @@ public class Help {
                 sc.next();
                 //GetClass();
                 break;
-            case "info human":
+            case "human":
                 System.out.print("\033[H\033[2J");
                 System.out.println("Best of all worlds, he is medium in everything. \n Press enter to continue");
                 sc.next();
                 //GetClass();
                 break;
         }
+
+        Menu.classChoose(false);
     }
 }
