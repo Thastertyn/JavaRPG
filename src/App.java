@@ -14,6 +14,17 @@ public class App {
         
         System.out.println(Colorize.MAGENTA +  "Hello, World!" + Colorize.RESET);
 
+        for (int i = 0; i < args.length; i++)
+        {
+            args[i].toLowerCase();
+            args[i].replaceAll("-", "");
+
+            switch(args[i])
+            {
+
+            }
+        }
+
         Menu.mainMenu(false);
         
         sc.close();

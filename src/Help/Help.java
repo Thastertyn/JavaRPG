@@ -52,7 +52,7 @@ public class Help {
         System.out.println("JavaRPG - The best game of all time");
         System.out.print("\n");
         System.out.println("Usage: \n\tjavarpg [" + Colorize.UNDERLINE + "FLAGS" + Colorize.RESET + "]");
-        System.out.println("Options: \n\t-h or --help\n\t-g or --god\n\t-c or --color");
+        System.out.println("Options: \n\t-h or --help\n\t-i or --invincible\n\t-s or --super-strength");
     }
 
     public static void classHelp(String classString)

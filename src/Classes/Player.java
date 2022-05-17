@@ -6,6 +6,9 @@ import Colors.Colorize;
 
 public class Player {
 	
+	public static boolean isInvincible = false;
+	public static boolean isSuperStrong = false;
+
 	// can be buffed by crafting a 
 	public static int maxHP;
 	public static int hp;
