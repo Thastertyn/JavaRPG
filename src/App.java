@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
+import Classes.Player;
 import Colors.Colorize;
+import Help.Help;
 import MenusAndUIs.Menu;
 
 public class App {
@@ -17,11 +19,21 @@ public class App {
         for (int i = 0; i < args.length; i++)
         {
             args[i].toLowerCase();
-            args[i].replaceAll("-", "");
 
             switch(args[i])
             {
-
+                case "-h":
+                case "--help":
+                    Help.fullHelp();
+                    break;
+                case "-i":
+                case "--invincible":
+                    Player.isInvincible = true;
+                    break;
+                case "-s":
+                case "--super-strength":
+                    Player.isSuperStrong = true;
+                    break;
             }
         }
 
