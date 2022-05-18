@@ -28,7 +28,7 @@ public class Menu {
 	{
 
 		System.out.print(Colorize.RESET + Colorize.CLEAR);
-		System.out.println("> Main Menu <");
+		System.out.println(Colorize.UNDERLINE + Colorize.MAGENTA + "> ⁠Main ⁠Menu ⁠<" + Colorize.RESET);
 		System.out.println("----------------------------------");
 
 		if(retry)
@@ -61,7 +61,7 @@ public class Menu {
 			case "help":
 			case "h":
 			case "2":
-				Help.fullHelp();
+				Help.fullHelp(true);
 				break;
 			// Quit cases
 			case "q":
@@ -79,6 +79,7 @@ public class Menu {
 	public static void classChoose(boolean retry)
 	{
 		System.out.print(Colorize.CLEAR + Colorize.RESET);
+		System.out.println(Colorize.UNDERLINE + Colorize.CYAN + "> ⁠Choose ⁠your ⁠class" + Colorize.RESET);
 		System.out.println("----------------------------------");
 
 		if(retry)

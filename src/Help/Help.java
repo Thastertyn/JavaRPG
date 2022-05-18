@@ -15,7 +15,7 @@ public class Help {
     {
         if(classToBeHelpedWith.isEmpty())
         {
-            fullHelp();
+            fullHelp(true);
         }else{
             classHelp(classToBeHelpedWith);
         }
@@ -26,7 +26,7 @@ public class Help {
         Menu.classChoose(false);
     }
 
-    public static void fullHelp()
+    public static void fullHelp(boolean shouldReturn)
     {
         System.out.println("JavaRPG - The best game of all time");
         System.out.println("You are in role of a player, wandering around an RPG-like world");
@@ -44,7 +44,10 @@ public class Help {
         System.out.println("Thats pretty much it to this game");
         sc.nextLine();
 
-        Menu.mainMenu(false);
+        if(shouldReturn)
+        {
+            Menu.mainMenu(false);
+        }
     }
 
     public static void flagHelp()
@@ -52,7 +55,7 @@ public class Help {
         System.out.println("JavaRPG - The best game of all time");
         System.out.print("\n");
         System.out.println("Usage: \n\tjavarpg [" + Colorize.UNDERLINE + "FLAGS" + Colorize.RESET + "]");
-        System.out.println("Options: \n\t-h or --help\n\t-i or --invincible\n\t-s or --super-strength");
+        System.out.println("Options: \n\t-h or --help\n\t-bh or --bigger-help\n\t-i or --invincible\n\t-s or --super-strength");
     }
 
     public static void classHelp(String classString)

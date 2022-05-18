@@ -24,7 +24,11 @@ public class App {
             {
                 case "-h":
                 case "--help":
-                    Help.fullHelp();
+                    Help.flagHelp();
+                    break;
+                case "-bh":
+                case "--bigger-help":
+                    Help.fullHelp(false);
                     break;
                 case "-i":
                 case "--invincible":

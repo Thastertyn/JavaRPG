@@ -3,6 +3,7 @@ package MenusAndUIs;
 
 import Colors.Colorize;
 import Managers.BattleManager;
+import Managers.Crafting;
 import Managers.Searching.SearchManager;
 import Classes.Inventory;
 import Classes.Player;
@@ -29,6 +30,7 @@ public class ActionMenu {
             failedTimes = 0;
         }
 
+		System.out.println(Colorize.UNDERLINE + Colorize.GREEN + "> ⁠Choose ⁠Your ⁠Action" + Colorize.RESET);
 		System.out.println("----------------------------------");
 		System.out.println("You can now do the following:\n 1.> Explore\n 2.> Hunt (Enemies)\n 3.> Open your inventory");
 
@@ -65,8 +67,6 @@ public class ActionMenu {
 		}
 
 		sc.nextLine();
-
-		mainMenu(false);
 	}
 
 	public static void inventoryOpen(boolean retry)
@@ -113,8 +113,7 @@ public class ActionMenu {
 			case "c":
 			case "crafting":
 			case "1":
-				System.out.println("No");
-				mainMenu(false);
+				Crafting.craft();
 				break;
 			case "b":
 			case "back":

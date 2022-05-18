@@ -9,6 +9,8 @@ public class GameManager {
 
 	static Scanner sc = new Scanner(System.in);
 
+	public static int failedTimes = 0;
+
 	public static void playerDied()
 	{
 		System.out.println("You died on your jounreys!");
@@ -42,9 +44,16 @@ public class GameManager {
 
 	}
 
+	public static void missInput()
+	{
+		failedTimes++;
+		System.err.println(Colorize.RED + "Incorrect input, try again.\nFailed " + failedTimes  + " times" + Colorize.RESET + "\n");
+		sc.nextLine();
+	}
+
 	public static void PlayerWon()
 	{
-
+		System.exit(69);
 	}
 
 	// TODO use this somewhere, like maybe at the boss battle
