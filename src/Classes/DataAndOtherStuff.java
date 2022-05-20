@@ -5,7 +5,7 @@ public class DataAndOtherStuff {
 
     // Exploration POIs
     public static final String[] POIS = {"campsite", "cottage", "cave", "ruin", "castle", "lair"};
-    public static final String[] POI_MESSAGES = {"You stumbled upon a ", "You found a ", "You find yourself in a", "Your senses lead you to a ", "After countles hours, you saw it, a "};
+    public static final String[] POI_MESSAGES = {"You stumbled upon a ", "You found a ", "You find yourself in a ", "Your senses lead you to a ", "After countles hours, you saw it, a "};
     
     // Ids
     public final String[] playerId = {"wizard", "dwarf", "elf", "human"};

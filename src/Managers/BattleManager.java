@@ -1,3 +1,4 @@
+// TODO Rework enemy choosing
 package Managers;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class BattleManager {
 		getEnemyCount();
 
 		System.out.print(Colorize.RESET + Colorize.CLEAR);
-		System.out.println(Colorize.RED + "! You were attacked by " + EnemyManager.getTotalEnemyCount() + " enemies !" + Colorize.RESET);
+		System.out.println(Colorize.RED + Colorize.UNDERLINE + "! ⁠BATTLE ⁠!" + Colorize.RESET);
 
 		BattleMenu.battleMenu(false);
 	}
@@ -51,7 +52,7 @@ public class BattleManager {
 
 			if(hitOrMiss == 0)
 			{
-				System.out.println(Colorize.capitalize(e.enemyString) + " managed to land a hit dealing " + e.strength + " damage");
+				System.out.println(Colorize.RED + Colorize.capitalize(e.enemyString) + " managed to land a hit dealing " + e.strength + " damage" + Colorize.RESET);
 				Player.hp -= e.strength;
 
 				if(Player.hp <= 0)
@@ -59,7 +60,7 @@ public class BattleManager {
 					GameManager.playerDied();
 				}
 			}else{
-				System.out.println(Colorize.capitalize(e.enemyString) + " completely missed you");
+				System.out.println(Colorize.GREEN + Colorize.capitalize(e.enemyString) + " completely missed you" + Colorize.RESET);
 			}
 		}
 
@@ -81,7 +82,8 @@ public class BattleManager {
 
 		if(hitOrMiss == 0)
 		{
-			System.out.println("You missed you attack");
+			System.out.println(Colorize.RED + "You missed your attack" + Colorize.RESET);
+			System.out.println("");
 			enemyAttack();
 		}else{
 			// get first enemy, whose enemyID is equal to the one from written positions
@@ -107,7 +109,7 @@ public class BattleManager {
 	{
 		if(enemies.isEmpty())
 		{
-			System.out.println("Congratulations, you won");
+			System.out.println(Colorize.GREEN + Colorize.HIGH_INTENSITY + "Congratulations, you won" + Colorize.RESET);
 			sc.nextLine();
 			endBattle();
 			ActionMenu.mainMenu(false);
@@ -118,7 +120,7 @@ public class BattleManager {
 
 	static void enemyDied(Enemy e)
 	{
-		System.out.println("You killed him, the " + Colorize.capitalize(e.enemyString) + " is dead!");
+		System.out.println(Colorize.YELLOW + "You killed him, the " + Colorize.capitalize(e.enemyString) + " is dead!" + Colorize.RESET);
 		enemyCounts[EnemyManager.getEnemyIndex(e.enemyString)]--;
 		enemies.remove(e);
 	}

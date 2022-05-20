@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import Classes.DataAndOtherStuff;
+import Classes.Enemy;
 import Colors.Colorize;
 
 public class EnemyManager {
@@ -73,37 +74,51 @@ public class EnemyManager {
 		}
 	}
 
-	public static void writeEnemies(boolean isPlayerChoosing)
+	public static void writeEnemies(String howToWrite)
 	{
 		int enemyPos = 1; 
-		String choosingNumber;
-
-		for(int i = 0; i < BattleManager.enemyCounts.length; i++)
+		
+		switch(howToWrite)
 		{
-			// Add a number to the text if the player is currently supposed to choose an enemy
-			if(isPlayerChoosing)
-			{
-				choosingNumber = " " + enemyPos + ".> ";
-			}else{
-				choosingNumber = " > ";
-			}
-
-			// Index is the position of the written enemy, value is the enemyID as in the menu
-			writtenPositions.set(enemyPos, i);
-
-			// Write only existing enemies (non 0)
-			if(BattleManager.enemyCounts[i] != 0)
-			{
-				if(BattleManager.enemyCounts[i] == 1)
+			case "short":
+				int[] counts = new int[DataAndOtherStuff.ENEMY_IDS.length];
+				
+				for(Enemy e : BattleManager.enemies)
 				{
-					System.out.println(choosingNumber + BattleManager.enemyCounts[i] + " " + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]));
-				}else{
-					String plural = (DataAndOtherStuff.ENEMY_IDS[i].equals("witch")) ? "es" : "s";
-					System.out.println(choosingNumber + BattleManager.enemyCounts[i] + " " + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]) + plural);
+					counts[getEnemyIndex(e.enemyString)]++;
 				}
-				enemyPos++;
-			}
+
+				for(int i = 0; i < counts.length; i++)
+				{
+					if(counts[i] == 1)
+					{
+						System.out.println(counts[i] + Colorize.capitalize(BattleManager.enemies.get(i).enemyString));
+					}
+				}
+				break;
+			case "long":
+				for(int i = 0; i < BattleManager.enemyCounts.length; i++)
+				{
+					// Index is the position of the written enemy, value is the enemyID as in the menu
+					writtenPositions.set(enemyPos, i);
+		
+					// Write only existing enemies (non 0)
+					if(BattleManager.enemyCounts[i] != 0)
+					{
+						if(BattleManager.enemyCounts[i] == 1)
+						{
+							System.out.println(" " + enemyPos + ".> " + BattleManager.enemyCounts[i] + " " + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]));
+						}else{
+							String plural = (DataAndOtherStuff.ENEMY_IDS[i].equals("witch")) ? "es" : "s";
+							System.out.println(" " + enemyPos + ".> " + BattleManager.enemyCounts[i] + " " + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]) + plural);
+						}
+						enemyPos++;
+					}
+				}
+				break;
 		}
+
+
 	}
 
 	public static int getTotalEnemyCount()

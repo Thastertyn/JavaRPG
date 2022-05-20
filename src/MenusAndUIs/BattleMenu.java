@@ -25,6 +25,9 @@ public class BattleMenu {
 			failedTimes = 0;
 		}
 
+		System.out.println("You were attacked by:");
+		EnemyManager.writeEnemies("short");
+
 		System.out.println(Colorize.SEPARATOR_LARGE);
 		System.out.println(Player.playerInfoString());
 		System.out.println(Colorize.SEPARATOR_MEDIUM);
@@ -66,7 +69,7 @@ public class BattleMenu {
 		System.out.println(Colorize.SEPARATOR_LARGE);
 		System.out.println("You can choose from:");
 		
-		EnemyManager.writeEnemies(true);
+		EnemyManager.writeEnemies("long");
 
 		System.out.print(Colorize.PROMPT);
 		String enemyInput = sc.next();
@@ -85,6 +88,7 @@ public class BattleMenu {
 		if(escaped == 0)
 		{
 			System.out.println("You successfully escaped");
+			sc.nextLine();
 			ActionMenu.mainMenu(false);
 		}else{
 			System.out.println("You tried escaping, but failed");

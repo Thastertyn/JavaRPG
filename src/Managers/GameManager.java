@@ -13,7 +13,7 @@ public class GameManager {
 
 	public static void playerDied()
 	{
-		System.out.println("You died on your jounreys!");
+		System.out.println(Colorize.RAPID_BLINK + Colorize.RED + "You died on your jounreys!" + Colorize.RESET);
 		System.out.println("You may be reincarnated as another player, or leave with the shame of a loss, the choise is yours");
 		System.out.println(" 1.> Continue");
 		System.out.println(" 2.> End");

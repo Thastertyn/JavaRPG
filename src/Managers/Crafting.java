@@ -15,23 +15,33 @@ public class Crafting {
 		System.out.println(Colorize.UNDERLINE + Colorize.YELLOW + ">>> ⁠Crafting" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
-		switch(getUpgradableItems())
+		String weaponText = (Inventory.get("weapon") == 10) ? "[MAX]" : "[" +Inventory.get("weapon") + "/10 [Cost (Wood: " + getUpgradeCost("weapon")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")]]";
+		String armorText = (Inventory.get("armor") == 10) ? "[MAX]" : "[" +Inventory.get("armor") + "/10 [Cost (Leather: " + getUpgradeCost("armor")[0]  + ", Iron: " + getUpgradeCost("armor")[1] + ")]]";
+
+		System.out.println("Your tools:\n 1.> Weapon " + weaponText);
+		System.out.println(" 2.> Armor " + armorText);
+		System.out.println(" 3.> Go Back");
+
+		/*switch(getUpgradableItems())
 		{
 			case 0:
 				System.out.println("You can't upgrade anymore, all is at it's best");
+				System.out.println(" 1.> Go Back");
 				break;
 			case 1:
-				System.out.println("You can upgrade:\n 1.> Weapon (Wood: " + getUpgradeCost("weapon")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")");
+				System.out.println("You can upgrade:\n 1.> Weapon " + Inventory.get("weapon") + "/10" + " (Wood: " + getUpgradeCost("weapon")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")");
+				System.out.println(" 2.> Go Back");
 				break;
 			case 2:
 				System.out.println("You can upgrade:\n 1.> Armor (Leather: " + getUpgradeCost("armor")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")");
+				System.out.println(" 2.> Go Back");
 				break;
 			case 3:
-				System.out.println("You can upgrade:\n 1.> Weapon [Cost (Wood: " + getUpgradeCost("weapon")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")]" + "\n 2.> Armor (Leather: " + getUpgradeCost("armor")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")");
+				System.out.println("You can upgrade:\n 1.> Weapon " + Inventory.get("weapon") + "/10" + " [Cost (Wood: " + getUpgradeCost("weapon")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")]" + "\n 2.> Armor " + Inventory.get("armor") + "/10" + " [Cost (Leather: " + getUpgradeCost("armor")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")]");
+				System.out.println(" 3.> Go Back");
 				break;
-		}
+		}*/
 
-		System.out.println(" 3.> Go Back");
 		System.out.println("");
 
 		System.out.println("What do you want to upgrade?");
@@ -43,9 +53,12 @@ public class Crafting {
 		{
 			case "weapon":
 			case "w":
-				if(getUpgradableItems() == 2)
+			case "1":
+				if(Inventory.get("weapon") == 10)
 				{
-					System.out.println("You can't upgrade your " + Colorize.UNDERLINE + "Weapon " + Colorize.RESET+ " yet");
+					System.out.println("Your Weapon is at top tier already");
+					sc.nextLine();
+					craft();
 				}else{
 					upgrade("weapon");
 				}
@@ -53,19 +66,12 @@ public class Crafting {
 			case "armor":
 			case "a":
 			case "2":
-				if(getUpgradableItems() == 2)
-					{
-						System.out.println("You can't upgrade your " + Colorize.UNDERLINE + "Armor " + Colorize.RESET + " yet");
-					}else{
-						upgrade("armor");
-					}
-				break;
-			case "1":
-				if(getUpgradableItems() == 1 || getUpgradableItems() == 3)
+				if(Inventory.get("armor") == 10)
 				{
-					upgrade("weapon");
-				}else if(getUpgradableItems() == 2)
-				{
+					System.out.println("Your Armor is at max level already");
+					sc.nextLine();
+					craft();
+				}else{
 					upgrade("armor");
 				}
 				break;
