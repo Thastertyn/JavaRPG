@@ -27,9 +27,7 @@ public class GameManager {
 			case "continue":
 			case "c":
 			case "1":
-				System.out.println("You need to choose a class, to play as");
-				sc.nextLine();
-				Menu.classChoose(false);
+				Menu.classChoose();
 				break;
 			case "end":
 			case "e":
@@ -37,11 +35,11 @@ public class GameManager {
 				System.exit(0);
 				break;
 			default:
-
+				GameManager.missInput();
+				BattleManager.enemies.clear();
+				playerDied();
 				break;
 		}
-
-
 	}
 
 	public static void missInput()

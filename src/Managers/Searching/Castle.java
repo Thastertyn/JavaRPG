@@ -7,7 +7,7 @@ import Classes.Inventory;
 import Colors.Colorize;
 import Managers.BattleManager;
 
-public class Cave {
+public class Castle {
 	
 	static Random rnd = new Random();
 
@@ -27,19 +27,23 @@ public class Cave {
 		}else{
 			System.out.println("No Enemies");
 		}
-
-		System.out.println(Colorize.BLACK + Colorize.UNDERLINE + Colorize.BACKGROUND_WHITE + "> Cave" + Colorize.RESET);
-
-		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "Cave");
 		
-		// Wood, Iron, No Leather
-		addedItems = rnd.nextInt(45, 61);
+		System.out.println(Colorize.BLUE + Colorize.UNDERLINE + "> Castle" + Colorize.RESET);
+
+		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "Castle");
+
+		// Wood and Iron and Leather
+		addedItems = rnd.nextInt(25, 51);
 		Inventory.add("wood", (Inventory.get("wood") + addedItems));
 		System.out.println(addedItems + " Wood,");
 		
-		addedItems = rnd.nextInt(30, 51);
+		addedItems = rnd.nextInt(3, 6);
 		Inventory.add("iron", (Inventory.get("iron") + addedItems));
 		System.out.println(addedItems + " Iron,");
+
+		addedItems = rnd.nextInt(2, 9);
+		Inventory.add("leather", (Inventory.get("leather") + addedItems));
+		System.out.println(addedItems + " Leather,");
 
 		System.out.println("----");
 
@@ -57,11 +61,14 @@ public class Cave {
 		actuallyGotItems = rnd.nextInt(20);
 		if(actuallyGotItems == 19)
 		{
-			addedItems = rnd.nextInt(5, 11);
+			addedItems = rnd.nextInt(1, 2);
 			Inventory.add("gems", (Inventory.get("gems") + addedItems));
 			System.out.println(1 + " Gems,");
 		}else{
-			System.out.println("No Gems");
+			System.out.println("No Gems,");
 		}
+		
+		System.out.println(Colorize.SEPARATOR_SMALL);
+
 	}
 }

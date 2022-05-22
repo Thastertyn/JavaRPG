@@ -15,7 +15,22 @@ public class Cottage {
 	{
 		int addedItems;
 		int actuallyGotItems;
+
+		// Monsters
+		actuallyGotItems = rnd.nextInt(5);
+		if(actuallyGotItems == 4)
+		{
+			System.out.println("\n! You met some enemies !");
+			addedItems = rnd.nextInt(3);
+			addedItems++;
+			BattleManager.startBattle(addedItems, 1);
+		}else{
+			System.out.println("No Enemies");
+		}
+		
 		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "cottage");
+
+
 
 		// Wood and Iron and Leather
 		addedItems = rnd.nextInt(25, 51);
@@ -54,17 +69,5 @@ public class Cottage {
 		}
 		
 		System.out.println(Colorize.SEPARATOR_SMALL);
-
-		// Monsters
-		actuallyGotItems = rnd.nextInt(5);
-		if(actuallyGotItems == 4)
-		{
-			System.out.println("\n! You met some enemies !");
-			addedItems = rnd.nextInt(3);
-			addedItems++;
-			BattleManager.startBattle(addedItems, 1);
-		}else{
-			System.out.println("No Enemies");
-		}
 	}
 }

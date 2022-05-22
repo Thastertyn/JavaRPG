@@ -23,7 +23,7 @@ public class Help {
         
         sc.next();
         
-        Menu.classChoose(false);
+        Menu.classChoose();
     }
 
     public static void fullHelp(boolean shouldReturn)
@@ -46,7 +46,7 @@ public class Help {
 
         if(shouldReturn)
         {
-            Menu.mainMenu(false);
+            Menu.mainMenu();
         }
     }
 
@@ -86,6 +86,6 @@ public class Help {
                 break;
         }
 
-        Menu.classChoose(false);
+        Menu.classChoose();
     }
 }

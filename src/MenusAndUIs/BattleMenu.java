@@ -7,6 +7,7 @@ import Classes.Player;
 import Colors.Colorize;
 import Managers.BattleManager;
 import Managers.EnemyManager;
+import Managers.GameManager;
 
 public class BattleMenu {
 
@@ -28,7 +29,7 @@ public class BattleMenu {
 		System.out.println("You were attacked by:");
 		EnemyManager.writeEnemies("short");
 
-		System.out.println(Colorize.SEPARATOR_LARGE);
+		System.out.println(Colorize.SEPARATOR_MEDIUM);
 		System.out.println(Player.playerInfoString());
 		System.out.println(Colorize.SEPARATOR_MEDIUM);
 		System.out.println("You can now do the following:");
@@ -45,12 +46,12 @@ public class BattleMenu {
 			case "a":
 			case "attack":
 			case "1":
-				chooseEnemy(false);
+				chooseEnemy();
 				break;
 			case "d":
 			case "defend":
 			case "2":
-				usePotion();
+				defend();
 				break;
 			case "f":
 			case "flee":
@@ -63,8 +64,9 @@ public class BattleMenu {
 		}
 	}
 
-	public static void chooseEnemy(boolean retry)
+	public static void chooseEnemy()
 	{
+		System.out.print(Colorize.RESET + Colorize.CLEAR);
 		System.out.println(Colorize.RED + ">> BATTLE <<" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 		System.out.println("You can choose from:");
@@ -75,28 +77,22 @@ public class BattleMenu {
 		String enemyInput = sc.next();
 		enemyInput.toLowerCase();
 
-		int index = EnemyManager.getEnemyIndex(enemyInput);
-		System.out.println(index);
+		int enemyIndex = EnemyManager.getEnemyIndex(enemyInput);
 
-		BattleManager.playerAttack(index);
-	}
+		//int enemyIndex = EnemyManager.writtenPositions.get(Integer.parseInt(enemyInput));
+		//int enemyIndex = EnemyManager.getEnemy(enemyInput);
+		System.out.println(enemyIndex);
 
-	public static void escape()
-	{
-		int escaped = rnd.nextInt(1);
-
-		if(escaped == 0)
+		if(enemyIndex == -1)
 		{
-			System.out.println("You successfully escaped");
-			sc.nextLine();
-			ActionMenu.mainMenu(false);
+			GameManager.missInput();
+			chooseEnemy();
 		}else{
-			System.out.println("You tried escaping, but failed");
-			BattleManager.enemyAttack();
+			BattleManager.playerAttack(enemyIndex);
 		}
 	}
 
-	public static void usePotion()
+	public static void defend()
 	{
 		System.out.println("Do you want to use a potion?");
 		System.out.println(" 1.> Yes");
@@ -118,6 +114,23 @@ public class BattleMenu {
 			case "2":
 				Player.defend(false);
 				break;
+		}
+
+		BattleManager.enemyAttack();
+	}
+
+	public static void escape()
+	{
+		int escaped = rnd.nextInt(1);
+
+		if(escaped == 0)
+		{
+			System.out.println("You successfully escaped");
+			sc.nextLine();
+			ActionMenu.mainMenu(false);
+		}else{
+			System.out.println("You tried escaping, but failed");
+			BattleManager.enemyAttack();
 		}
 	}
 }

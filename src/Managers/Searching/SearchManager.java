@@ -14,7 +14,7 @@ public class SearchManager {
 	public static void search()
 	{
 		System.out.print(Colorize.RESET + Colorize.CLEAR);
-		System.out.println("----------------------------------");
+		System.out.println(Colorize.SEPARATOR_LARGE);
 
 		int chanceOfPlace = rnd.nextInt(10);
 
@@ -58,6 +58,7 @@ public class SearchManager {
 			}
 			else if(poi > 975 && poi <= 990)
 			{
+				// Only place where "noone" will spawn
 				System.out.println("You stumbled upon a lair");
 			}else{
 

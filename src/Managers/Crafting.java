@@ -3,6 +3,7 @@ package Managers;
 import java.util.Scanner;
 
 import Classes.Inventory;
+import Classes.Player;
 import Colors.Colorize;
 import MenusAndUIs.ActionMenu;
 
@@ -15,32 +16,13 @@ public class Crafting {
 		System.out.println(Colorize.UNDERLINE + Colorize.YELLOW + ">>> ⁠Crafting" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
-		String weaponText = (Inventory.get("weapon") == 10) ? "[MAX]" : "[" +Inventory.get("weapon") + "/10 [Cost (Wood: " + getUpgradeCost("weapon")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")]]";
-		String armorText = (Inventory.get("armor") == 10) ? "[MAX]" : "[" +Inventory.get("armor") + "/10 [Cost (Leather: " + getUpgradeCost("armor")[0]  + ", Iron: " + getUpgradeCost("armor")[1] + ")]]";
+		String weaponText = (Inventory.get("weapon") == 10) ? "[MAX]" : ("[" +Inventory.get("weapon") + "/10 [Cost (Wood: " + getUpgradeCost("weapon")[0])  + (", Iron: " + getUpgradeCost("weapon")[1]) + ", Gems: " + getUpgradeCost("weapon")[2] + "" + ")]]";
+
+		String armorText = (Inventory.get("armor") == 10) ? "[MAX]" : ("[" +Inventory.get("armor") + "/10 [Cost (Leather: " + getUpgradeCost("armor")[0])  + (", Iron: " + getUpgradeCost("armor")[1]) + ", Gems: " + getUpgradeCost("armor")[2] + ")]]";
 
 		System.out.println("Your tools:\n 1.> Weapon " + weaponText);
 		System.out.println(" 2.> Armor " + armorText);
 		System.out.println(" 3.> Go Back");
-
-		/*switch(getUpgradableItems())
-		{
-			case 0:
-				System.out.println("You can't upgrade anymore, all is at it's best");
-				System.out.println(" 1.> Go Back");
-				break;
-			case 1:
-				System.out.println("You can upgrade:\n 1.> Weapon " + Inventory.get("weapon") + "/10" + " (Wood: " + getUpgradeCost("weapon")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")");
-				System.out.println(" 2.> Go Back");
-				break;
-			case 2:
-				System.out.println("You can upgrade:\n 1.> Armor (Leather: " + getUpgradeCost("armor")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")");
-				System.out.println(" 2.> Go Back");
-				break;
-			case 3:
-				System.out.println("You can upgrade:\n 1.> Weapon " + Inventory.get("weapon") + "/10" + " [Cost (Wood: " + getUpgradeCost("weapon")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")]" + "\n 2.> Armor " + Inventory.get("armor") + "/10" + " [Cost (Leather: " + getUpgradeCost("armor")[0]  + ", Iron: " + getUpgradeCost("weapon")[1] + ")]");
-				System.out.println(" 3.> Go Back");
-				break;
-		}*/
 
 		System.out.println("");
 
@@ -54,7 +36,7 @@ public class Crafting {
 			case "weapon":
 			case "w":
 			case "1":
-				if(Inventory.get("weapon") == 10)
+				if(Inventory.get("weapon") >= 10)
 				{
 					System.out.println("Your Weapon is at top tier already");
 					sc.nextLine();
@@ -66,7 +48,7 @@ public class Crafting {
 			case "armor":
 			case "a":
 			case "2":
-				if(Inventory.get("armor") == 10)
+				if(Inventory.get("armor") >= 10)
 				{
 					System.out.println("Your Armor is at max level already");
 					sc.nextLine();
@@ -92,24 +74,34 @@ public class Crafting {
 		switch(item)
 		{
 			case "weapon":
-				if(Inventory.get("wood") < getUpgradeCost("weapon")[0] || Inventory.get("iron") < getUpgradeCost("weapon")[1])
+				if(Inventory.get("wood") < getUpgradeCost("weapon")[0] || Inventory.get("iron") < getUpgradeCost("weapon")[1] || Inventory.get("gems") < getUpgradeCost("weapon")[2])
 				{
 					System.err.println(Colorize.RED + "You don't have enough items yet" + Colorize.RESET);
 				}else{
 					Inventory.add("wood", Inventory.get("wood") - getUpgradeCost("weapon")[0]);
 					Inventory.add("iron", Inventory.get("iron") - getUpgradeCost("weapon")[1]);
+					Inventory.add("gems", Inventory.get("gems") - getUpgradeCost("weapon")[2]);
+
 					Inventory.add("weapon", Inventory.get("weapon") + 1);
+					Player.strength += (Player.strength / 10) * 15;
+					Player.tier = (int) Math.ceil((Inventory.get("weapon") + Inventory.get("armor")) / 2); 
+
 					System.out.println(Colorize.GREEN + "You Successfully upgraded your Weapon" + Colorize.RESET);
 				}
 				break;
 			case "armor":
-				if(Inventory.get("leather") < getUpgradeCost("armor")[0] || Inventory.get("iron") < getUpgradeCost("armor")[1])
+				if(Inventory.get("leather") < getUpgradeCost("armor")[0] || Inventory.get("iron") < getUpgradeCost("armor")[1] || Inventory.get("gems") < getUpgradeCost("armor")[2])
 				{
 					System.err.println(Colorize.RED + "You don't have enough items yet" + Colorize.RESET);
 				}else{
 					Inventory.add("leather", Inventory.get("leather") - getUpgradeCost("armor")[0]);
 					Inventory.add("iron", Inventory.get("iron") - getUpgradeCost("armor")[1]);
+					Inventory.add("gems", Inventory.get("gems") - getUpgradeCost("armor")[2]);
+
 					Inventory.add("armor", Inventory.get("armor") + 1);
+					Player.hp += (Player.hp / 10) * 15;
+					Player.tier = (int) Math.ceil((Inventory.get("weapon") + Inventory.get("armor")) / 2); 
+
 					System.out.println(Colorize.GREEN + "You Successfully upgraded your Weapon" + Colorize.RESET);
 				}
 				break;
@@ -122,22 +114,6 @@ public class Crafting {
 		craft();
 	}
 
-	static int getUpgradableItems()
-	{
-		int items = 0;
-		
-		// Kinda like binary
-		// 0 - nothing can be upgraded
-		// 1 - only weapon can be upgraded
-		// 2 - only armor can be upgraded
-		// 3 - both can be upgraded
-
-		items += (Inventory.get("weapon") < 10) ? 1 : 0;
-		items += (Inventory.get("armor") < 10) ? 2 : 0;
-
-		return items;
-	}
-
 	static int[] getUpgradeCost(String item)
 	{
 		// Base price for weapon is
@@ -148,7 +124,9 @@ public class Crafting {
 		// 20 Iron
 		// 10 Leather
 
-		int[] cost = {0, 0};
+		// Plus gem per level
+
+		int[] cost = {0, 0, 0};
 
 		if(item.equals("weapon"))
 		{
@@ -156,11 +134,15 @@ public class Crafting {
 			cost[0] = Inventory.get(item) * 3/2 * 50 + 50;
 			// Iron
 			cost[1] = Inventory.get(item) * 3/2 * 10 + 10;
+			// Gems
+			cost[2] = Inventory.get(item) + 1;
 		}else{
 			// Leather
 			cost[0] = Inventory.get(item) * 3/2 * 10 + 10;
 			// Iron
 			cost[1] = Inventory.get(item) * 3/2 * 20 + 20;
+			// Gems
+			cost[2] = Inventory.get(item) + 1;
 		}
 
 		return cost;

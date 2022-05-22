@@ -1,4 +1,3 @@
-// TODO Rework enemy choosing
 package Managers;
 
 import java.util.ArrayList;
@@ -6,7 +5,6 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-import MenusAndUIs.ActionMenu;
 import MenusAndUIs.BattleMenu;
 import Classes.DataAndOtherStuff;
 import Classes.Enemy;
@@ -19,8 +17,10 @@ public class BattleManager {
 	static Random rnd = new Random();
 
 	public static ArrayList<Enemy> enemies = new ArrayList<>();
-
 	public static int[] enemyCounts = new int[DataAndOtherStuff.ENEMY_IDS.length];
+
+	// Kinda a combination of the two above, its just for the enemy choosing
+	public static ArrayList<String> enemiesThatExist = new ArrayList<>();
 
 	public static void startBattle(int enemyCount, int enemyRarity)
 	{
@@ -30,11 +30,23 @@ public class BattleManager {
 		{
 			enemies.add(new Enemy(enemyRarity));
 		}
+		
+		for(Enemy e : enemies)
+		{
+			int index = EnemyManager.getEnemyId(e.enemyString);
+			enemyCounts[index]++;
+		}
 
-		getEnemyCount();
+		for(int i = 0; i < enemyCounts.length; i++)
+		{
+			if(enemyCounts[i] != 0)
+			{
+				enemiesThatExist.add(DataAndOtherStuff.ENEMY_IDS[i]);
+			}
+		}
 
-		System.out.print(Colorize.RESET + Colorize.CLEAR);
 		System.out.println(Colorize.RED + Colorize.UNDERLINE + "! ⁠BATTLE ⁠!" + Colorize.RESET);
+		System.out.println(Colorize.SEPARATOR_LARGE);
 
 		BattleMenu.battleMenu(false);
 	}
@@ -71,29 +83,30 @@ public class BattleManager {
 
 	/**
 	 * 
-	 * @param writtenIndex Index of the enemy to attack
+	 * @param index Index of the enemy to attack
 	 * <p>
 	 * Get an enemy and deal according damage
 	 * </p>
 	 */
-	public static void playerAttack(int writtenIndex)
+	public static void playerAttack(int index)
 	{
+		System.out.println(Colorize.BLUE + "You Attacked " + enemies.get(index).enemyString + Colorize.RESET);
 		int hitOrMiss = rnd.nextInt(19);
 
 		if(hitOrMiss == 0)
 		{
 			System.out.println(Colorize.RED + "You missed your attack" + Colorize.RESET);
 			System.out.println("");
-			enemyAttack();
+			isPlayable();
 		}else{
-			// get first enemy, whose enemyID is equal to the one from written positions
-			//System.out.println(enemies.get(EnemyManager.writtenPositions.get(writtenIndex)).toString()); 
-			enemies.get(EnemyManager.writtenPositions.get(writtenIndex)).hp -= Player.strength;
-			enemies.get(EnemyManager.writtenPositions.get(writtenIndex)).wasAttacked = true;
-
-			if(enemies.get(EnemyManager.writtenPositions.get(writtenIndex)).hp <= 0)
+			enemies.get(index).hp -= Player.strength;
+			
+			if(enemies.get(index).hp <= 0)
 			{
-				enemyDied(enemies.get((EnemyManager.writtenPositions.get(writtenIndex))));
+				System.out.println(Colorize.YELLOW + Colorize.HIGH_INTENSITY + "You killed him, the " + Colorize.capitalize(enemies.get(index).enemyString) + " is dead!" + Colorize.RESET);
+				enemyDied(enemies.get(index));
+			}else{
+				System.out.println(Colorize.GREEN + "You Dealt " + Player.strength + " to " + enemies.get(index).enemyString);
 			}
 		}
 
@@ -109,10 +122,10 @@ public class BattleManager {
 	{
 		if(enemies.isEmpty())
 		{
+			System.out.println("");
 			System.out.println(Colorize.GREEN + Colorize.HIGH_INTENSITY + "Congratulations, you won" + Colorize.RESET);
-			sc.nextLine();
 			endBattle();
-			ActionMenu.mainMenu(false);
+			sc.nextLine();
 		}else{
 			enemyAttack();
 		}
@@ -120,17 +133,7 @@ public class BattleManager {
 
 	static void enemyDied(Enemy e)
 	{
-		System.out.println(Colorize.YELLOW + "You killed him, the " + Colorize.capitalize(e.enemyString) + " is dead!" + Colorize.RESET);
-		enemyCounts[EnemyManager.getEnemyIndex(e.enemyString)]--;
+		enemyCounts[EnemyManager.getEnemyId(e.enemyString)]--;
 		enemies.remove(e);
-	}
-
-	static void getEnemyCount()
-	{
-		for(Enemy e : enemies)
-		{
-			int index = EnemyManager.getEnemyIndex(e.enemyString);
-			enemyCounts[index]++;
-		}
 	}
 }

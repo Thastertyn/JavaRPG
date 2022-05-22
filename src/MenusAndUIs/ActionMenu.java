@@ -4,6 +4,7 @@ package MenusAndUIs;
 import Colors.Colorize;
 import Managers.BattleManager;
 import Managers.Crafting;
+import Managers.GameManager;
 import Managers.Searching.SearchManager;
 import Classes.Inventory;
 import Classes.Player;
@@ -54,6 +55,7 @@ public class ActionMenu {
 			case "2":
 				System.out.println("You went hunting something");
 				BattleManager.startBattle(rnd.nextInt(1, 5), Player.tier);
+				mainMenu(false);
 				break;
 			case "i":
 			case "inventory":
@@ -98,7 +100,8 @@ public class ActionMenu {
 
 		// Crafting
 		System.out.println(" 1.> Crafting Menu");
-		System.out.println(" 2.> Back");
+		System.out.println(" 2.> Statistics");
+		System.out.println(" 3.> Back");
 
 		System.out.print(Colorize.PROMPT);
 
@@ -115,9 +118,14 @@ public class ActionMenu {
 			case "1":
 				Crafting.craft();
 				break;
+			case "s":
+			case "statistics":
+			case "2":
+				statistics();
+				break;
 			case "b":
 			case "back":
-			case "2":
+			case "3":
 				System.out.println("No");
 				sc.nextLine();
 				mainMenu(false);
@@ -126,6 +134,41 @@ public class ActionMenu {
 				failedTimes++;
 				inventoryOpen(true);
 				break;
+		}
+	}
+
+	public static void statistics()
+	{
+		System.out.print(Colorize.CLEAR + Colorize.RESET);
+		System.out.println(Colorize.UNDERLINE + Colorize.CYAN + ">>> Statistics" + Colorize.RESET);
+		System.out.println(Colorize.SEPARATOR_LARGE);
+
+		System.out.println("Class: " + Player.classColor + Player.playerClass + Colorize.RESET);
+		System.out.println("HP: " + Colorize.RED + Player.hp + "/" + Player.maxHP + Colorize.RESET);
+		System.out.println("Strength: " + Colorize.GREEN + Player.strength + Colorize.RESET);
+		
+		if(Player.isUsingSpecialFlags)
+		{
+			System.out.println("Cheats:" + Colorize.YELLOW + "true" + Colorize.RESET);
+		}
+
+		System.out.println("");
+
+		System.out.println(" 1.> Back");
+
+		System.out.print(Colorize.PROMPT);
+		String input = sc.next();
+
+		switch(input)
+		{
+			case "b":
+			case "back":
+			case "1":
+				ActionMenu.inventoryOpen(false);
+				break;
+			default:
+				GameManager.missInput();
+				statistics();
 		}
 	}
 }

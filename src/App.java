@@ -41,7 +41,7 @@ public class App {
             }
         }
 
-        Menu.mainMenu(false);
+        Menu.mainMenu();
         
         sc.close();
     }

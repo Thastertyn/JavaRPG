@@ -16,6 +16,18 @@ public class Campsite {
 		int actuallyGotItems;
 		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "campsite");
 
+		// Monsters
+		actuallyGotItems = rnd.nextInt(5);
+		if(actuallyGotItems == 4)
+		{
+			System.out.println("\n! You met some enemies !");
+			addedItems = rnd.nextInt(3);
+			addedItems++;
+			BattleManager.startBattle(addedItems, 1);
+		}else{
+			System.out.println("No Enemies");
+		}
+
 		// Wood and Iron, no Leather
 		addedItems = rnd.nextInt(10, 21);
 		Inventory.add("wood", (Inventory.get("wood") + addedItems));
@@ -34,18 +46,6 @@ public class Campsite {
 			System.out.println(addedItems + " Potions,");
 		}else{
 			System.out.println("No Potions,");
-		}
-		
-		// Monsters
-		actuallyGotItems = rnd.nextInt(5);
-		if(actuallyGotItems == 4)
-		{
-			System.out.println("\n! You met some enemies !");
-			addedItems = rnd.nextInt(3);
-			addedItems++;
-			BattleManager.startBattle(addedItems, 1);
-		}else{
-			System.out.println("No Enemies");
 		}
 	}
 }

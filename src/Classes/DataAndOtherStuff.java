@@ -12,10 +12,16 @@ public class DataAndOtherStuff {
     
     public static final String[] ENEMY_IDS = {"slime", "hog", "bear", "goblin", "zombie", "skeleton", "ogre", "witch", "mage", "centaur", "noone", "duck"};
     public static final String[] TIER1IDS = {"slime", "hog"};
+    public static final String[] TIER1SHORT_IDS = {"sl", "h"};
     public static final String[] TIER2IDS = {"bear", "goblin", "zombie"};
+    public static final String[] TIER2SHORT_IDS = {"b", "g", "z"};
     public static final String[] TIER3IDS = {"skeleton", "ogre"};
+    public static final String[] TIER3SHORT_IDS = {"sk", "o"};
     public static final String[] TIER4IDS = {"witch", "mage"};
+    public static final String[] TIER4SHORT_IDS = {"w", "m"};
     public static final String[] TIER5IDS = {"centaur", "noone"};
+    public static final String[] TIER5SHORT_IDS = {"c", "n"};
+    public static final String[] TIER6ID = {"noone"};
 
 //#region HP
     // Player HP
@@ -46,10 +52,10 @@ public class DataAndOtherStuff {
 
 //#region Strength
     // Player Strength
-    public static final int HUMAN_STRENGTH = 10;
-    public static final int WIZARD_STRENGTH = 35;
-    public static final int DWARF_STRENGTH = 25;
-    public static final int ELF_STRENGTH = 20; 
+    public static final int HUMAN_STRENGTH = 20;
+    public static final int WIZARD_STRENGTH = 50;
+    public static final int DWARF_STRENGTH = 35;
+    public static final int ELF_STRENGTH = 25; 
 
     // Enemy Strength
     public static final int slimeStrength = 5;
@@ -71,4 +77,7 @@ public class DataAndOtherStuff {
     public static final int duckStrength = 200;
  
 //#endregion
+
+    public static final int STUPID_LARGE_STRENGTH = 1147483647;
+    public static final int STUPID_LARGE_HP = 1147483647;
 }

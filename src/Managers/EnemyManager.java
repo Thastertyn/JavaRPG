@@ -9,15 +9,15 @@ import Colors.Colorize;
 
 public class EnemyManager {
 
-	// Index is the position of the written enemy, value is the enemyID as in the menu
-	public static ArrayList<Integer> writtenPositions = new ArrayList<>(Collections.nCopies(DataAndOtherStuff.ENEMY_IDS.length, 0)); 
+	// Index is the position where was the enemy written, value is the enemyID as in the menu
+	// 1.(Index) > Slime (Enemy Id in BattleManager)
+	public static ArrayList<String> writtenPositions = new ArrayList<>(Collections.nCopies(DataAndOtherStuff.ENEMY_IDS.length, ""));
 
 	/**
-	 * 
 	 * @param input String input of player choosing an enemy, or just enemy name
 	 * @return converted string to an enemy ID
 	 */
-	public static int getEnemyIndex(String input)
+	public static int getEnemyId(String input)
 	{
 		switch(input)
 		{
@@ -74,35 +74,68 @@ public class EnemyManager {
 		}
 	}
 
+	// Does the exact same thing as getEnemyId, except a bit more complex
+	public static int getEnemyIndex(String input)
+	{
+		if(input.matches("[0-9]+") )
+		{
+			if(Integer.parseInt(input) <= BattleManager.enemiesThatExist.size())
+			{
+				int indexGiven = getEnemyId(BattleManager.enemiesThatExist.get(Integer.parseInt(input) - 1));
+				for(Enemy e : BattleManager.enemies)
+				{
+					if(getEnemyId(e.enemyString) == indexGiven)
+					{
+						return BattleManager.enemies.indexOf(e);
+					}
+				}
+			}else{
+				return -1;
+			}
+		}else{
+			int indexGiven = getEnemyId(input);
+			
+			if(indexGiven != -1)
+			{
+				for(Enemy e : BattleManager.enemies)
+				{
+					if(getEnemyId(e.enemyString) == indexGiven)
+					{
+						return BattleManager.enemies.indexOf(e);
+					}
+				}
+			}
+		}
+
+		return -1;
+	}
+
 	public static void writeEnemies(String howToWrite)
 	{
-		int enemyPos = 1; 
-		
 		switch(howToWrite)
 		{
 			case "short":
-				int[] counts = new int[DataAndOtherStuff.ENEMY_IDS.length];
-				
-				for(Enemy e : BattleManager.enemies)
+			// Gets just the total amount of the specific enemies
+				for(int i = 0; i < BattleManager.enemyCounts.length; i++)
 				{
-					counts[getEnemyIndex(e.enemyString)]++;
-				}
-
-				for(int i = 0; i < counts.length; i++)
-				{
-					if(counts[i] == 1)
+					if(BattleManager.enemyCounts[i] != 0)
 					{
-						System.out.println(counts[i] + Colorize.capitalize(BattleManager.enemies.get(i).enemyString));
+						if(BattleManager.enemyCounts[i] == 1)
+						{
+							System.out.println(" > " + BattleManager.enemyCounts[i] + " " + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]));
+						}else{
+							String plural = (DataAndOtherStuff.ENEMY_IDS[i].equals("witch")) ? "es" : "s";
+							System.out.println(" > " + BattleManager.enemyCounts[i] + " " + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]) + plural);
+						}
 					}
 				}
 				break;
 			case "long":
+				// Also adds the enemy counting, to be able to choose
+				int enemyPos = 1;
+
 				for(int i = 0; i < BattleManager.enemyCounts.length; i++)
 				{
-					// Index is the position of the written enemy, value is the enemyID as in the menu
-					writtenPositions.set(enemyPos, i);
-		
-					// Write only existing enemies (non 0)
 					if(BattleManager.enemyCounts[i] != 0)
 					{
 						if(BattleManager.enemyCounts[i] == 1)
@@ -117,8 +150,6 @@ public class EnemyManager {
 				}
 				break;
 		}
-
-
 	}
 
 	public static int getTotalEnemyCount()
