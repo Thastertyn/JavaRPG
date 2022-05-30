@@ -1,6 +1,7 @@
 package Managers.Searching;
 
 import java.util.Random;
+import java.util.Scanner;
 
 import Classes.DataAndOtherStuff;
 import Classes.Inventory;
@@ -10,6 +11,7 @@ import Managers.BattleManager;
 public class Cottage {
 
 	static Random rnd = new Random();
+	static Scanner sc = new Scanner(System.in);
 
 	public static void wasFound()
 	{
@@ -21,16 +23,20 @@ public class Cottage {
 		if(actuallyGotItems == 4)
 		{
 			System.out.println("\n! You met some enemies !");
+			sc.nextLine();
 			addedItems = rnd.nextInt(3);
 			addedItems++;
-			BattleManager.startBattle(addedItems, 1);
+			BattleManager.startBattle(addedItems, 1, 0);
 		}else{
 			System.out.println("No Enemies");
 		}
 		
+		System.out.println(Colorize.UNDERLINE + Colorize.BACKGROUND_BLUE + "> Cottage" + Colorize.RESET);
+		System.out.println(Colorize.SEPARATOR_LARGE);
+
 		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "cottage");
 
-
+		System.out.println(Colorize.SEPARATOR_MEDIUM);
 
 		// Wood and Iron and Leather
 		addedItems = rnd.nextInt(25, 51);
@@ -45,7 +51,7 @@ public class Cottage {
 		Inventory.add("leather", (Inventory.get("leather") + addedItems));
 		System.out.println(addedItems + " Leather,");
 
-		System.out.println("----");
+		System.out.println(Colorize.SEPARATOR_SMALL);
 
 		// Potions and Gems
 		actuallyGotItems = rnd.nextInt(20);

@@ -2,7 +2,9 @@ package Managers;
 
 import java.util.Scanner;
 
+import Classes.Player;
 import Colors.Colorize;
+import MenusAndUIs.ActionMenu;
 import MenusAndUIs.Menu;
 
 public class GameManager {
@@ -45,15 +47,46 @@ public class GameManager {
 	public static void missInput()
 	{
 		failedTimes++;
-		System.err.println(Colorize.RED + "Incorrect input, try again.\nFailed " + failedTimes  + " times" + Colorize.RESET + "\n");
+		System.err.println(Colorize.RED + "Incorrect input, try again.\nPress enter to continue\nTotal failed " + failedTimes  + " times" + Colorize.RESET + "\n");
 		sc.nextLine();
 	}
 
 	public static void PlayerWon()
 	{
-		System.exit(69);
-	}
+		System.out.println(Colorize.HIGH_INTENSITY + "Congratulations!");
+		System.out.println("You won the best game to ever exist");
+		System.out.println("And got 100 000 coins as your reward");
+		Player.xp += 10000;
+		Player.coins += 100000;
 
-	// TODO use this somewhere, like maybe at the boss battle
-	// System.out.println("It was a miss input\nMISSINPUT\nCALM DOWN\nYOU CALM THE FUCK DOWN\nTHERE WAS A MISSINPUT");
+		System.out.println("You may exit, or get your level reset and play more");
+		System.out.println("");
+		System.out.println(" 1.> Continue");
+		System.out.println(" 2.> Exit");
+
+		System.out.print(Colorize.PROMPT);
+		String input = sc.next();
+		input = Colorize.scannerize(input);
+
+		switch(input)
+		{
+			case "1":
+			case "c":
+			case "continue":
+				Player.level = 0;
+				Player.xp = 0;
+				ActionMenu.mainMenu();
+				break;
+			case "e":
+			case "exit":
+			case "2":
+				System.out.println("It was a miss input\nMISSINPUT\nCALM DOWN\nYOU CALM THE FUCK DOWN\nTHERE WAS A MISSINPUT");
+				System.exit(69);
+				break;
+			default:
+				missInput();
+				sc.nextLine();
+				PlayerWon();
+		}
+	}
 }

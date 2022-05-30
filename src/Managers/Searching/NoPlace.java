@@ -2,6 +2,7 @@ package Managers.Searching;
 
 import java.util.Random;
 
+import Classes.ASCII;
 import Classes.Inventory;
 
 public class NoPlace {
@@ -10,7 +11,14 @@ public class NoPlace {
 
     public static void wasFound()
     {
-        System.out.println("You didn't find any interesting place, but at least found the following items:");
+        System.out.println(ASCII.MEAGMIND);
+        int message = rnd.nextInt(21);
+        if(message == 20)
+        {
+        }else{
+            System.out.println("You didn't find any interesting place, but at least found the following items:");
+        }
+
 
         // Items
         int addedItems = rnd.nextInt(5, 11);

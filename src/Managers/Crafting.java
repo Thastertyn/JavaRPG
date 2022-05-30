@@ -60,7 +60,7 @@ public class Crafting {
 			case "back":
 			case "b":
 			case "3":
-				ActionMenu.inventoryOpen(false);
+				ActionMenu.inventory();
 				break;
 			default:
 				GameManager.missInput();
@@ -74,6 +74,7 @@ public class Crafting {
 		switch(item)
 		{
 			case "weapon":
+				// If wood
 				if(Inventory.get("wood") < getUpgradeCost("weapon")[0] || Inventory.get("iron") < getUpgradeCost("weapon")[1] || Inventory.get("gems") < getUpgradeCost("weapon")[2])
 				{
 					System.err.println(Colorize.RED + "You don't have enough items yet" + Colorize.RESET);
@@ -84,7 +85,6 @@ public class Crafting {
 
 					Inventory.add("weapon", Inventory.get("weapon") + 1);
 					Player.strength += (Player.strength / 10) * 15;
-					Player.tier = (int) Math.ceil((Inventory.get("weapon") + Inventory.get("armor")) / 2); 
 
 					System.out.println(Colorize.GREEN + "You Successfully upgraded your Weapon" + Colorize.RESET);
 				}
@@ -100,9 +100,8 @@ public class Crafting {
 
 					Inventory.add("armor", Inventory.get("armor") + 1);
 					Player.hp += (Player.hp / 10) * 15;
-					Player.tier = (int) Math.ceil((Inventory.get("weapon") + Inventory.get("armor")) / 2); 
 
-					System.out.println(Colorize.GREEN + "You Successfully upgraded your Weapon" + Colorize.RESET);
+					System.out.println(Colorize.GREEN + "You Successfully upgraded your Armor" + Colorize.RESET);
 				}
 				break;
 		}

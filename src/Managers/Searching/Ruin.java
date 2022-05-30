@@ -8,7 +8,7 @@ import Classes.Inventory;
 import Colors.Colorize;
 import Managers.BattleManager;
 
-public class Campsite {
+public class Ruin {
 	
 	static Random rnd = new Random();
 	static Scanner sc = new Scanner(System.in);
@@ -31,31 +31,43 @@ public class Campsite {
 			System.out.println("No Enemies");
 		}
 
-		System.out.println(Colorize.UNDERLINE + Colorize.YELLOW + "> Campsite" + Colorize.RESET);
+		System.out.println(Colorize.BLACK + Colorize.UNDERLINE + Colorize.BACKGROUND_WHITE + "> Cave" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
-		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "campsite");
+		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "Cave");
 
 		System.out.println(Colorize.SEPARATOR_MEDIUM);
-
-		// Wood and Iron, no Leather
-		addedItems = rnd.nextInt(10, 21);
+		
+		// Wood, Iron, No Leather
+		addedItems = rnd.nextInt(45, 61);
 		Inventory.add("wood", (Inventory.get("wood") + addedItems));
 		System.out.println(addedItems + " Wood,");
 		
-		addedItems = rnd.nextInt(1, 2);
+		addedItems = rnd.nextInt(30, 51);
 		Inventory.add("iron", (Inventory.get("iron") + addedItems));
 		System.out.println(addedItems + " Iron,");
 
-		// Potions, no Gems
+		System.out.println(Colorize.SEPARATOR_SMALL);
+
+		// Potions and Gems
 		actuallyGotItems = rnd.nextInt(20);
-		if(actuallyGotItems == 19)
+		if(actuallyGotItems > 14)
 		{
-			addedItems = rnd.nextInt(3);
+			addedItems = rnd.nextInt(1, 3);
 			Inventory.add("potions", (Inventory.get("potions") + addedItems));
 			System.out.println(addedItems + " Potions,");
 		}else{
-			System.out.println("No Potions,");
+			System.out.println("No Potions");
+		}
+
+		actuallyGotItems = rnd.nextInt(20);
+		if(actuallyGotItems == 19)
+		{
+			addedItems = rnd.nextInt(5, 11);
+			Inventory.add("gems", (Inventory.get("gems") + addedItems));
+			System.out.println(1 + " Gems,");
+		}else{
+			System.out.println("No Gems");
 		}
 	}
 }

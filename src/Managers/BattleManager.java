@@ -5,9 +5,11 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
+import MenusAndUIs.ActionMenu;
 import MenusAndUIs.BattleMenu;
 import Classes.DataAndOtherStuff;
 import Classes.Enemy;
+import Classes.Inventory;
 import Classes.Player;
 import Colors.Colorize;
 
@@ -22,13 +24,17 @@ public class BattleManager {
 	// Kinda a combination of the two above, its just for the enemy choosing
 	public static ArrayList<String> enemiesThatExist = new ArrayList<>();
 
-	public static void startBattle(int enemyCount, int enemyRarity)
+	static int xpGained = 0;
+
+	// Special location tells whether the player found either a lair or a bathroom
+	public static void startBattle(int enemyCount, int enemyRarity, int specialLocation)
 	{
 		Arrays.fill(enemyCounts, 0);
+		xpGained = 0;
 
 		for(int i = 0; i < enemyCount; i++)
 		{
-			enemies.add(new Enemy(enemyRarity));
+			enemies.add(new Enemy(enemyRarity, specialLocation));
 		}
 		
 		for(Enemy e : enemies)
@@ -48,13 +54,11 @@ public class BattleManager {
 		System.out.println(Colorize.RED + Colorize.UNDERLINE + "! ⁠BATTLE ⁠!" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
-		BattleMenu.battleMenu(false);
+		BattleMenu.battleMenu();
 	}
 
 	/**
-	 * <p>
-	 * Every enemy there currently is will attack the player
-	 * </p>
+	 * <p> Every enemy there currently is will attack the player </p>
 	 */
 	public static void enemyAttack()
 	{
@@ -77,16 +81,13 @@ public class BattleManager {
 		}
 
 		sc.nextLine();
-		BattleMenu.battleMenu(false);
+		BattleMenu.battleMenu();
 	}
-
 
 	/**
 	 * 
 	 * @param index Index of the enemy to attack
-	 * <p>
-	 * Get an enemy and deal according damage
-	 * </p>
+	 * <p> Get an enemy and deal according damage </p>
 	 */
 	public static void playerAttack(int index)
 	{
@@ -97,7 +98,6 @@ public class BattleManager {
 		{
 			System.out.println(Colorize.RED + "You missed your attack" + Colorize.RESET);
 			System.out.println("");
-			isPlayable();
 		}else{
 			enemies.get(index).hp -= Player.strength;
 			
@@ -116,16 +116,24 @@ public class BattleManager {
 	public static void endBattle()
 	{
 		enemies.clear();
+
+		System.out.println(Colorize.GREEN + Colorize.HIGH_INTENSITY + "Congratulations, you won" + Colorize.RESET);
+
+		System.out.println("You also gained " + Colorize.BLUE + xpGained + " XP " + Colorize.RESET +"from enemies");
+
+		Player.addXP(xpGained);
+		sc.nextLine();
+
+		ActionMenu.mainMenu();
 	}
 
 	static void isPlayable()
 	{
+		System.out.println("");
+
 		if(enemies.isEmpty())
 		{
-			System.out.println("");
-			System.out.println(Colorize.GREEN + Colorize.HIGH_INTENSITY + "Congratulations, you won" + Colorize.RESET);
 			endBattle();
-			sc.nextLine();
 		}else{
 			enemyAttack();
 		}
@@ -133,7 +141,62 @@ public class BattleManager {
 
 	static void enemyDied(Enemy e)
 	{
+		// Each enemy gives 50 * their relative id
+		xpGained += (EnemyManager.getEnemyId(e.enemyString) + 1) * 50;
+
 		enemyCounts[EnemyManager.getEnemyId(e.enemyString)]--;
 		enemies.remove(e);
+
+		// Remove the enemy from enemiesThatExist, if none of their kind exist anymore
+		if(BattleManager.enemyCounts[EnemyManager.getEnemyId(e.enemyString)] == 0)
+		{
+			BattleManager.enemiesThatExist.remove(BattleManager.enemiesThatExist.indexOf(e.enemyString));
+		}
+	}
+
+	public static void defend(boolean usePotion)
+	{
+		int hitOrMiss = rnd.nextInt(2);
+
+		if(usePotion)
+		{
+			if(Inventory.get("potions") <= 0)
+			{
+				System.out.println("You can't use a potion, you don't have any");
+			}else{
+				Player.hp += Player.maxHP / 2;
+		
+				if(Player.hp > Player.maxHP)
+					Player.hp = Player.maxHP;
+		
+				System.out.println("You used a potion and healed to [" + Player.hp + "/" + Player.maxHP + " HP]");	
+			}
+		}
+
+		sc.nextLine();
+		
+		if(hitOrMiss == 1)
+		{
+			BattleMenu.battleMenu();
+		}else{
+			BattleManager.enemyAttack();
+		}
+	}
+
+	public static void escape()
+	{
+		int escaped = rnd.nextInt(3);
+		
+		if(escaped == 0)
+		{
+			System.out.println(Colorize.GREEN + "You successfully escaped" + Colorize.RESET);
+			sc.nextLine();
+			ActionMenu.mainMenu();
+		}else{
+			System.out.println(Colorize.RED + "You tried escaping, but failed" + Colorize.RESET);
+			BattleManager.enemyAttack();
+		}
+
+		sc.nextLine();
 	}
 }

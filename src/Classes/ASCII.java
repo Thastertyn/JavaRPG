@@ -18,4 +18,22 @@ public class ASCII {
     "\n          / " + Colorize.YELLOW + "*  *  " + Colorize.MAGENTA +"\\" + 
     "\n         /   " + Colorize.YELLOW + "*  *" + Colorize.MAGENTA + "  \\" +
     "\n        / " + Colorize.YELLOW + "*" + Colorize.BLACK + "_" + Colorize.RESET + Colorize.YELLOW + "  *" +  Colorize.BLACK + "  _" + Colorize.MAGENTA + "  \\\n    " + Colorize.RESET;
+
+    public static final String MEAGMIND = "———————————No Places?——————————— " + "\n" +
+    Colorize.BLUE +"⠀⣞⢽⢪⢣⢣⢣⢫⡺⡵⣝⡮⣗⢷⢽⢽⢽⣮⡷⡽⣜⣜⢮⢺⣜⢷⢽⢝⡽⣝" + "\n" +
+    "⠸⡸⠜⠕⠕⠁⢁⢇⢏⢽⢺⣪⡳⡝⣎⣏⢯⢞⡿⣟⣷⣳⢯⡷⣽⢽⢯⣳⣫⠇" + "\n" +
+    "⠀⠀⢀⢀⢄⢬⢪⡪⡎⣆⡈⠚⠜⠕⠇⠗⠝⢕⢯⢫⣞⣯⣿⣻⡽⣏⢗⣗⠏⠀" + "\n" +
+    "⠀⠪⡪⡪⣪⢪⢺⢸⢢⢓⢆⢤⢀⠀⠀⠀⠀⠈⢊⢞⡾⣿⡯⣏⢮⠷⠁⠀⠀" + "\n" +
+    "⠀⠀⠀⠈⠊⠆⡃⠕⢕⢇⢇⢇⢇⢇⢏⢎⢎⢆⢄⠀⢑⣽⣿⢝⠲⠉⠀⠀⠀⠀" + "\n" + Colorize.RESET +
+
+    "⠀⠀⠀⠀⠀⡿⠂⠠⠀" + Colorize.BLUE + "⡇⢇⠕⢈" + Colorize.WHITE +"⣀" + Colorize.BLUE +"⠀⠁⠡⠣⡣⡫⣂⣿⠯⢪⠰⠂⠀⠀⠀⠀" + "\n" +
+    "⠀⠀⠀⠀⡦" + Colorize.WHITE + "⡙" + Colorize.BLUE + "⡂⢀⢤⢣⠣⡈" + Colorize.WHITE + "⣾⡃⠠⠄⠀⡄" + Colorize.BLUE + "⢱⣌⣶⢏⢊⠂⠀⠀⠀⠀⠀⠀" + "\n" +
+    "⠀⠀⠀⠀⢝⡲⣜⡮⡏⢎⢌⢂" + Colorize.WHITE +"⠙⠢⠐" + Colorize.BLUE +"⢀⢘⢵⣽⣿⡿⠁⠁⠀⠀⠀⠀⠀⠀⠀" + "\n" +
+
+    "⠀⠀⠀⠀⠨⣺⡺⡕⡕⡱⡑⡆⡕⡅⡕⡜⡼⢽⡻⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" + "\n" +
+    "⠀⠀⠀⠀⣼⣳⣫⣾⣵⣗⡵⡱⡡⢣⢑⢕⢜⢕⡝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" + "\n" +
+    "⠀⠀⠀⣴⣿⣾⣿⣿⣿⡿⡽⡑⢌⠪⡢⡣⣣⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" + "\n" +
+    "⠀⠀⠀⡟⡾⣿⢿⢿⢵⣽⣾⣼⣘⢸⢸⣞⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" + "\n" +
+    "⠀⠀⠀⠀⠁⠇⠡⠩⡫⢿⣝⡻⡮⣒⢽⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" + "\n" + Colorize.RESET +
+    "—————————————————————————————";
 }

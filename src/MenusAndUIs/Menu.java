@@ -15,8 +15,6 @@ public class Menu {
 		Class choose
 	*/
 
-	static int failedTimes = 0;
-
 	static Scanner sc = new Scanner(System.in);
 
 	// Boolean for retrying - if the input was invalid, give true, to change the text
@@ -36,9 +34,8 @@ public class Menu {
 
 		System.out.print(Colorize.PROMPT);
 		String choice = sc.next();
-		choice.toLowerCase();
 
-		switch(choice)
+		switch(Colorize.scannerize(choice))
 		{
 			// Start cases
 			case "s":

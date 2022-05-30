@@ -11,53 +11,66 @@ public class Enemy {
 	public String enemyString;
 	public String shortEnemyString;
 
-	public Enemy(int rarity)
+	public Enemy(int rarity, int specialLocation)
 	{
 		// Random enemy inbetween the lowest and highest given rarity
 		int enemyType = rnd.nextInt(rarity);
 		int enemyId;
 		enemyType++;
 
-		switch(enemyType)
+		switch(specialLocation)
 		{
+			case 0:
+				switch(enemyType)
+				{
+					case 1:
+						enemyId = rnd.nextInt(2);
+						enemyString = DataAndOtherStuff.TIER1IDS[enemyId];
+						shortEnemyString = DataAndOtherStuff.TIER1SHORT_IDS[enemyId];
+						hp = DataAndOtherStuff.TIER1_HP[enemyId];
+						strength = DataAndOtherStuff.tier1Strength[enemyId];
+						break;
+					case 2:
+						enemyId = rnd.nextInt(3);
+						enemyString = DataAndOtherStuff.TIER2IDS[enemyId];
+						shortEnemyString = DataAndOtherStuff.TIER2SHORT_IDS[enemyId];
+						hp = DataAndOtherStuff.TIER2_HP[enemyId];
+						strength = DataAndOtherStuff.tier2Strength[enemyId];
+						break;
+					case 3:
+						enemyId = rnd.nextInt(2);
+						enemyString = DataAndOtherStuff.TIER3IDS[enemyId];
+						shortEnemyString = DataAndOtherStuff.TIER3SHORT_IDS[enemyId];
+						hp = DataAndOtherStuff.TIER3_HP[enemyId];
+						strength = DataAndOtherStuff.tier3Strength[enemyId];
+						break;
+					case 4:
+						enemyId = rnd.nextInt(2);
+						enemyString = DataAndOtherStuff.TIER4IDS[enemyId];
+						shortEnemyString = DataAndOtherStuff.TIER4SHORT_IDS[enemyId];
+						hp = DataAndOtherStuff.TIER4_HP[enemyId];
+						strength = DataAndOtherStuff.tier4Strength[enemyId];
+						break;
+					case 5:
+						enemyId = rnd.nextInt(2);
+						enemyString = DataAndOtherStuff.TIER5IDS[enemyId];
+						shortEnemyString = DataAndOtherStuff.TIER5SHORT_IDS[enemyId];
+						hp = DataAndOtherStuff.TIER5_HP[enemyId];
+						strength = DataAndOtherStuff.tier5Strength[enemyId];
+						break;
+					}
+				break;
 			case 1:
-				enemyId = rnd.nextInt(2);
-				enemyString = DataAndOtherStuff.TIER1IDS[enemyId];
-				shortEnemyString = DataAndOtherStuff.TIER1SHORT_IDS[enemyId];
-				hp = DataAndOtherStuff.TIER1_HP[enemyId];
-				strength = DataAndOtherStuff.tier1Strength[enemyId];
+				// Lair
+				enemyString = DataAndOtherStuff.TIER6ID;
+				shortEnemyString = DataAndOtherStuff.TIER6SHORT_ID;
+				hp = DataAndOtherStuff.NOONE_HP;
+				strength = DataAndOtherStuff.nooneStrength;
 				break;
 			case 2:
-				enemyId = rnd.nextInt(3);
-				enemyString = DataAndOtherStuff.TIER2IDS[enemyId];
-				shortEnemyString = DataAndOtherStuff.TIER2SHORT_IDS[enemyId];
-				hp = DataAndOtherStuff.TIER2_HP[enemyId];
-				strength = DataAndOtherStuff.tier2Strength[enemyId];
-				break;
-			case 3:
-				enemyId = rnd.nextInt(2);
-				enemyString = DataAndOtherStuff.TIER3IDS[enemyId];
-				shortEnemyString = DataAndOtherStuff.TIER3SHORT_IDS[enemyId];
-				hp = DataAndOtherStuff.TIER3_HP[enemyId];
-				strength = DataAndOtherStuff.tier3Strength[enemyId];
-				break;
-			case 4:
-				enemyId = rnd.nextInt(2);
-				enemyString = DataAndOtherStuff.TIER4IDS[enemyId];
-				shortEnemyString = DataAndOtherStuff.TIER4SHORT_IDS[enemyId];
-				hp = DataAndOtherStuff.TIER4_HP[enemyId];
-				strength = DataAndOtherStuff.tier4Strength[enemyId];
-				break;
-			case 5:
-				enemyId = rnd.nextInt(2);
-				enemyString = DataAndOtherStuff.TIER5IDS[enemyId];
-				shortEnemyString = DataAndOtherStuff.TIER5SHORT_IDS[enemyId];
-				hp = DataAndOtherStuff.TIER5_HP[enemyId];
-				strength = DataAndOtherStuff.tier5Strength[enemyId];
-				break;
-			case 6:
-				enemyString = "duck";
-				shortEnemyString = "d";
+				// Bathroom
+				enemyString = DataAndOtherStuff.TIER7ID;
+				shortEnemyString = DataAndOtherStuff.TIER7SHORT_ID;
 				hp = DataAndOtherStuff.DUCK_HP;
 				strength = DataAndOtherStuff.duckStrength;
 				break;

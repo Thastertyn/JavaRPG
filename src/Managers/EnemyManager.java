@@ -15,7 +15,10 @@ public class EnemyManager {
 
 	/**
 	 * @param input String input of player choosing an enemy, or just enemy name
-	 * @return converted string to an enemy ID
+	 * @return An Id of an enemy relative the DataAndOtherStuff.ENEMY_IDS
+	 * <p>
+	 * Just turns their enemyText into their index inside all the enemies array
+	 * </p>
 	 */
 	public static int getEnemyId(String input)
 	{
@@ -74,7 +77,13 @@ public class EnemyManager {
 		}
 	}
 
-	// Does the exact same thing as getEnemyId, except a bit more complex
+	/**
+	 * @param input User input given from scanner
+	 * @return A valid enemy index inside the BattleManager.enemies ArrayList
+	 * <p>
+	 * Unlike getEnemyId, this turns input into enemy position inside the ArrayList in BattleManager
+	 * </p>
+	 */
 	public static int getEnemyIndex(String input)
 	{
 		if(input.matches("[0-9]+") )

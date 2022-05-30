@@ -8,7 +8,7 @@ public class Colorize {
     public static final String SEPARATOR_MEDIUM = "-----------------";
     public static final String SEPARATOR_LARGE = "----------------------------------";
 
-    // Should be printed with System.out.print(), not println()
+    // Should be printed with System.out.print(), not with println()
     public static final String CLEAR              = "\033[H\033[2J";
 
     public static final String RESET              = "\u001B[0m";
@@ -45,59 +45,39 @@ public class Colorize {
         return text.substring(0, 1).toUpperCase() + text.substring(1);
     }
 
-    /*
-    private String TMP_CLEAR;
-    private String TMP_RESET;
-    private String TMP_HIGH_INTENSITY;
-    private String TMP_LOW_INTENSITY;
-    private String TMP_ITALIC;
-    private String TMP_UNDERLINE;
-    private String TMP_BLINK;
-    private String TMP_RAPID_BLINK;
-    private String TMP_REVERSE_VIDEO;
-    private String TMP_INVISIBLE_TEXT;
-    private String TMP_BLACK;
-    private String TMP_RED;
-    private String TMP_GREEN;
-    private String TMP_YELLOW;
-    private String TMP_BLUE;
-    private String TMP_MAGENTA;
-    private String TMP_CYAN;
-    private String TMP_WHITE;
-    private String TMP_BACKGROUND_BLACK;
-    private String TMP_BACKGROUND_RED;
-    private String TMP_BACKGROUND_GREEN;
-    private String TMP_BACKGROUND_YELLOW;
-    private String TMP_BACKGROUND_BLUE;
-    private String TMP_BACKGROUND_MAGENTA;
-    private String TMP_BACKGROUND_CYAN;
-    private String TMP_BACKGROUND_WHITE;
+    public static String scannerize(String text)
+    {
+        return text.toLowerCase().replaceAll("\\s", "");
+    }
 
-    TMP_CLEAR              = "";
-    TMP_RESET              = "";
-    TMP_HIGH_INTENSITY     = "";
-    TMP_LOW_INTENSITY      = "";
-    TMP_ITALIC             = "";
-    TMP_UNDERLINE          = "";
-    TMP_BLINK              = "";
-    TMP_RAPID_BLINK        = "";
-    TMP_REVERSE_VIDEO      = "";
-    TMP_INVISIBLE_TEXT     = "";
-    TMP_BLACK              = "";
-    TMP_RED                = "";
-    TMP_GREEN              = "";
-    TMP_YELLOW             = "";
-    TMP_BLUE               = "";
-    TMP_MAGENTA            = "";
-    TMP_CYAN               = "";
-    TMP_WHITE              = "";
-    TMP_BACKGROUND_BLACK   = "";
-    TMP_BACKGROUND_RED     = "";
-    TMP_BACKGROUND_GREEN   = "";
-    TMP_BACKGROUND_YELLOW  = "";
-    TMP_BACKGROUND_BLUE    = "";
-    TMP_BACKGROUND_MAGENTA = "";
-    TMP_BACKGROUND_CYAN    = "";
-    TMP_BACKGROUND_WHITE   = "";
+    // Uncomment this if colors dont work (aka on windows)
+    // and comment the whole thing above from BACKGROUND_WHITE to CLEAR
+    /*
+    public static final String CLEAR              = "";
+    public static final String RESET              = "";
+    public static final String HIGH_INTENSITY     = "";
+    public static final String LOW_INTENSITY      = "";
+    public static final String ITALIC             = "";
+    public static final String UNDERLINE          = "";
+    public static final String BLINK              = "";
+    public static final String RAPID_BLINK        = "";
+    public static final String REVERSE_VIDEO      = "";
+    public static final String INVISIBLE_TEXT     = "";
+    public static final String BLACK              = "";
+    public static final String RED                = "";
+    public static final String GREEN              = "";
+    public static final String YELLOW             = "";
+    public static final String BLUE               = "";
+    public static final String MAGENTA            = "";
+    public static final String CYAN               = "";
+    public static final String WHITE              = "";
+    public static final String BACKGROUND_BLACK   = "";
+    public static final String BACKGROUND_RED     = "";
+    public static final String BACKGROUND_GREEN   = "";
+    public static final String BACKGROUND_YELLOW  = "";
+    public static final String BACKGROUND_BLUE    = "";
+    public static final String BACKGROUND_MAGENTA = "";
+    public static final String BACKGROUND_CYAN    = "";
+    public static final String BACKGROUND_WHITE   = "";
     */
 }

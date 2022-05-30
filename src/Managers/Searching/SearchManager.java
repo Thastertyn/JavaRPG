@@ -3,6 +3,7 @@ package Managers.Searching;
 import java.util.Random;
 import java.util.Scanner;
 
+import Classes.Player;
 import Colors.Colorize;
 import MenusAndUIs.ActionMenu;
 
@@ -16,59 +17,51 @@ public class SearchManager {
 		System.out.print(Colorize.RESET + Colorize.CLEAR);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
+		NoPlace.wasFound();
+
 		int chanceOfPlace = rnd.nextInt(10);
 
 		// If a player finds a POI, they will get a couple guaranteed items
 		// If not, then just low chances for something, but no enemies
-		if(chanceOfPlace > 0)
-		{
-			// campsite has 50% chance
-			// cottage 20%
-			// cave 12.5%
-			// ruin 7.5%
-			// castle 6.5%
-			
-			// TODO Add boss
-			// Bathroom 2.5%
-			
+		/*if(chanceOfPlace > 0)
+		{	
+			int chanceOfPOI = (Player.level > 10) ? 10 : Player.level;
 
-			int poi = rnd.nextInt(999);
-			poi++;
+			int poi = rnd.nextInt(chanceOfPOI + 1);
 
-			// switch is too long
-			if(poi >= 1 && poi <= 500)
+			switch(poi)
 			{
-				Campsite.wasFound();
-			}
-			else if(poi > 500 && poi <= 700)
-			{
-				Cottage.wasFound();
-			}
-			else if(poi > 700 && poi <= 825)
-			{
-				Cave.wasFound();
-			}
-			else if(poi > 825 && poi <= 900)
-			{
-				System.out.println("You stumbled upon a ruin");
-			}
-			else if(poi > 900 && poi <= 975)
-			{
-				System.out.println("You stumbled upon a castle");
-			}
-			else if(poi > 975 && poi <= 990)
-			{
-				// Only place where "noone" will spawn
-				System.out.println("You stumbled upon a lair");
-			}else{
-
+				case 0:
+				case 1:
+					Campsite.wasFound();
+					break;
+				case 2:
+				case 3:
+					Cottage.wasFound();
+					break;
+				case 4:
+				case 5:
+					Cave.wasFound();
+					break;
+				case 6:
+				case 7:
+					Ruin.wasFound();
+					break;
+				case 8:
+					Castle.wasFound();
+					break;
+				case 9: 
+					Lair.wasFound();
+					break;
+				case 10:
+					Bathroom.wasFound();
+					break;
 			}
 		}else{
 			NoPlace.wasFound();
-		}
-
+		}*/
 		sc.nextLine();
 		
-		ActionMenu.mainMenu(false);
+		ActionMenu.mainMenu();
 	}
 }

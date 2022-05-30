@@ -1,5 +1,6 @@
 package Classes;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import Colors.Colorize;
@@ -16,9 +17,11 @@ public class Player {
 	// 10 Levels of weapons and tiers or armor
 	public static int strength;
 
-	public static int armor;
+	public static int xp = 0;
+	public static int level = 0;
+	public static int coins = 0;
+	public static int[] enemyKills = new int[DataAndOtherStuff.ENEMY_IDS.length];
 
-	public static int tier = 1;
 	public static String playerClass;
 	public static String classColor;
 
@@ -31,6 +34,8 @@ public class Player {
 	// used to spread the code around a bit, because of the 200 line limit
 	public static void init(String classString)
 	{
+		Arrays.fill(enemyKills, 0);
+
 		switch(classString)
 		{
 			case "wizard":
@@ -44,6 +49,8 @@ public class Player {
 				strength = DataAndOtherStuff.DWARF_STRENGTH;
 				classColor = Colorize.CYAN;
 				playerClass = "dwarf";
+				Inventory.add("armor", 2);
+				Inventory.add("weapon", 2);
 				break;
 			case "elf":
 				maxHP = DataAndOtherStuff.ELF_HP;
@@ -55,7 +62,12 @@ public class Player {
 				maxHP = DataAndOtherStuff.HUMAN_HP;
 				strength = DataAndOtherStuff.HUMAN_STRENGTH;
 				classColor = Colorize.YELLOW;
-				playerClass = "elf";
+				playerClass = "human";
+				Inventory.add("wood", 200);
+				Inventory.add("iron", 50);
+				Inventory.add("leather", 50);
+				Inventory.add("potions", 5);
+				Inventory.add("gems", 3);
 				break;
 		}
 
@@ -76,21 +88,28 @@ public class Player {
 		hp = Player.maxHP;
 	}
 
-	public static void defend(boolean usePotion)
+	public static void addXP(int amount)
 	{
-		int hitOrMiss = rnd.nextInt(99);
+		xp += amount;
 
-		if(hitOrMiss >= 5)
+		if(xp >= level * 500)
 		{
-			isDefending = true;
-		}else{
-			isDefending = false;
+			xp -= level * 500;
+			level++;
+			System.out.println(Colorize.CYAN + "! You leveled up to level " + level + " !" + Colorize.RESET);
 		}
+		System.out.println("XP required for next level: " + Colorize.BLUE + ((500 * level) - xp) + " XP");
+	}
 
-		if(usePotion && Inventory.get("potion") > 0)
+	public static int getTotalKills()
+	{
+		int count = 0;
+		for(int i : enemyKills)
 		{
-			hp += maxHP / 2;
+			count += i;
 		}
+		
+		return count;
 	}
 
 	// toString can't be static, which it has to be if there is only one player, therefore everything else is being static

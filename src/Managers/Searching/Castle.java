@@ -23,7 +23,7 @@ public class Castle {
 			System.out.println("\n! You met some enemies !");
 			addedItems = rnd.nextInt(3);
 			addedItems++;
-			BattleManager.startBattle(addedItems, 1);
+			BattleManager.startBattle(addedItems, 1, 0);
 		}else{
 			System.out.println("No Enemies");
 		}

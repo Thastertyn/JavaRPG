@@ -19,9 +19,12 @@ public class DataAndOtherStuff {
     public static final String[] TIER3SHORT_IDS = {"sk", "o"};
     public static final String[] TIER4IDS = {"witch", "mage"};
     public static final String[] TIER4SHORT_IDS = {"w", "m"};
-    public static final String[] TIER5IDS = {"centaur", "noone"};
-    public static final String[] TIER5SHORT_IDS = {"c", "n"};
-    public static final String[] TIER6ID = {"noone"};
+    public static final String[] TIER5IDS = {"centaur", "dragonite"};
+    public static final String[] TIER5SHORT_IDS = {"c", "d"};
+    public static final String TIER6ID = "noone";
+    public static final String TIER6SHORT_ID = "n";
+    public static final String TIER7ID = "duck";
+    public static final String TIER7SHORT_ID = "d";
 
 //#region HP
     // Player HP

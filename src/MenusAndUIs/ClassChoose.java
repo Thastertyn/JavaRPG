@@ -93,10 +93,10 @@ public class ClassChoose {
 		System.out.print(Colorize.CLEAR);
 		System.out.println(Colorize.WHITE + Colorize.UNDERLINE +"> Elf" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
-		System.out.println("You choose wizard");
+		System.out.println("You choose Elf");
 		System.out.println(" > HP: " + DataAndOtherStuff.ELF_HP);
 		System.out.println(" > Strength: " + DataAndOtherStuff.ELF_STRENGTH);
-		System.out.println(" > Ability: Choose multiple targets");
+		System.out.println(" > Ability: None");
 
 		System.out.println("");
 		
@@ -131,7 +131,7 @@ public class ClassChoose {
 		System.out.print(Colorize.CLEAR);
 		System.out.println(Colorize.YELLOW + Colorize.UNDERLINE +"> Human" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
-		System.out.println("You choose wizard");
+		System.out.println("You choose Human");
 		System.out.println(" > HP: " + DataAndOtherStuff.HUMAN_HP);
 		System.out.println(" > Strength: " + DataAndOtherStuff.HUMAN_STRENGTH);
 		System.out.println(" > Ability: Starts with some items alredy (wood 200, iron 50, leather 50, potions 5, gems 3)");
@@ -169,6 +169,6 @@ public class ClassChoose {
 		Inventory.init();
 		Player.init(classString);
 		System.out.println(Player.playerInfoString());
-		ActionMenu.mainMenu(false);
+		ActionMenu.mainMenu();
 	}
 }

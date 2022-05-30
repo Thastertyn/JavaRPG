@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Hello, Compiler!"
+
+mkdir build/
+
+javac -cp . src/*.java -d build/
+
+cd build/
+
+echo "Manifest-Version: 1.0\nClass-Path: .\nMain-Class: App" > MANIFEST.MF
+
+# Thank you
+# https://www.tecmint.com/create-and-execute-jar-file-in-linux/
+jar cvmf MANIFEST.MF Game.jar App.class

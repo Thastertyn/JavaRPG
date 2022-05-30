@@ -5,14 +5,18 @@ import Colors.Colorize;
 import Help.Help;
 import MenusAndUIs.Menu;
 
+// For Brackeys
 public class App {
 
-    // For Brackeys
+    // Java
+    // Boilerplate-driven language designed for writing verbose object-oriented instant legacy code.
+    
+    // For documentation refer to the docs folder
     public static void main(String[] args)
     {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println(Colorize.CLEAR);
+        System.out.print(Colorize.CLEAR);
         
         System.out.println(Colorize.MAGENTA +  "Hello, World!" + Colorize.RESET);
 
