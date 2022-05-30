@@ -23,7 +23,7 @@ public class SearchManager {
 
 		// If a player finds a POI, they will get a couple guaranteed items
 		// If not, then just low chances for something, but no enemies
-		/*if(chanceOfPlace > 0)
+		if(chanceOfPlace > 0)
 		{	
 			int chanceOfPOI = (Player.level > 10) ? 10 : Player.level;
 
@@ -59,7 +59,7 @@ public class SearchManager {
 			}
 		}else{
 			NoPlace.wasFound();
-		}*/
+		}
 		sc.nextLine();
 		
 		ActionMenu.mainMenu();
