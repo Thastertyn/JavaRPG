@@ -18,60 +18,61 @@ public class Cottage {
 		int addedItems;
 		int actuallyGotItems;
 
-		// Monsters
-		actuallyGotItems = rnd.nextInt(5);
-		if(actuallyGotItems == 4)
-		{
-			System.out.println("\n! You met some enemies !");
-			sc.nextLine();
-			addedItems = rnd.nextInt(3);
-			addedItems++;
-			BattleManager.startBattle(addedItems, 1, 0);
-		}else{
-			System.out.println("No Enemies");
-		}
+
 		
-		System.out.println(Colorize.UNDERLINE + Colorize.BACKGROUND_BLUE + "> Cottage" + Colorize.RESET);
+		System.out.println(Colorize.UNDERLINE + Colorize.BACKGROUND_BLUE + ">> Cottage" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
 		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "cottage");
 
-		System.out.println(Colorize.SEPARATOR_MEDIUM);
+		System.out.println(Colorize.SEPARATOR_SMALL);
 
 		// Wood and Iron and Leather
 		addedItems = rnd.nextInt(25, 51);
 		Inventory.add("wood", (Inventory.get("wood") + addedItems));
-		System.out.println(addedItems + " Wood,");
+		System.out.println(" > " + addedItems + " Wood,");
 		
 		addedItems = rnd.nextInt(3, 6);
 		Inventory.add("iron", (Inventory.get("iron") + addedItems));
-		System.out.println(addedItems + " Iron,");
+		System.out.println(" > " + addedItems + " Iron,");
 
 		addedItems = rnd.nextInt(2, 9);
 		Inventory.add("leather", (Inventory.get("leather") + addedItems));
-		System.out.println(addedItems + " Leather,");
+		System.out.println(" > " + addedItems + " Leather,");
 
 		System.out.println(Colorize.SEPARATOR_SMALL);
 
 		// Potions and Gems
-		actuallyGotItems = rnd.nextInt(20);
-		if(actuallyGotItems > 14)
+		actuallyGotItems = rnd.nextInt(5);
+		if(actuallyGotItems == 4)
 		{
 			addedItems = rnd.nextInt(1, 3);
 			Inventory.add("potions", (Inventory.get("potions") + addedItems));
-			System.out.println(addedItems + " Potions,");
+			System.out.println(" > " + addedItems + " Potions,");
 		}else{
-			System.out.println("No Potions");
+			System.out.println(" > No Potions");
 		}
 
 		actuallyGotItems = rnd.nextInt(20);
 		if(actuallyGotItems == 19)
 		{
-			addedItems = rnd.nextInt(1, 2);
-			Inventory.add("gems", (Inventory.get("gems") + addedItems));
-			System.out.println(1 + " Gems,");
+			Inventory.add("gems", (Inventory.get("gems") + 1));
+			System.out.println(" > 1 Gem,");
 		}else{
-			System.out.println("No Gems,");
+			System.out.println(" > No Gems,");
+		}
+
+		// Monsters
+		actuallyGotItems = rnd.nextInt(9);
+		if(actuallyGotItems == 8)
+		{
+			System.out.println(Colorize.RED + "\n! You also met some Enemies !" + Colorize.RESET);
+			sc.nextLine();
+			addedItems = rnd.nextInt(1, 3);
+			addedItems++;
+			BattleManager.startBattle(addedItems, 1, 0);
+		}else{
+			System.out.println(Colorize.GREEN + "\nYou didn't meet any Enemies" + Colorize.RESET);
 		}
 		
 		System.out.println(Colorize.SEPARATOR_SMALL);

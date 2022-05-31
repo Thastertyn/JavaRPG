@@ -33,17 +33,17 @@ public class SearchManager {
 					Campsite.wasFound();
 					break;
 				case 2:
-				case 3:
 					Cottage.wasFound();
 					break;
+				case 3:
 				case 4:
-				case 5:
 					Cave.wasFound();
 					break;
+				case 5:
 				case 6:
-				case 7:
 					Ruin.wasFound();
 					break;
+				case 7:
 				case 8:
 					Castle.wasFound();
 					break;

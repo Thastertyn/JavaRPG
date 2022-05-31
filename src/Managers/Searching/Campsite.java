@@ -18,45 +18,45 @@ public class Campsite {
 		int addedItems;
 		int actuallyGotItems;
 
-		System.out.println(Colorize.UNDERLINE + Colorize.YELLOW + "> Campsite" + Colorize.RESET);
+		System.out.println(Colorize.UNDERLINE + Colorize.YELLOW + ">> Campsite" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
 		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "campsite");
 
-		System.out.println(Colorize.SEPARATOR_MEDIUM);
-		System.out.println("You found: ");
+		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println("You found:");
 
 		// Wood and Iron, no Leather
 		addedItems = rnd.nextInt(10, 21);
 		Inventory.add("wood", (Inventory.get("wood") + addedItems));
-		System.out.println(addedItems + " Wood,");
+		System.out.println(" > " + addedItems + " Wood,");
 		
-		addedItems = rnd.nextInt(1, 2);
+		addedItems = rnd.nextInt(1, 5);
 		Inventory.add("iron", (Inventory.get("iron") + addedItems));
-		System.out.println(addedItems + " Iron,");
+		System.out.println(" > " + addedItems + " Iron,");
 
 		// Potions, no Gems
 		actuallyGotItems = rnd.nextInt(20);
 		if(actuallyGotItems == 19)
 		{
-			addedItems = rnd.nextInt(3);
+			addedItems = rnd.nextInt(1, 4);
 			Inventory.add("potions", (Inventory.get("potions") + addedItems));
-			System.out.println(addedItems + " Potions,");
+			System.out.println(" > " + addedItems + " Potions,");
 		}else{
-			System.out.println("No Potions,");
+			System.out.println(" > No Potions,");
 		}
 
 		// Monsters
 		actuallyGotItems = rnd.nextInt(5);
 		if(actuallyGotItems == 4)
 		{
-			System.out.println("\n! You also met some Enemies !");
+			System.out.println(Colorize.RED + "\n! You also met some Enemies !" + Colorize.RESET);
 			sc.nextLine();
-			addedItems = rnd.nextInt(3);
+			addedItems = rnd.nextInt(1, 4);
 			addedItems++;
 			BattleManager.startBattle(addedItems, 1, 0);
 		}else{
-			System.out.println("You didn't meet any Enemies");
+			System.out.println(Colorize.GREEN + "\nYou didn't meet any Enemies" + Colorize.RESET);
 		}
 	}
 }
