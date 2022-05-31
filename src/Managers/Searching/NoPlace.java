@@ -11,14 +11,14 @@ public class NoPlace {
 
     public static void wasFound()
     {
-        System.out.println(ASCII.MEAGMIND);
         int message = rnd.nextInt(21);
+        
         if(message == 20)
         {
+            System.out.println(ASCII.MEAGMIND);
         }else{
             System.out.println("You didn't find any interesting place, but at least found the following items:");
         }
-
 
         // Items
         int addedItems = rnd.nextInt(5, 11);

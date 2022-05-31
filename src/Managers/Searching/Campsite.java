@@ -18,25 +18,13 @@ public class Campsite {
 		int addedItems;
 		int actuallyGotItems;
 
-		// Monsters
-		actuallyGotItems = rnd.nextInt(5);
-		if(actuallyGotItems == 4)
-		{
-			System.out.println("\n! You met some enemies !");
-			sc.nextLine();
-			addedItems = rnd.nextInt(3);
-			addedItems++;
-			BattleManager.startBattle(addedItems, 1, 0);
-		}else{
-			System.out.println("No Enemies");
-		}
-
 		System.out.println(Colorize.UNDERLINE + Colorize.YELLOW + "> Campsite" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
 		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "campsite");
 
 		System.out.println(Colorize.SEPARATOR_MEDIUM);
+		System.out.println("You found: ");
 
 		// Wood and Iron, no Leather
 		addedItems = rnd.nextInt(10, 21);
@@ -56,6 +44,19 @@ public class Campsite {
 			System.out.println(addedItems + " Potions,");
 		}else{
 			System.out.println("No Potions,");
+		}
+
+		// Monsters
+		actuallyGotItems = rnd.nextInt(5);
+		if(actuallyGotItems == 4)
+		{
+			System.out.println("\n! You also met some Enemies !");
+			sc.nextLine();
+			addedItems = rnd.nextInt(3);
+			addedItems++;
+			BattleManager.startBattle(addedItems, 1, 0);
+		}else{
+			System.out.println("You didn't meet any Enemies");
 		}
 	}
 }

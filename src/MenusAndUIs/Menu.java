@@ -77,11 +77,9 @@ public class Menu {
 		//System.out.println("\n If you are unsure type \"help [classname]\" (eg. help wizard), or \"info\" for specifics about the class");
 
 		System.out.print(Colorize.PROMPT);
-		String classInput = sc.next();
-		classInput.toLowerCase();
 
 		// A flag wanna-be
-		switch(classInput)
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "w":
 			case "wizard":

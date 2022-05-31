@@ -14,10 +14,7 @@ public class SearchManager {
 
 	public static void search()
 	{
-		System.out.print(Colorize.RESET + Colorize.CLEAR);
-		System.out.println(Colorize.SEPARATOR_LARGE);
-
-		NoPlace.wasFound();
+		System.out.print(Colorize.CLEAR);
 
 		int chanceOfPlace = rnd.nextInt(10);
 

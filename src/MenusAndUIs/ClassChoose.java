@@ -29,10 +29,8 @@ public class ClassChoose {
 		System.out.println(" 2.> " + Colorize.RED + "No" + Colorize.RESET);
 
 		System.out.print(Colorize.PROMPT);
-		String input = sc.next();
-		input.toLowerCase();
 
-		switch(input)
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "yes":
 			case "y":
@@ -67,10 +65,8 @@ public class ClassChoose {
 		System.out.println(" 2.> " + Colorize.RED + "No" + Colorize.RESET);
 
 		System.out.print(Colorize.PROMPT);
-		String input = sc.next();
-		input.toLowerCase();
 
-		switch(input)
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "yes":
 			case "y":
@@ -108,7 +104,7 @@ public class ClassChoose {
 		String input = sc.next();
 		input.toLowerCase();
 
-		switch(input)
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "yes":
 			case "y":
@@ -143,10 +139,8 @@ public class ClassChoose {
 		System.out.println(" 2.> " + Colorize.RED + "No" + Colorize.RESET);
 
 		System.out.print(Colorize.PROMPT);
-		String input = sc.next();
-		input.toLowerCase();
 
-		switch(input)
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "yes":
 			case "y":

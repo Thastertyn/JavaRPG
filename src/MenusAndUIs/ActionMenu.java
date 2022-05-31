@@ -17,8 +17,6 @@ public class ActionMenu {
 	static Scanner sc = new Scanner(System.in);
 	static Random rnd = new Random();
 
-	static int failedTimes = 0;
-
 	public static void mainMenu()
 	{
 		System.out.print(Colorize.RESET + Colorize.CLEAR);
@@ -31,12 +29,7 @@ public class ActionMenu {
 
 		System.out.print(Colorize.PROMPT);
 
-		String actionInput = sc.next();
-		actionInput.toLowerCase();
-
-		System.out.println(Colorize.PROMPT);
-
-		switch(actionInput)
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "e":
 			case "explore":
@@ -48,7 +41,7 @@ public class ActionMenu {
 			case "hunt":
 			case "2":
 				System.out.println("You went hunting something");
-				BattleManager.startBattle(rnd.nextInt(1, 5), 2, 0);
+				BattleManager.startBattle(rnd.nextInt(1, 5), 1, 0);
 				break;
 			case "i":
 			case "inventory":
@@ -90,13 +83,7 @@ public class ActionMenu {
 
 		System.out.print(Colorize.PROMPT);
 
-		String actionInput = sc.next();
-		actionInput.toLowerCase();
-
-
-		System.out.println(Player.playerInfoString());
-
-		switch(actionInput)
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "c":
 			case "crafting":

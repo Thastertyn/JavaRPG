@@ -11,8 +11,6 @@ public class GameManager {
 
 	static Scanner sc = new Scanner(System.in);
 
-	public static int failedTimes = 0;
-
 	public static void playerDied()
 	{
 		System.out.println(Colorize.RAPID_BLINK + Colorize.RED + "You died on your jounreys!" + Colorize.RESET);
@@ -46,8 +44,8 @@ public class GameManager {
 
 	public static void missInput()
 	{
-		failedTimes++;
-		System.err.println(Colorize.RED + "Incorrect input, try again.\nPress enter to continue\nTotal failed " + failedTimes  + " times" + Colorize.RESET + "\n");
+		System.err.println(Colorize.RED + "Incorrect input, try again.\n" + Colorize.UNDERLINE + "Press Enter to retry" + Colorize.RESET);
+		System.out.print(Colorize.PROMPT);
 		sc.nextLine();
 	}
 

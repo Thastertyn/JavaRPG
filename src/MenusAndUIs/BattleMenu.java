@@ -14,8 +14,6 @@ public class BattleMenu {
 	static Scanner sc = new Scanner(System.in);
 	static Random rnd = new Random();
 
-	static int failedTimes = 0;
-
 	public static void battleMenu()
 	{
 		System.out.print(Colorize.CLEAR);
@@ -33,10 +31,8 @@ public class BattleMenu {
 		System.out.println(" 3.> Escape");
 
 		System.out.print(Colorize.PROMPT);
-		String input = sc.next();
-		input.toLowerCase();
 
-		switch(input)
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "a":
 			case "attack":
@@ -94,10 +90,8 @@ public class BattleMenu {
 		System.out.println(" 2.> No");
 
 		System.out.print(Colorize.PROMPT);
-		String input = sc.next();
-		input.toLowerCase();
 
-		switch(input)
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "y":
 			case "yes":
