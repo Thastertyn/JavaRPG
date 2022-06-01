@@ -167,7 +167,7 @@ class BattleMenuRipoff
 
 		System.out.print(Colorize.PROMPT);
 		String enemyInput = sc.next();
-		enemyInput = Colorize.scannerize(enemyInput);
+		enemyInput = Colorize.sterilize(enemyInput);
 		
 		if(enemyInput.equals("d") || enemyInput.equals("duck") || enemyInput.equals("1"))
 		{
@@ -187,7 +187,7 @@ class BattleMenuRipoff
 
 		System.out.print(Colorize.PROMPT);
 		String input = sc.next();
-		input = Colorize.scannerize(input);
+		input = Colorize.sterilize(input);
 
 		switch(input)
 		{

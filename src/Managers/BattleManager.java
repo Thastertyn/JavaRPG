@@ -142,7 +142,7 @@ public class BattleManager {
 	static void enemyDied(Enemy e)
 	{
 		// Each enemy gives 50 * their relative id
-		xpGained += (EnemyManager.getEnemyId(e.enemyString) + 1) * 50;
+		xpGained += (EnemyManager.getEnemyId(e.enemyString) + 1) * rnd.nextInt(30, 61);
 
 		enemyCounts[EnemyManager.getEnemyId(e.enemyString)]--;
 		enemies.remove(e);
@@ -152,6 +152,10 @@ public class BattleManager {
 		{
 			BattleManager.enemiesThatExist.remove(BattleManager.enemiesThatExist.indexOf(e.enemyString));
 		}
+
+		Player.enemyKills++;
+
+		Player.coins += EnemyManager.getEnemyId(e.enemyString) * rnd.nextInt(10, 21);
 	}
 
 	public static void defend(boolean usePotion)

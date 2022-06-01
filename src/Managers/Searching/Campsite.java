@@ -28,11 +28,11 @@ public class Campsite {
 
 		// Wood and Iron, no Leather
 		addedItems = rnd.nextInt(10, 21);
-		Inventory.add("wood", (Inventory.get("wood") + addedItems));
+		Inventory.add("wood", addedItems);
 		System.out.println(" > " + addedItems + " Wood,");
 		
 		addedItems = rnd.nextInt(1, 5);
-		Inventory.add("iron", (Inventory.get("iron") + addedItems));
+		Inventory.add("iron", addedItems);
 		System.out.println(" > " + addedItems + " Iron,");
 
 		// Potions, no Gems
@@ -40,7 +40,7 @@ public class Campsite {
 		if(actuallyGotItems == 19)
 		{
 			addedItems = rnd.nextInt(1, 4);
-			Inventory.add("potions", (Inventory.get("potions") + addedItems));
+			Inventory.add("potions", addedItems);
 			System.out.println(" > " + addedItems + " Potions,");
 		}else{
 			System.out.println(" > No Potions,");

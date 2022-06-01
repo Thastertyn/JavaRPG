@@ -18,34 +18,24 @@ public class Ruin {
 		int addedItems;
 		int actuallyGotItems;
 
-		// Monsters
-		actuallyGotItems = rnd.nextInt(5);
-		if(actuallyGotItems == 4)
-		{
-			System.out.println("\n! You met some enemies !");
-			sc.nextLine();
-			addedItems = rnd.nextInt(3);
-			addedItems++;
-			BattleManager.startBattle(addedItems, 1, 0);
-		}else{
-			System.out.println("No Enemies");
-		}
-
-		System.out.println(Colorize.BLACK + Colorize.UNDERLINE + Colorize.BACKGROUND_WHITE + "> Cave" + Colorize.RESET);
+		System.out.println(Colorize.MAGENTA + ">> Ruin" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
-		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "Cave");
+		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "Ruin");
 
-		System.out.println(Colorize.SEPARATOR_MEDIUM);
+		System.out.println(Colorize.SEPARATOR_SMALL);
 		
-		// Wood, Iron, No Leather
-		addedItems = rnd.nextInt(45, 61);
+		// Wood, Iron and Leather
+		addedItems = rnd.nextInt(30 , 101);
 		Inventory.add("wood", (Inventory.get("wood") + addedItems));
 		System.out.println(addedItems + " Wood,");
 		
-		addedItems = rnd.nextInt(30, 51);
+		addedItems = rnd.nextInt(10, 101);
 		Inventory.add("iron", (Inventory.get("iron") + addedItems));
 		System.out.println(addedItems + " Iron,");
+		
+		addedItems = rnd.nextInt(20, 31);
+		Inventory.add("iron", Inventory.get("iron") + addedItems);
 
 		System.out.println(Colorize.SEPARATOR_SMALL);
 
@@ -68,6 +58,19 @@ public class Ruin {
 			System.out.println(1 + " Gems,");
 		}else{
 			System.out.println("No Gems");
+		}
+
+		// Monsters
+		actuallyGotItems = rnd.nextInt(5);
+		if(actuallyGotItems == 4)
+		{
+			System.out.println("\n! You met some enemies !");
+			sc.nextLine();
+			addedItems = rnd.nextInt(3);
+			addedItems++;
+			BattleManager.startBattle(addedItems, 1, 0);
+		}else{
+			System.out.println("No Enemies");
 		}
 	}
 }

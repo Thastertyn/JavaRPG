@@ -45,7 +45,7 @@ public class GameManager {
 	public static void missInput()
 	{
 		System.err.println(Colorize.RED + "Incorrect input, try again.\n" + Colorize.UNDERLINE + "Press Enter to retry" + Colorize.RESET);
-		System.out.print(Colorize.PROMPT);
+		System.out.print(Colorize.PROMPT_ENTER);
 		sc.nextLine();
 	}
 
@@ -64,7 +64,7 @@ public class GameManager {
 
 		System.out.print(Colorize.PROMPT);
 		String input = sc.next();
-		input = Colorize.scannerize(input);
+		input = Colorize.sterilize(input);
 
 		switch(input)
 		{

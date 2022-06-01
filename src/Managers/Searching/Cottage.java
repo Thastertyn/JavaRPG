@@ -17,10 +17,8 @@ public class Cottage {
 	{
 		int addedItems;
 		int actuallyGotItems;
-
-
 		
-		System.out.println(Colorize.UNDERLINE + Colorize.BACKGROUND_BLUE + ">> Cottage" + Colorize.RESET);
+		System.out.println(Colorize.BLUE + ">> Cottage" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
 		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "cottage");
@@ -29,15 +27,15 @@ public class Cottage {
 
 		// Wood and Iron and Leather
 		addedItems = rnd.nextInt(25, 51);
-		Inventory.add("wood", (Inventory.get("wood") + addedItems));
+		Inventory.add("wood", addedItems);
 		System.out.println(" > " + addedItems + " Wood,");
 		
 		addedItems = rnd.nextInt(3, 6);
-		Inventory.add("iron", (Inventory.get("iron") + addedItems));
+		Inventory.add("iron", addedItems);
 		System.out.println(" > " + addedItems + " Iron,");
 
 		addedItems = rnd.nextInt(2, 9);
-		Inventory.add("leather", (Inventory.get("leather") + addedItems));
+		Inventory.add("leather", addedItems);
 		System.out.println(" > " + addedItems + " Leather,");
 
 		System.out.println(Colorize.SEPARATOR_SMALL);
@@ -47,7 +45,7 @@ public class Cottage {
 		if(actuallyGotItems == 4)
 		{
 			addedItems = rnd.nextInt(1, 3);
-			Inventory.add("potions", (Inventory.get("potions") + addedItems));
+			Inventory.add("potions", addedItems);
 			System.out.println(" > " + addedItems + " Potions,");
 		}else{
 			System.out.println(" > No Potions");
@@ -56,7 +54,7 @@ public class Cottage {
 		actuallyGotItems = rnd.nextInt(20);
 		if(actuallyGotItems == 19)
 		{
-			Inventory.add("gems", (Inventory.get("gems") + 1));
+			Inventory.add("gems", 1);
 			System.out.println(" > 1 Gem,");
 		}else{
 			System.out.println(" > No Gems,");

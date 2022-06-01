@@ -35,7 +35,7 @@ public class Menu {
 		System.out.print(Colorize.PROMPT);
 		String choice = sc.next();
 
-		switch(Colorize.scannerize(choice))
+		switch(Colorize.sterilize(choice))
 		{
 			// Start cases
 			case "s":
@@ -79,7 +79,7 @@ public class Menu {
 		System.out.print(Colorize.PROMPT);
 
 		// A flag wanna-be
-		switch(Colorize.scannerize(sc.next()))
+		switch(Colorize.sterilize(sc.next()))
 		{
 			case "w":
 			case "wizard":

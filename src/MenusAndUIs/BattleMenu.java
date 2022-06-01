@@ -32,7 +32,7 @@ public class BattleMenu {
 
 		System.out.print(Colorize.PROMPT);
 
-		switch(Colorize.scannerize(sc.next()))
+		switch(Colorize.sterilize(sc.next()))
 		{
 			case "a":
 			case "attack":
@@ -91,7 +91,7 @@ public class BattleMenu {
 
 		System.out.print(Colorize.PROMPT);
 
-		switch(Colorize.scannerize(sc.next()))
+		switch(Colorize.sterilize(sc.next()))
 		{
 			case "y":
 			case "yes":

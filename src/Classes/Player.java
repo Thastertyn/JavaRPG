@@ -1,6 +1,5 @@
 package Classes;
 
-import java.util.Arrays;
 import java.util.Random;
 
 import Colors.Colorize;
@@ -20,7 +19,7 @@ public class Player {
 	public static int xp = 0;
 	public static int level = 0;
 	public static int coins = 0;
-	public static int[] enemyKills = new int[DataAndOtherStuff.ENEMY_IDS.length];
+	public static int enemyKills = 0;
 
 	public static String playerClass;
 	public static String classColor;
@@ -34,8 +33,6 @@ public class Player {
 	// used to spread the code around a bit, because of the 200 line limit
 	public static void init(String classString)
 	{
-		Arrays.fill(enemyKills, 0);
-
 		switch(classString)
 		{
 			case "wizard":
@@ -99,17 +96,6 @@ public class Player {
 			System.out.println(Colorize.CYAN + "! You leveled up to level " + level + " !" + Colorize.RESET);
 		}
 		System.out.println("XP required for next level: " + Colorize.BLUE + ((500 * level) - xp) + " XP");
-	}
-
-	public static int getTotalKills()
-	{
-		int count = 0;
-		for(int i : enemyKills)
-		{
-			count += i;
-		}
-		
-		return count;
 	}
 
 	// toString can't be static, which it has to be if there is only one player, therefore everything else is being static

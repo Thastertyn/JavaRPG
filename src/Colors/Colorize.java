@@ -3,11 +3,13 @@ package Colors;
 public class Colorize {
 
     public static final String PROMPT = "$~> ";
+    public static final String PROMPT_ENTER = "ENTER $~> ";
 
     public static final String SEPARATOR_SMALL = "----";
     public static final String SEPARATOR_MEDIUM = "-----------------";
     public static final String SEPARATOR_LARGE = "----------------------------------";
 
+    ///*
     // Should be printed with System.out.print(), not with println()
     public static final String CLEAR              = "\033[H\033[2J";
 
@@ -40,12 +42,14 @@ public class Colorize {
     public static final String BACKGROUND_CYAN    = "\u001B[46m";
     public static final String BACKGROUND_WHITE   = "\u001B[47m";
 
+    //*/
+
     public static String capitalize(String text)
     {
         return text.substring(0, 1).toUpperCase() + text.substring(1);
     }
 
-    public static String scannerize(String text)
+    public static String sterilize(String text)
     {
         return text.toLowerCase().replaceAll("\\s", "");
     }

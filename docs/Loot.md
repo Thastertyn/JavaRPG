@@ -34,3 +34,33 @@ Nothing else
 | Monsters | Chance | Tier | Count |
 |-|-|-|-|
 | Yes | 12.5% | 1 | 1 - 2 |
+
+# Cave
+
+| Item | Chance | Count |
+|-|-|-|
+| Wood | 100% | 45 - 60 |
+| Iron | 100% | 30 - 50 |
+| Leather | None | --- |
+| Potions | 25% | 1 - 2 |
+| Gems | 100% | 5 - 10 |
+
+
+| Monsters | Chance | Tier | Count |
+|-|-|-|-|
+| Yes | 25% | 1 | 1 - 4 |
+
+# Ruin
+
+| Item | Chance | Count |
+|-|-|-|
+| Wood | 100% | 30 - 100 |
+| Iron | 100% | 10 - 100 |
+| Leather | 100% | 20 - 30 |
+| Potions | 50% | 3 - 6 |
+| Gems | 50% | 2 - 5 |
+
+
+| Monsters | Chance | Tier | Count |
+|-|-|-|-|
+| Yes | 75% | 2 | 3 - 5 |

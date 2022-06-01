@@ -18,20 +18,7 @@ public class Cave {
 		int addedItems;
 		int actuallyGotItems;
 
-		// Monsters
-		actuallyGotItems = rnd.nextInt(4);
-		if(actuallyGotItems == 3)
-		{
-			System.out.println("\n! You met some enemies !");
-			sc.nextLine();
-			addedItems = rnd.nextInt(3);
-			addedItems++;
-			BattleManager.startBattle(addedItems, 1, 0);
-		}else{
-			System.out.println("No Enemies");
-		}
-
-		System.out.println(Colorize.BLACK + Colorize.UNDERLINE + Colorize.BACKGROUND_WHITE + "> Cave" + Colorize.RESET);
+		System.out.println(Colorize.BLACK + Colorize.UNDERLINE + Colorize.BACKGROUND_WHITE + ">> Cave" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
 		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "Cave");
@@ -50,8 +37,8 @@ public class Cave {
 		System.out.println(Colorize.SEPARATOR_SMALL);
 
 		// Potions and Gems
-		actuallyGotItems = rnd.nextInt(20);
-		if(actuallyGotItems > 14)
+		actuallyGotItems = rnd.nextInt(4);
+		if(actuallyGotItems == 3 )
 		{
 			addedItems = rnd.nextInt(1, 3);
 			Inventory.add("potions", (Inventory.get("potions") + addedItems));
@@ -63,5 +50,18 @@ public class Cave {
 		addedItems = rnd.nextInt(5, 11);
 		Inventory.add("gems", (Inventory.get("gems") + addedItems));
 		System.out.println(1 + " Gems,");
+
+		// Monsters
+		actuallyGotItems = rnd.nextInt(4);
+		if(actuallyGotItems == 3)
+		{
+			System.out.println(Colorize.RED + "\n! You also met some Enemies !" + Colorize.RESET);
+			sc.nextLine();
+			addedItems = rnd.nextInt(1, 5);
+			addedItems++;
+			BattleManager.startBattle(addedItems, 1, 0);
+		}else{
+			System.out.println(Colorize.GREEN + "\nYou didn't meet any Enemies" + Colorize.RESET);
+		}
 	}
 }

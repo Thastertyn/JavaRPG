@@ -29,7 +29,7 @@ public class ActionMenu {
 
 		System.out.print(Colorize.PROMPT);
 
-		switch(Colorize.scannerize(sc.next()))
+		switch(Colorize.sterilize(sc.next()))
 		{
 			case "e":
 			case "explore":
@@ -83,7 +83,7 @@ public class ActionMenu {
 
 		System.out.print(Colorize.PROMPT);
 
-		switch(Colorize.scannerize(sc.next()))
+		switch(Colorize.sterilize(sc.next()))
 		{
 			case "c":
 			case "crafting":
@@ -114,13 +114,13 @@ public class ActionMenu {
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
 		System.out.println("Class: " + Player.classColor + Colorize.capitalize(Player.playerClass) + Colorize.RESET);
-		System.out.println("HP: " + Colorize.RED + Player.hp + "/" + Player.maxHP + Colorize.RESET);
+		System.out.println("HP: " + Colorize.RED + Player.hp + Colorize.RESET + "/" + Colorize.RED + Player.maxHP + Colorize.RESET);
 		System.out.println("Strength: " + Colorize.GREEN + Player.strength + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_MEDIUM);
-		System.out.println("Level:" + Colorize.BLUE + Player.level + Colorize.RESET);
+		System.out.println("Level: " + Colorize.BLUE + Player.level + Colorize.RESET);
 		System.out.println("XP: " + Colorize.MAGENTA +Player.xp + Colorize.RESET);
-
-		System.out.println("Coins:" + Colorize.YELLOW + Player.coins + Colorize.RESET);
+		System.out.println("Kills: " + Colorize.RED + Player.enemyKills + Colorize.RESET);
+		System.out.println("Coins: " + Colorize.YELLOW + Player.coins + Colorize.RESET);
 		
 		
 		if(Player.isUsingSpecialFlags)
@@ -135,7 +135,7 @@ public class ActionMenu {
 		System.out.print(Colorize.PROMPT);
 		String input = sc.next();
 
-		switch(input)
+		switch(Colorize.sterilize(input))
 		{
 			case "b":
 			case "back":

@@ -62,22 +62,50 @@ public class Inventory {
 		switch(item)
 		{
 			case "weapon":
-				value = inventory.set(0, value);
+				inventory.set(0, inventory.get(0) + value);
 				break;
 			case "armor":
-				value = inventory.set(1, value);
+				inventory.set(1, inventory.get(1) + value);
 				break;
 			case "wood":
-				value = inventory.set(2, value);
+				inventory.set(2, inventory.get(2) + value);
 				break;
 			case "iron":
-				value = inventory.set(3, value);
+				inventory.set(3, inventory.get(3) + value);
 				break;
 			case "leather":
-				value = inventory.set(4, value);
+				inventory.set(4, inventory.get(4) + value);
 				break;
 			case "potions":
-				value = inventory.set(5, value);
+				inventory.set(5, inventory.get(5) + value);
+				break;
+			case "gems":
+				inventory.set(6, inventory.get(6) + value);
+				break;
+		}
+	}
+
+	public static void set(String item, int value)
+	{
+		switch(item)
+		{
+			case "weapon":
+				inventory.set(0, value);
+				break;
+			case "armor":
+				inventory.set(1, value);
+				break;
+			case "wood":
+				inventory.set(2, value);
+				break;
+			case "iron":
+				inventory.set(3, value);
+				break;
+			case "leather":
+				inventory.set(4, value);
+				break;
+			case "potions":
+				inventory.set(5, value);
 				break;
 			case "gems":
 				value = inventory.set(6, value);
