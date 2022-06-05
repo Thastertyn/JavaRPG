@@ -73,11 +73,11 @@ public class BattleManager {
 			{
 				Player.hp -= e.strength;
 				
-				System.out.println(Colorize.RED + Colorize.capitalize(e.enemyString) + " managed to land a hit dealing " + e.strength + " damage \nLeaving you with " + Player.hp + " HP" + Colorize.RESET);
-
 				if(Player.hp <= 0)
 				{
 					GameManager.playerDied();
+				}else{
+					System.out.println(Colorize.RED + Colorize.capitalize(e.enemyString) + " managed to land a hit dealing " + e.strength + " damage \nLeaving you with " + Player.hp + " HP" + Colorize.RESET);
 				}
 			}else{
 				System.out.println(Colorize.YELLOW + Colorize.capitalize(e.enemyString) + " completely missed you" + Colorize.RESET);
@@ -163,7 +163,7 @@ public class BattleManager {
 
 		Player.enemyKills++;
 
-		Player.coins += EnemyManager.getEnemyId(e.enemyString) * rnd.nextInt(10, 21);
+		Player.coins += (EnemyManager.getEnemyId(e.enemyString) + 1) * rnd.nextInt(10, 21);
 	}
 
 	public static void defend(boolean usePotion)

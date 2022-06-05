@@ -122,7 +122,7 @@ public class ClassChoose {
 		System.out.println(" > " + Colorize.MAGENTA + "Max Weapon Tier" + Colorize.RESET + ": " + DataAndOtherStuff.HUMAN_MAX_WEAPON);
 		System.out.println(" > " + Colorize.BLUE + "Max Armor Level" + Colorize.RESET + ": " + DataAndOtherStuff.HUMAN_MAX_ARMOR);
 		System.out.println(Colorize.SEPARATOR_SMALL);
-		System.out.println(" > " + Colorize.GREEN + "Speciality" + Colorize.RESET + ": Starts with some items alredy (wood 200, iron 50, leather 50, potions 5, gems 3), can have moderate Armor and Weapon");
+		System.out.println(" > " + Colorize.GREEN + "Speciality" + Colorize.RESET + ": Starts with some items alredy (wood 200, iron 50, leather 50, potions 3, gem 1), can have moderate Armor and Weapon");
 
 		switch(areYouSure())
 		{

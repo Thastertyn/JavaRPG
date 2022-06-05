@@ -127,7 +127,7 @@ public class Inventory {
 				inventory.set(5, value);
 				break;
 			case "gems":
-				value = inventory.set(6, value);
+				inventory.set(6, value);
 				break;
 		}
 	}
