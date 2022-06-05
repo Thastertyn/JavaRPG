@@ -14,11 +14,9 @@ public class EnemyManager {
 	public static ArrayList<String> writtenPositions = new ArrayList<>(Collections.nCopies(DataAndOtherStuff.ENEMY_IDS.length, ""));
 
 	/**
+	 * Just turns their enemyText into their index inside all the enemies array
 	 * @param input String input of player choosing an enemy, or just enemy name
 	 * @return An Id of an enemy relative the DataAndOtherStuff.ENEMY_IDS
-	 * <p>
-	 * Just turns their enemyText into their index inside all the enemies array
-	 * </p>
 	 */
 	public static int getEnemyId(String input)
 	{
@@ -78,11 +76,9 @@ public class EnemyManager {
 	}
 
 	/**
-	 * @param input User input given from scanner
-	 * @return A valid enemy index inside the BattleManager.enemies ArrayList
-	 * <p>
 	 * Unlike getEnemyId, this turns input into enemy position inside the ArrayList in BattleManager
-	 * </p>
+	 * @param input User input given from scanner
+	 * @return A valid enemy index inside the BattleManager.enemies ArrayList, unless it is not valid, then return -1
 	 */
 	public static int getEnemyIndex(String input)
 	{
@@ -119,10 +115,15 @@ public class EnemyManager {
 		return -1;
 	}
 
+	/**
+	 * Print out currently existing enemies
+	 * @param howToWrite Whether to include the numbers for player to choose and their stats
+	 */
 	public static void writeEnemies(String howToWrite)
 	{
 		switch(howToWrite)
 		{
+			// No numbers, but stats
 			case "short":
 			// Gets just the total amount of the specific enemies
 				for(int i = 0; i < BattleManager.enemyCounts.length; i++)
@@ -131,14 +132,20 @@ public class EnemyManager {
 					{
 						if(BattleManager.enemyCounts[i] == 1)
 						{
-							System.out.println(" > " + BattleManager.enemyCounts[i] + " " + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]));
+							System.out.println(" > " + BattleManager.enemyCounts[i] + " " + DataAndOtherStuff.ENEMY_COLORS[i] + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]) + Colorize.RESET + 
+							" [" + Colorize.RED + "HP" + Colorize.RESET + ": " + DataAndOtherStuff.ENEMY_HEALTH[i] + 
+							", " + Colorize.YELLOW + "Strength" + Colorize.RESET + ": " + DataAndOtherStuff.ENEMY_STRENGTH[i] + "]" + Colorize.RESET);
 						}else{
 							String plural = (DataAndOtherStuff.ENEMY_IDS[i].equals("witch")) ? "es" : "s";
-							System.out.println(" > " + BattleManager.enemyCounts[i] + " " + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]) + plural);
+
+							System.out.println(" > " + BattleManager.enemyCounts[i] + " " + DataAndOtherStuff.ENEMY_COLORS[i] + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]) + plural + Colorize.RESET + 
+							" [" + Colorize.RED + "HP" + Colorize.RESET + ": " + DataAndOtherStuff.ENEMY_HEALTH[i] + 
+							", " + Colorize.YELLOW + "Strength" + Colorize.RESET + ": " + DataAndOtherStuff.ENEMY_STRENGTH[i] + "]" + Colorize.RESET);
 						}
 					}
 				}
 				break;
+			// Add the numbers, without stats
 			case "long":
 				// Also adds the enemy counting, to be able to choose
 				int enemyPos = 1;
@@ -149,26 +156,16 @@ public class EnemyManager {
 					{
 						if(BattleManager.enemyCounts[i] == 1)
 						{
-							System.out.println(" " + enemyPos + ".> " + BattleManager.enemyCounts[i] + " " + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]));
+							System.out.println(" " + enemyPos + ".> " + BattleManager.enemyCounts[i] + " " + DataAndOtherStuff.ENEMY_COLORS[i] + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]) + Colorize.RESET);
 						}else{
 							String plural = (DataAndOtherStuff.ENEMY_IDS[i].equals("witch")) ? "es" : "s";
-							System.out.println(" " + enemyPos + ".> " + BattleManager.enemyCounts[i] + " " + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]) + plural);
+
+							System.out.println(" " + enemyPos + ".> " + BattleManager.enemyCounts[i] + " " + DataAndOtherStuff.ENEMY_COLORS[i] + Colorize.capitalize(DataAndOtherStuff.ENEMY_IDS[i]) + plural + Colorize.RESET);
 						}
 						enemyPos++;
 					}
 				}
 				break;
 		}
-	}
-
-	public static int getTotalEnemyCount()
-	{
-		int count = 0;
-
-		for(int i = 0; i < BattleManager.enemyCounts.length; i++)
-		{
-			count += BattleManager.enemyCounts[i];
-		}
-		return count;
 	}
 }

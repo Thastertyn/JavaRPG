@@ -1,15 +1,16 @@
 package Managers.Searching;
 
 import java.util.Random;
+import java.util.Scanner;
 
 import Classes.DataAndOtherStuff;
-import Classes.Inventory;
 import Colors.Colorize;
 import Managers.BattleManager;
 
 public class Castle {
 	
 	static Random rnd = new Random();
+	static Scanner sc = new Scanner(System.in);
 
 	public static void wasFound()
 	{
@@ -17,55 +18,42 @@ public class Castle {
 		int actuallyGotItems;
 
 		System.out.println(Colorize.BLUE + Colorize.UNDERLINE + ">> Castle" + Colorize.RESET);
+		System.out.println(Colorize.SEPARATOR_LARGE);
 
 		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "Castle");
 
-		// Wood and Iron and Leather
+		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println("You found:");
+
+		// Wood
 		addedItems = rnd.nextInt(25, 51);
-		Inventory.add("wood", addedItems);
-		System.out.println(addedItems + " Wood,");
+		Poi.wood(addedItems);
 		
-		addedItems = rnd.nextInt(3, 6);
-		Inventory.add("iron", addedItems);
-		System.out.println(addedItems + " Iron,");
+		// Iron
+		addedItems = rnd.nextInt(25, 36);
+		Poi.iron(addedItems);
 
-		addedItems = rnd.nextInt(2, 9);
-		Inventory.add("leather", addedItems);
-		System.out.println(addedItems + " Leather,");
+		// Leather
+		addedItems = rnd.nextInt(35, 61);
+		Poi.leather(addedItems);
 
-		System.out.println("----");
+		// Potions
+		addedItems = rnd.nextInt(5, 11);
+		Poi.potions(addedItems);
 
-		// Potions and Gems
-		actuallyGotItems = rnd.nextInt(20);
-		if(actuallyGotItems > 14)
-		{
-			addedItems = rnd.nextInt(1, 3);
-			Inventory.add("potions", addedItems);
-			System.out.println(addedItems + " Potions,");
-		}else{
-			System.out.println("No Potions");
-		}
-
-		actuallyGotItems = rnd.nextInt(20);
-		if(actuallyGotItems == 19)
-		{
-			addedItems = rnd.nextInt(1, 2);
-			Inventory.add("gems", addedItems);
-			System.out.println(1 + " Gems,");
-		}else{
-			System.out.println("No Gems,");
-		}
+		// Gems
+		addedItems = rnd.nextInt(1, 4);
+		Poi.gems(addedItems);
 		
 		// Monsters
-		actuallyGotItems = rnd.nextInt(5);
-		if(actuallyGotItems == 4)
+		actuallyGotItems = rnd.nextInt(4);
+		if(actuallyGotItems > 0)
 		{
-			System.out.println("\n! You met some enemies !");
-			addedItems = rnd.nextInt(3);
-			addedItems++;
-			BattleManager.startBattle(addedItems, 1, 0);
+			System.out.println(Colorize.RED + "\n! You also met some Enemies !" + Colorize.RESET);
+			sc.nextLine();
+			BattleManager.startBattle(4, 5, 0);
 		}else{
-			System.out.println("No Enemies");
+			System.out.println(Colorize.GREEN + "\nYou didn't meet any Enemies" + Colorize.RESET);
 		}
 
 	}

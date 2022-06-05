@@ -31,8 +31,25 @@ public class Bathroom {
 		System.out.println("It's the super intergalactic duck");
 		System.out.println("Ready to take you down with the rest of the world");
 		sc.nextLine();
-		System.out.println("You are ready to fight it, LETS GO!");
 
-		Final.startBattle();
+		System.out.println("You can try escaping while you can, or take it head on");
+		System.out.println("What do you choose?");
+		System.out.println(" 1.> Fight");
+		System.out.println(" 2.> Escape");
+
+		switch(Colorize.scannerize(sc.next()))
+		{
+			case "f":
+			case "fight":
+			case "1":
+				System.out.println("You are ready to fight it, LETS GO!");
+				Final.startBattle();
+				break;
+			case "e":
+			case "escape":
+			case "2":
+				System.out.println("You ran away, while you still were unnoticed");
+				break;
+		}
 	}
 }

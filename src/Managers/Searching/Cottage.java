@@ -21,43 +21,44 @@ public class Cottage {
 		System.out.println(Colorize.BLUE + ">> Cottage" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
-		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "cottage");
+		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "Cottage");
 
 		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println("You found:");
 
-		// Wood and Iron and Leather
+		// Wood
 		addedItems = rnd.nextInt(25, 51);
 		Inventory.add("wood", addedItems);
-		System.out.println(" > " + addedItems + " Wood,");
+		Poi.wood(addedItems);
 		
+		// Iron
 		addedItems = rnd.nextInt(3, 6);
-		Inventory.add("iron", addedItems);
-		System.out.println(" > " + addedItems + " Iron,");
+		Poi.iron(addedItems);
 
+		// Leather
 		addedItems = rnd.nextInt(2, 9);
-		Inventory.add("leather", addedItems);
-		System.out.println(" > " + addedItems + " Leather,");
+		Poi.leather(addedItems);
+
 
 		System.out.println(Colorize.SEPARATOR_SMALL);
 
-		// Potions and Gems
+		// Potions
 		actuallyGotItems = rnd.nextInt(5);
 		if(actuallyGotItems == 4)
 		{
 			addedItems = rnd.nextInt(1, 3);
-			Inventory.add("potions", addedItems);
-			System.out.println(" > " + addedItems + " Potions,");
+			Poi.potions(addedItems);
 		}else{
-			System.out.println(" > No Potions");
+			Poi.potions(false);
 		}
 
+		// Gems
 		actuallyGotItems = rnd.nextInt(20);
 		if(actuallyGotItems == 19)
 		{
-			Inventory.add("gems", 1);
-			System.out.println(" > 1 Gem,");
+			Poi.gems(1);
 		}else{
-			System.out.println(" > No Gems,");
+			Poi.gems(false);
 		}
 
 		// Monsters
@@ -68,11 +69,9 @@ public class Cottage {
 			sc.nextLine();
 			addedItems = rnd.nextInt(1, 3);
 			addedItems++;
-			BattleManager.startBattle(addedItems, 1, 0);
+			BattleManager.startBattle(addedItems, 2, 0);
 		}else{
 			System.out.println(Colorize.GREEN + "\nYou didn't meet any Enemies" + Colorize.RESET);
 		}
-		
-		System.out.println(Colorize.SEPARATOR_SMALL);
 	}
 }

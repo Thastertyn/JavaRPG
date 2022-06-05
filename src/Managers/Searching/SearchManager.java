@@ -29,24 +29,24 @@ public class SearchManager {
 			switch(poi)
 			{
 				case 0:
-				case 1:
 					Campsite.wasFound();
 					break;
-				case 2:
+				case 1:
 					Cottage.wasFound();
 					break;
+				case 2:
 				case 3:
-				case 4:
 					Cave.wasFound();
 					break;
+				case 4:
 				case 5:
-				case 6:
 					Ruin.wasFound();
 					break;
+				case 6:
 				case 7:
-				case 8:
 					Castle.wasFound();
 					break;
+				case 8:
 				case 9: 
 					Lair.wasFound();
 					break;

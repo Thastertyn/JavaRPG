@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Classes.DataAndOtherStuff;
-import Classes.Inventory;
 import Colors.Colorize;
 import Managers.BattleManager;
 
@@ -21,30 +20,32 @@ public class Campsite {
 		System.out.println(Colorize.UNDERLINE + Colorize.YELLOW + ">> Campsite" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
-		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "campsite");
+		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "Campsite");
 
 		System.out.println(Colorize.SEPARATOR_SMALL);
 		System.out.println("You found:");
 
-		// Wood and Iron, no Leather
+		// Wood
 		addedItems = rnd.nextInt(10, 21);
-		Inventory.add("wood", addedItems);
-		System.out.println(" > " + addedItems + " Wood,");
-		
-		addedItems = rnd.nextInt(1, 5);
-		Inventory.add("iron", addedItems);
-		System.out.println(" > " + addedItems + " Iron,");
+		Poi.wood(addedItems);
 
-		// Potions, no Gems
+		// Iron
+		addedItems = rnd.nextInt(1, 5);
+		Poi.iron(addedItems);
+
+		// No Leather
+
+		// Potions
 		actuallyGotItems = rnd.nextInt(20);
 		if(actuallyGotItems == 19)
 		{
 			addedItems = rnd.nextInt(1, 4);
-			Inventory.add("potions", addedItems);
-			System.out.println(" > " + addedItems + " Potions,");
+			Poi.potions(addedItems);
 		}else{
-			System.out.println(" > No Potions,");
+			Poi.potions(false);
 		}
+
+		// No Gems
 
 		// Monsters
 		actuallyGotItems = rnd.nextInt(5);

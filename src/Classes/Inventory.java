@@ -3,6 +3,7 @@ package Classes;
 import java.util.ArrayList;
 
 public class Inventory {
+	
 	// Item Positions
 	// 0. Weapon
 	// 1. Armor
@@ -14,10 +15,12 @@ public class Inventory {
 	// There won't be any size limit, at least for now
 	static ArrayList<Integer> inventory = new ArrayList<>();
 
-	// Don't want to use objects
+
+	/**
+	 * Set all the items as 0, mainly when you start out
+	 */
 	public static void init()
 	{
-		// Set the all items to zero
 		inventory.add(0, 0);
 		inventory.add(1, 0);
 		inventory.add(2, 0);
@@ -26,6 +29,12 @@ public class Inventory {
 		inventory.add(5, 0);
 		inventory.add(6, 0);
 	}
+
+	/**
+	 * Return the current item count of items
+	 * @param item Item name
+	 * @return the value in inventory
+	 */
 	public static int get(String item)
 	{
 		int value = 0;
@@ -57,6 +66,11 @@ public class Inventory {
 		return value;
 	}
 
+	/**
+	 * Get an item and add the given value to already existing items
+	 * @param item Item name
+	 * @param value Value to be added
+	 */
 	public static void add(String item, int value)
 	{
 		switch(item)
@@ -85,6 +99,11 @@ public class Inventory {
 		}
 	}
 
+	/**
+	 * Get an item and a value to set it to
+	 * @param item Item name
+	 * @param value Value to be set to
+	 */
 	public static void set(String item, int value)
 	{
 		switch(item)

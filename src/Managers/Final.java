@@ -28,7 +28,7 @@ public class Final
 	{
 		xpGained = 0;
 
-		System.out.println(Colorize.RED + Colorize.UNDERLINE + "! ⁠BATTLE ⁠!" + Colorize.RESET);
+		System.out.println(Colorize.RED + Colorize.UNDERLINE + "! ⁠Bathroom ⁠!" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
 		BattleMenuRipoff.battleMenu();
@@ -167,7 +167,7 @@ class BattleMenuRipoff
 
 		System.out.print(Colorize.PROMPT);
 		String enemyInput = sc.next();
-		enemyInput = Colorize.sterilize(enemyInput);
+		enemyInput = Colorize.scannerize(enemyInput);
 		
 		if(enemyInput.equals("d") || enemyInput.equals("duck") || enemyInput.equals("1"))
 		{
@@ -187,7 +187,7 @@ class BattleMenuRipoff
 
 		System.out.print(Colorize.PROMPT);
 		String input = sc.next();
-		input = Colorize.sterilize(input);
+		input = Colorize.scannerize(input);
 
 		switch(input)
 		{

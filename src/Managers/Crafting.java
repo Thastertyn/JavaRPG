@@ -16,13 +16,26 @@ public class Crafting {
 		System.out.println(Colorize.UNDERLINE + Colorize.YELLOW + ">>> ⁠Crafting" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
-		String weaponText = (Inventory.get("weapon") == 10) ? "[MAX]" : ("[" +Inventory.get("weapon") + "/10 [Cost (Wood: " + getUpgradeCost("weapon")[0])  + (", Iron: " + getUpgradeCost("weapon")[1]) + ", Gems: " + getUpgradeCost("weapon")[2] + "" + ")]]";
+		String weaponText = (Inventory.get("weapon") == 10) ? 
+		"[MAX]" 
+		: 
+		Colorize.ITALIC + "[" + Inventory.get("weapon") + "/" + Player.maxWeapon + " [Cost " + 
+		"(" + Colorize.YELLOW + "Wood" + Colorize.RESET + Colorize.ITALIC + ": " + getUpgradeCost("weapon")[0] + 
+		", " + Colorize.BACKGROUND_WHITE + Colorize.BLACK + "Iron" + Colorize.RESET + Colorize.ITALIC + ": " + getUpgradeCost("weapon")[1] + 
+		", " + Colorize.GREEN + "Gems" + Colorize.RESET + Colorize.ITALIC + ": " + getUpgradeCost("weapon")[2] + "" + ")]]" + Colorize.RESET;
 
-		String armorText = (Inventory.get("armor") == 10) ? "[MAX]" : ("[" +Inventory.get("armor") + "/10 [Cost (Leather: " + getUpgradeCost("armor")[0])  + (", Iron: " + getUpgradeCost("armor")[1]) + ", Gems: " + getUpgradeCost("armor")[2] + ")]]";
+		String armorText = (Inventory.get("armor") == 10) ? 
+		Colorize.ITALIC + "[MAX]" 
+		: 
+		Colorize.ITALIC + "[" + Inventory.get("armor") + "/" + Player.maxArmor + " [Cost " + 
+		"(" + Colorize.YELLOW + "Leather" + Colorize.RESET + Colorize.ITALIC + ": " + getUpgradeCost("armor")[0] + 
+		", " + Colorize.BACKGROUND_WHITE + Colorize.BLACK + "Iron" + Colorize.RESET + Colorize.ITALIC + ": " + getUpgradeCost("armor")[1] + 
+		", " + Colorize.GREEN + "Gems" + Colorize.RESET + Colorize.ITALIC + ": " + getUpgradeCost("armor")[2] + ")]]" + Colorize.RESET;
 
-		System.out.println("Your tools:\n 1.> Weapon " + weaponText);
-		System.out.println(" 2.> Armor " + armorText);
-		System.out.println(" 3.> Go Back");
+		System.out.println("Your tools:");
+		System.out.println(" 1.> " + Colorize.MAGENTA + "Weapon " + Colorize.RESET + weaponText);
+		System.out.println(" 2.> " + Colorize.BLUE + "Armor " + Colorize.RESET + armorText);
+		System.out.println(" 3.> " + Colorize.YELLOW + "Back" + Colorize.RESET);
 
 		System.out.println("");
 
@@ -36,7 +49,7 @@ public class Crafting {
 			case "weapon":
 			case "w":
 			case "1":
-				if(Inventory.get("weapon") >= 10)
+				if(Inventory.get("weapon") >= Player.maxArmor)
 				{
 					System.out.println("Your Weapon is at top tier already");
 					sc.nextLine();
@@ -75,13 +88,15 @@ public class Crafting {
 		{
 			case "weapon":
 				// If wood
-				if(Inventory.get("wood") < getUpgradeCost("weapon")[0] || Inventory.get("iron") < getUpgradeCost("weapon")[1] || Inventory.get("gems") < getUpgradeCost("weapon")[2])
+				if(Inventory.get("wood") < getUpgradeCost("weapon")[0] || 
+				Inventory.get("iron") < getUpgradeCost("weapon")[1] || 
+				Inventory.get("gems") < getUpgradeCost("weapon")[2])
 				{
 					System.err.println(Colorize.RED + "You don't have enough items yet" + Colorize.RESET);
 				}else{
-					Inventory.add("wood", Inventory.get("wood") - getUpgradeCost("weapon")[0]);
-					Inventory.add("iron", Inventory.get("iron") - getUpgradeCost("weapon")[1]);
-					Inventory.add("gems", Inventory.get("gems") - getUpgradeCost("weapon")[2]);
+					Inventory.add("wood", -getUpgradeCost("weapon")[0]);
+					Inventory.add("iron", -getUpgradeCost("weapon")[1]);
+					Inventory.add("gems", -getUpgradeCost("weapon")[2]);
 
 					Inventory.add("weapon", Inventory.get("weapon") + 1);
 					Player.strength += (Player.strength / 10) * 15;
@@ -90,15 +105,18 @@ public class Crafting {
 				}
 				break;
 			case "armor":
-				if(Inventory.get("leather") < getUpgradeCost("armor")[0] || Inventory.get("iron") < getUpgradeCost("armor")[1] || Inventory.get("gems") < getUpgradeCost("armor")[2])
+				if(Inventory.get("leather") < getUpgradeCost("armor")[0] || 
+				Inventory.get("iron") < getUpgradeCost("armor")[1] || 
+				Inventory.get("gems") < getUpgradeCost("armor")[2])
 				{
 					System.err.println(Colorize.RED + "You don't have enough items yet" + Colorize.RESET);
 				}else{
-					Inventory.add("leather", Inventory.get("leather") - getUpgradeCost("armor")[0]);
-					Inventory.add("iron", Inventory.get("iron") - getUpgradeCost("armor")[1]);
-					Inventory.add("gems", Inventory.get("gems") - getUpgradeCost("armor")[2]);
+					Inventory.add("leather", -getUpgradeCost("armor")[0]);
+					Inventory.add("iron", -getUpgradeCost("armor")[1]);
+					Inventory.add("gems", -getUpgradeCost("armor")[2]);
 
 					Inventory.add("armor", Inventory.get("armor") + 1);
+					Player.maxHP += (Player.hp / 10) * 15;
 					Player.hp += (Player.hp / 10) * 15;
 
 					System.out.println(Colorize.GREEN + "You Successfully upgraded your Armor" + Colorize.RESET);

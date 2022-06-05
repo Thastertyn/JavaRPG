@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Classes.DataAndOtherStuff;
-import Classes.Inventory;
 import Colors.Colorize;
 import Managers.BattleManager;
 
@@ -24,53 +23,53 @@ public class Ruin {
 		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "Ruin");
 
 		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println("You found:");
 		
-		// Wood, Iron and Leather
+		// Wood
 		addedItems = rnd.nextInt(30 , 101);
-		Inventory.add("wood", (Inventory.get("wood") + addedItems));
-		System.out.println(addedItems + " Wood,");
+		Poi.wood(addedItems);
 		
+		// Iron
 		addedItems = rnd.nextInt(10, 101);
-		Inventory.add("iron", (Inventory.get("iron") + addedItems));
-		System.out.println(addedItems + " Iron,");
-		
+		Poi.iron(addedItems);
+
+		// Leather
 		addedItems = rnd.nextInt(20, 31);
-		Inventory.add("iron", Inventory.get("iron") + addedItems);
+		Poi.leather(addedItems);
 
 		System.out.println(Colorize.SEPARATOR_SMALL);
 
-		// Potions and Gems
+		// Potions
 		actuallyGotItems = rnd.nextInt(20);
 		if(actuallyGotItems > 14)
 		{
 			addedItems = rnd.nextInt(1, 3);
-			Inventory.add("potions", (Inventory.get("potions") + addedItems));
-			System.out.println(addedItems + " Potions,");
+			Poi.potions(addedItems);
 		}else{
-			System.out.println("No Potions");
+			Poi.potions(false);
 		}
 
+		// Gems
 		actuallyGotItems = rnd.nextInt(20);
 		if(actuallyGotItems == 19)
 		{
 			addedItems = rnd.nextInt(5, 11);
-			Inventory.add("gems", (Inventory.get("gems") + addedItems));
-			System.out.println(1 + " Gems,");
+			Poi.gems(addedItems);
 		}else{
-			System.out.println("No Gems");
+			Poi.gems(false);
 		}
 
 		// Monsters
 		actuallyGotItems = rnd.nextInt(5);
-		if(actuallyGotItems == 4)
+		if(actuallyGotItems < 4)
 		{
-			System.out.println("\n! You met some enemies !");
+			System.out.println(Colorize.RED + "\n! You also met some Enemies !" + Colorize.RESET);
 			sc.nextLine();
-			addedItems = rnd.nextInt(3);
+			addedItems = rnd.nextInt(1, 6);
 			addedItems++;
-			BattleManager.startBattle(addedItems, 1, 0);
+			BattleManager.startBattle(addedItems, 4, 0);
 		}else{
-			System.out.println("No Enemies");
+			System.out.println(Colorize.GREEN + "\nYou didn't meet any Enemies" + Colorize.RESET);
 		}
 	}
 }

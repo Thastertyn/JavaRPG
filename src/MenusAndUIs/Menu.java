@@ -26,16 +26,16 @@ public class Menu {
 		System.out.println(Colorize.UNDERLINE + Colorize.MAGENTA + "> ⁠Main ⁠Menu ⁠<" + Colorize.RESET);
 		System.out.println("----------------------------------");
 		System.out.println("Welcome to the RPG game " + Colorize.capitalize(System.getProperty("user.name")));
-		System.out.println("If you want help, run this program again with a \"--help\" flag (without the quotes)");
+		System.out.println("If you want help (mainly flags), run this program again with a \"--help\" flag (without the quotes)");
 
 		System.out.println(" 1.> " + Colorize.GREEN + "Start" + Colorize.RESET);
-		System.out.println(" 2.> " + Colorize.YELLOW + "Help" + Colorize.RESET);
+		System.out.println(" 2.> " + Colorize.YELLOW + "About" + Colorize.RESET);
 		System.out.println(" 3.> " + Colorize.MAGENTA + "Quit" + Colorize.RESET);
 
 		System.out.print(Colorize.PROMPT);
 		String choice = sc.next();
 
-		switch(Colorize.sterilize(choice))
+		switch(Colorize.scannerize(choice))
 		{
 			// Start cases
 			case "s":
@@ -79,7 +79,7 @@ public class Menu {
 		System.out.print(Colorize.PROMPT);
 
 		// A flag wanna-be
-		switch(Colorize.sterilize(sc.next()))
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "w":
 			case "wizard":

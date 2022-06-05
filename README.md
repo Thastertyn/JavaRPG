@@ -12,9 +12,11 @@ To run the game either execute the run.sh or follow the steps bellow
 git clone https://github.com/Thastertyn/JavaRPG
 cd [Directory you cloned to]
 mkdir build/
-javac -cp . src/*.java -d build/
+javac -cp src/ src/*.java -d build/
 cd build/
-echo "Manifest-Version: 1.0\nClass-Path: .\nMain-Class: App" > MANIFEST.MF
+echo "Manifest-Version: 1.0" > MANIFEST.MF
+echo "Class-Path: ." >> MANIFEST.MF
+echo "Main-Class: App" >> MANIFEST.MF
 jar cvmf MANIFEST.MF Game.jar App.class
 ```
 (Thank you tecmint)

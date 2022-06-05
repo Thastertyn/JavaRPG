@@ -1,6 +1,10 @@
 package Colors;
 
+import java.util.Scanner;
+
 public class Colorize {
+
+    static Scanner sc = new Scanner(System.in);
 
     public static final String PROMPT = "$~> ";
     public static final String PROMPT_ENTER = "ENTER $~> ";
@@ -44,12 +48,22 @@ public class Colorize {
 
     //*/
 
+    /**
+     * Capitalize some text {@code hello => Hello}
+     * @param text text to be Capitalized
+     * @return Capitalized text 
+     */
     public static String capitalize(String text)
     {
         return text.substring(0, 1).toUpperCase() + text.substring(1);
     }
 
-    public static String sterilize(String text)
+    /**
+     * Remove spaces and set the entire string to lower case
+     * @param text Input from user
+     * @return text with no spaces and upper case characters
+     */
+    public static String scannerize(String text)
     {
         return text.toLowerCase().replaceAll("\\s", "");
     }
@@ -57,7 +71,7 @@ public class Colorize {
     // Uncomment this if colors dont work (aka on windows)
     // and comment the whole thing above from BACKGROUND_WHITE to CLEAR
     /*
-    public static final String CLEAR              = "";
+    public static final String CLEAR              = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
     public static final String RESET              = "";
     public static final String HIGH_INTENSITY     = "";
     public static final String LOW_INTENSITY      = "";

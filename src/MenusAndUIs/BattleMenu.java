@@ -17,22 +17,23 @@ public class BattleMenu {
 	public static void battleMenu()
 	{
 		System.out.print(Colorize.CLEAR);
-		System.out.println(Colorize.RED + ">> BATTLE <<" + Colorize.RESET);
-		System.out.println(Colorize.SEPARATOR_MEDIUM);
+		System.out.println(Colorize.UNDERLINE + Colorize.RED + ">> BATTLE <<" + Colorize.RESET);
+		System.out.println(Colorize.SEPARATOR_LARGE);
 		System.out.println("You were attacked by:");
 		EnemyManager.writeEnemies("short");
 
-		System.out.println(Colorize.SEPARATOR_MEDIUM);
+		System.out.println(Colorize.SEPARATOR_MEDIUM + Colorize.SEPARATOR_SMALL);
 		System.out.println(Player.playerInfoString());
-		System.out.println(Colorize.SEPARATOR_MEDIUM);
+		
+		System.out.println(Colorize.SEPARATOR_MEDIUM + Colorize.SEPARATOR_SMALL);
 		System.out.println("You can now do the following:");
-		System.out.println(" 1.> Attack");
-		System.out.println(" 2.> Defend (allows taking a potion item)");
-		System.out.println(" 3.> Escape");
+		System.out.println(" 1.> " + Colorize.RED + "Attack" + Colorize.RESET);
+		System.out.println(" 2.> " + Colorize.YELLOW + "Defend" + Colorize.RESET + Colorize.ITALIC + " (allows taking a potion item)" + Colorize.RESET);
+		System.out.println(" 3.> " + Colorize.BLUE + "Escape" + Colorize.RESET);
 
 		System.out.print(Colorize.PROMPT);
 
-		switch(Colorize.sterilize(sc.next()))
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "a":
 			case "attack":
@@ -59,7 +60,7 @@ public class BattleMenu {
 	public static void chooseEnemy()
 	{
 		System.out.print(Colorize.RESET + Colorize.CLEAR);
-		System.out.println(Colorize.RED + ">> BATTLE <<" + Colorize.RESET);
+		System.out.println(Colorize.UNDERLINE + Colorize.RED + ">> BATTLE <<" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 		System.out.println("You can choose from:");
 		
@@ -85,13 +86,13 @@ public class BattleMenu {
 	public static void defendMenu()
 	{
 		System.out.println("");
-		System.out.println("Do you want to use a potion?");
-		System.out.println(" 1.> Yes");
-		System.out.println(" 2.> No");
+		System.out.println("Do you want to use a " + Colorize.RED +"Potion?" + Colorize.RESET);
+		System.out.println(" 1.> " + Colorize.GREEN + "Yes" + Colorize.RESET);
+		System.out.println(" 2.> " + Colorize.RED + "No" + Colorize.RESET);
 
 		System.out.print(Colorize.PROMPT);
 
-		switch(Colorize.sterilize(sc.next()))
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "y":
 			case "yes":

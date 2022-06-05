@@ -29,7 +29,7 @@ public class ActionMenu {
 
 		System.out.print(Colorize.PROMPT);
 
-		switch(Colorize.sterilize(sc.next()))
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "e":
 			case "explore":
@@ -65,16 +65,16 @@ public class ActionMenu {
 		System.out.println(Colorize.SEPARATOR_LARGE);
 		
 		// Items
-		System.out.println(" > Weapon Tier: " + Colorize.MAGENTA + Inventory.get("weapon") + Colorize.RESET);
-		System.out.println(" > Armor Level: " + Colorize.BLUE + Inventory.get("armor") + Colorize.RESET);
+		System.out.println(" > " + Colorize.MAGENTA + "Weapon Tier" + Colorize.RESET + ": " + Inventory.get("weapon") + "/" + Player.maxWeapon);
+		System.out.println(" > " + Colorize.BLUE + "Armor Level" + Colorize.RESET +": " + Inventory.get("armor") + "/" + Player.maxArmor);
 		System.out.println(Colorize.SEPARATOR_SMALL);
-		System.out.println(" > Wood: " + Colorize.YELLOW + Inventory.get("wood") + Colorize.RESET);
-		System.out.println(" > Iron: " + Colorize.BACKGROUND_WHITE + Colorize.BLACK + Inventory.get("iron") + Colorize.RESET);
-		System.out.println(" > Leather: " + Colorize.YELLOW + Inventory.get("leather") + Colorize.RESET);
-		System.out.println(" > Potions: " + Colorize.RED + Inventory.get("potions") + Colorize.RESET);
-		System.out.println(" > Gems: " + Colorize.GREEN + Inventory.get("gems") + Colorize.RESET);
+		System.out.println(" > " + Colorize.YELLOW + "Wood" + Colorize.RESET + ": " + Inventory.get("wood"));
+		System.out.println(" > " + Colorize.BACKGROUND_WHITE + Colorize.BLACK + "Iron" + Colorize.RESET + ": " + Inventory.get("iron"));
+		System.out.println(" > " + Colorize.YELLOW + "Leather" + Colorize.RESET + ": " + Inventory.get("leather"));
+		System.out.println(" > " + Colorize.RED  + "Potions" + Colorize.RESET + ": " + Inventory.get("potions"));
+		System.out.println(" > " + Colorize.GREEN + "Gems" + Colorize.RESET + ": " + Inventory.get("gems"));
 
-		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println(Colorize.SEPARATOR_MEDIUM);
 
 		// Crafting
 		System.out.println(" 1.> " + Colorize.GREEN + "Crafting Menu" + Colorize.RESET);
@@ -83,7 +83,7 @@ public class ActionMenu {
 
 		System.out.print(Colorize.PROMPT);
 
-		switch(Colorize.sterilize(sc.next()))
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "c":
 			case "crafting":
@@ -114,18 +114,18 @@ public class ActionMenu {
 		System.out.println(Colorize.SEPARATOR_LARGE);
 
 		System.out.println("Class: " + Player.classColor + Colorize.capitalize(Player.playerClass) + Colorize.RESET);
-		System.out.println("HP: " + Colorize.RED + Player.hp + Colorize.RESET + "/" + Colorize.RED + Player.maxHP + Colorize.RESET);
-		System.out.println("Strength: " + Colorize.GREEN + Player.strength + Colorize.RESET);
+		System.out.println(Colorize.RED + "HP" + Colorize.RESET + ": " + Player.hp + "/" + Player.maxHP);
+		System.out.println(Colorize.YELLOW + "Strength" + Colorize.RESET + ": " + Player.strength);
 		System.out.println(Colorize.SEPARATOR_MEDIUM);
-		System.out.println("Level: " + Colorize.BLUE + Player.level + Colorize.RESET);
-		System.out.println("XP: " + Colorize.MAGENTA +Player.xp + Colorize.RESET);
-		System.out.println("Kills: " + Colorize.RED + Player.enemyKills + Colorize.RESET);
-		System.out.println("Coins: " + Colorize.YELLOW + Player.coins + Colorize.RESET);
+		System.out.println(Colorize.BLUE + "Level" + Colorize.RESET + ": " + Player.level);
+		System.out.println(Colorize.MAGENTA + "XP" + Colorize.RESET + ": " + Player.xp);
+		System.out.println(Colorize.RED + "Kills" + Colorize.RESET + ": " + Player.enemyKills);
+		System.out.println(Colorize.YELLOW + "Coins" + Colorize.RESET + ": " + Player.coins);
 		
 		
 		if(Player.isUsingSpecialFlags)
 		{
-			System.out.println("Cheats:" + Colorize.CYAN + "true" + Colorize.RESET);
+			System.out.println(Colorize.CYAN + "Cheats" + Colorize.RESET + ":" + "true");
 		}
 
 		System.out.println("");
@@ -135,7 +135,7 @@ public class ActionMenu {
 		System.out.print(Colorize.PROMPT);
 		String input = sc.next();
 
-		switch(Colorize.sterilize(input))
+		switch(Colorize.scannerize(input))
 		{
 			case "b":
 			case "back":

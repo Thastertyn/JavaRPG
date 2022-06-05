@@ -1,86 +1,142 @@
 package Classes;
 
+import Colors.Colorize;
+
 // Just store the properties of all the classes + enemies
 public class DataAndOtherStuff {
 
-    // Exploration POIs
-    public static final String[] POIS = {"campsite", "cottage", "cave", "ruin", "castle", "lair"};
-    public static final String[] POI_MESSAGES = {"You stumbled upon a ", "You found a ", "You find yourself in a ", "Your senses lead you to a ", "After countles hours, you saw it, a "};
-    
-    // Ids
-    public final String[] playerId = {"wizard", "dwarf", "elf", "human"};
-    
-    public static final String[] ENEMY_IDS = {"slime", "hog", "bear", "goblin", "zombie", "skeleton", "ogre", "witch", "mage", "centaur", "noone", "duck"};
-    public static final String[] TIER1IDS = {"slime", "hog"};
-    public static final String[] TIER1SHORT_IDS = {"sl", "h"};
-    public static final String[] TIER2IDS = {"bear", "goblin", "zombie"};
-    public static final String[] TIER2SHORT_IDS = {"b", "g", "z"};
-    public static final String[] TIER3IDS = {"skeleton", "ogre"};
-    public static final String[] TIER3SHORT_IDS = {"sk", "o"};
-    public static final String[] TIER4IDS = {"witch", "mage"};
-    public static final String[] TIER4SHORT_IDS = {"w", "m"};
-    public static final String[] TIER5IDS = {"centaur", "dragonite"};
-    public static final String[] TIER5SHORT_IDS = {"c", "d"};
-    public static final String TIER6ID = "noone";
-    public static final String TIER6SHORT_ID = "n";
-    public static final String TIER7ID = "duck";
-    public static final String TIER7SHORT_ID = "d";
+	// Exploration POIs
+	public static final String[] POIS = {"campsite", "cottage", "cave", "ruin", "castle", "lair"};
+	public static final String[] POI_MESSAGES = {"You stumbled upon a ", "You found a ", "You find yourself in a ", "Your senses lead you to a ", "After countles hours, you saw it, a "};
+	
+//#region Enemies
 
-//#region HP
-    // Player HP
-    public static final int ELF_HP = 75;
-    public static final int WIZARD_HP = 50;
-    public static final int DWARF_HP = 150;
-    public static final int HUMAN_HP = 100;
+	// Full ids
+	public static final String[] ENEMY_IDS = {
+		"slime", 
+		"hog", 
+		"bear", 
+		"goblin", 
+		"zombie", 
+		"skeleton", 
+		"ogre", 
+		"witch", 
+		"mage", 
+		"centaur", 
+		"noone", 
+		"duck"
+	};
 
-    // Enemy HP
-    public static final int SLIME_HP = 20;
-    public static final int HOG_HP = 50;
-    public static final int[] TIER1_HP = {SLIME_HP, HOG_HP};
-    public static final int BEAR_HP = 100;
-    public static final int GOLBLIN_HP = 150;
-    public static final int ZOMIE_HP = 200;
-    public static final int[] TIER2_HP = {BEAR_HP, GOLBLIN_HP, ZOMIE_HP};
-    public static final int SKELETON_HP = 75;
-    public static final int OGRE_HP = 350;
-    public static final int[] TIER3_HP = {SKELETON_HP, OGRE_HP};
-    public static final int WITCH_HP = 250;
-    public static final int MAGE_HP = 500; 
-    public static final int[] TIER4_HP = {WITCH_HP, MAGE_HP};
-    public static final int CENTAUR_HP = 750;
-    public static final int NOONE_HP = 1000;
-    public static final int[] TIER5_HP = {CENTAUR_HP, NOONE_HP};
-    public static final int DUCK_HP = 10000;
+	public static final String[] TIER1IDS = {ENEMY_IDS[0], ENEMY_IDS[1]};
+	public static final String[] TIER2IDS = {ENEMY_IDS[2], ENEMY_IDS[3], ENEMY_IDS[4]};
+	public static final String[] TIER3IDS = {ENEMY_IDS[5], ENEMY_IDS[6]};
+	public static final String[] TIER4IDS = {ENEMY_IDS[7], ENEMY_IDS[8]};
+	public static final String TIER5ID = ENEMY_IDS[9];
+	public static final String TIER6ID = ENEMY_IDS[10];
+	public static final String TIER7ID = ENEMY_IDS[11];
+
+	// Short ids
+	public static final String[] ENEMY_SHORT_IDS = {
+		"sl",
+		"h",
+		"b",
+		"g",
+		"z",
+		"sk",
+		"o",
+		"w",
+		"m",
+		"c",
+		"n",
+		"d"
+	};
+
+	public static final String[] TIER1SHORT_IDS = {ENEMY_SHORT_IDS[0], ENEMY_SHORT_IDS[1]};
+	public static final String[] TIER2SHORT_IDS = {ENEMY_SHORT_IDS[2], ENEMY_SHORT_IDS[3], ENEMY_SHORT_IDS[4]};
+	public static final String[] TIER3SHORT_IDS = {ENEMY_SHORT_IDS[5], ENEMY_SHORT_IDS[6]};
+	public static final String[] TIER4SHORT_IDS = {ENEMY_SHORT_IDS[7], ENEMY_SHORT_IDS[8]};
+	public static final String TIER5SHORT_ID = ENEMY_SHORT_IDS[9];
+	public static final String TIER6SHORT_ID = ENEMY_SHORT_IDS[10];
+	public static final String TIER7SHORT_ID = ENEMY_SHORT_IDS[11];
+
+	public static final String[] ENEMY_COLORS = {
+		/* Slime */ Colorize.GREEN,
+		/* Hog */ Colorize.YELLOW,
+		/* Bear */ Colorize.WHITE,
+		/* Goblin */ Colorize.GREEN,
+		/* Zombie */ Colorize.MAGENTA,
+		/* Skeleton */ Colorize.WHITE,
+		/* Ogre */ Colorize.GREEN,
+		/* Witch */ Colorize.MAGENTA,
+		/* Mage */ Colorize.RED,
+		/* Centaur */ Colorize.YELLOW,
+		/* Noone */ Colorize.BACKGROUND_WHITE + Colorize.BLACK,
+		/* Duck */ Colorize.YELLOW
+	};
+
+	// Enemy HP
+	public static final int[] ENEMY_HEALTH = {
+		/* Slime */ 20, 
+		/* Hog */ 50, 
+		/* Bear */ 75, 
+		/* Goblin */ 65, 
+		/* Zombie*/ 100, 
+		/* Skeleton */ 50, 
+		/* Ogre */ 175, 
+		/* Witch */ 125, 
+		/* Mage */ 250, 
+		/* Centaur */ 375, 
+		/* Noone */ 500, 
+		/* Duck */ 10000
+	};
+
+	// Enemy Strength
+	public static final int[] ENEMY_STRENGTH = {
+		/* Slime */ 5, 
+		/* Hog */ 15, 
+		/* Bear */ 25, 
+		/* Goblin */ 20, 
+		/* Zombie*/ 35, 
+		/* Skeleton */ 50, 
+		/* Ogre */ 60, 
+		/* Witch */ 45, 
+		/* Mage */ 35, 
+		/* Centaur */ 60, 
+		/* Noone */ //Same as player, set in Enemy on line 69, 
+		/* Duck */ 200
+	};
+
 //#endregion
 
-//#region Strength
-    // Player Strength
-    public static final int HUMAN_STRENGTH = 20;
-    public static final int WIZARD_STRENGTH = 50;
-    public static final int DWARF_STRENGTH = 35;
-    public static final int ELF_STRENGTH = 25; 
+//#region Player
 
-    // Enemy Strength
-    public static final int slimeStrength = 5;
-    public static final int hogStrength = 15;
-    public static final int[] tier1Strength = {slimeStrength, hogStrength};
-    public static final int bearStrength = 35;
-    public static final int goblinStrength = 50;
-    public static final int zombieStrength = 75;
-    public static final int[] tier2Strength = {bearStrength, goblinStrength, zombieStrength};
-    public static final int skeletonStrength = 100;
-    public static final int ogreStrength = 100;
-    public static final int[] tier3Strength = {skeletonStrength, ogreStrength};
-    public static final int witchStrength = 35;
-    public static final int mageStrength = 30;
-    public static final int[] tier4Strength = {witchStrength, mageStrength};
-    public static final int centaurStrength = 25;
-    public static final int nooneStrength = Player.strength; // Take your meds son
-    public static final int[] tier5Strength = {centaurStrength, nooneStrength};
-    public static final int duckStrength = 200;
- 
+	public final String[] PLAYER_IDS = {"wizard", "dwarf", "elf", "human"};
+
+	// Player HP
+	public static final int ELF_HP = 75;
+	public static final int WIZARD_HP = 50;
+	public static final int DWARF_HP = 150;
+	public static final int HUMAN_HP = 100;
+
+	// Player Strength
+	public static final int HUMAN_STRENGTH = 20;
+	public static final int WIZARD_STRENGTH = 50;
+	public static final int DWARF_STRENGTH = 35;
+	public static final int ELF_STRENGTH = 25; 
+
+	public static final int WIZARD_MAX_ARMOR = 10;
+	public static final int DWARF_MAX_ARMOR = 20;
+	public static final int ELF_MAX_ARMOR = 15;
+	public static final int HUMAN_MAX_ARMOR = 15;
+
+	public static final int WIZARD_MAX_WEAPON = 10;
+	public static final int DWARF_MAX_WEAPON = 15;
+	public static final int ELF_MAX_WEAPON = 20;
+	public static final int HUMAN_MAX_WEAPON = 15;
 //#endregion
 
-    public static final int STUPID_LARGE_STRENGTH = 1147483647;
-    public static final int STUPID_LARGE_HP = 1147483647;
+//#region Cheats
+	public static final int STUPID_LARGE_STRENGTH = 1147483647;
+	public static final int STUPID_LARGE_HP = 1147483647;
+//#endregion
 }

@@ -64,7 +64,7 @@ public class GameManager {
 
 		System.out.print(Colorize.PROMPT);
 		String input = sc.next();
-		input = Colorize.sterilize(input);
+		input = Colorize.scannerize(input);
 
 		switch(input)
 		{

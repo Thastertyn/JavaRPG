@@ -16,9 +16,9 @@ Nothing else
 | Gems | None | --- |
 
 
-| Monsters | Chance | Tier |
-|-|-|-|
-| Yes | 20% | 1 - 3 |
+| Monsters | Chance | Tier | Count |
+|-|-|-|-|
+| Yes | 20% | 1 | 1 - 3 |
 
 # Cottage
 
@@ -33,7 +33,7 @@ Nothing else
 
 | Monsters | Chance | Tier | Count |
 |-|-|-|-|
-| Yes | 12.5% | 1 | 1 - 2 |
+| Yes | 12.5% | 2 | 1 - 2 |
 
 # Cave
 
@@ -48,7 +48,7 @@ Nothing else
 
 | Monsters | Chance | Tier | Count |
 |-|-|-|-|
-| Yes | 25% | 1 | 1 - 4 |
+| Yes | 25% | 3 | 1 - 4 |
 
 # Ruin
 
@@ -58,9 +58,50 @@ Nothing else
 | Iron | 100% | 10 - 100 |
 | Leather | 100% | 20 - 30 |
 | Potions | 50% | 3 - 6 |
-| Gems | 50% | 2 - 5 |
+| Gems | 50% | 1 - 5 |
 
 
 | Monsters | Chance | Tier | Count |
 |-|-|-|-|
-| Yes | 75% | 2 | 3 - 5 |
+| Yes | 80% | 4 | 1 - 5 |
+
+# Castle
+
+| Item | Chance | Count |
+|-|-|-|
+| Wood | 100% | 25 - 50 |
+| Iron | 100% | 25 - 35 |
+| Leather | 100% | 35 - 60 |
+| Potions | 100% | 5 - 10 |
+| Gems | 100% | 1 - 3 |
+
+
+| Monsters | Chance | Tier | Count |
+|-|-|-|-|
+| Yes | 75% | 5 | 4 |
+
+# Lair
+
+| Item | Chance | Count |
+|-|-|-|
+| Wood | 100% | 100 - 120 |
+| Iron | 100% | 20 - 50 |
+| Leather | 100% | 40 - 100 |
+| Potions | 75% | 3 - 6 |
+| Gems | 50% | 2 |
+
+
+| Monsters | Chance | Tier | Count |
+|-|-|-|-|
+| Yes | 100% | Just noone (6) | 2 - 6 |
+
+# Bathroom
+
+| Item | Chance | Count |
+|-|-|-|
+| Nothing
+
+
+| Monsters | Chance | Tier | Count |
+|-|-|-|-|
+| Yes | 100% | Just The Duck (7) | 1 |

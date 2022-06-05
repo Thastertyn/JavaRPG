@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Classes.DataAndOtherStuff;
-import Classes.Inventory;
 import Colors.Colorize;
 import Managers.BattleManager;
 
@@ -23,16 +22,15 @@ public class Cave {
 
 		System.out.println(DataAndOtherStuff.POI_MESSAGES[rnd.nextInt(DataAndOtherStuff.POI_MESSAGES.length)] + "Cave");
 
-		System.out.println(Colorize.SEPARATOR_MEDIUM);
+		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println("You found:");
 		
 		// Wood, Iron, No Leather
 		addedItems = rnd.nextInt(45, 61);
-		Inventory.add("wood", (Inventory.get("wood") + addedItems));
-		System.out.println(addedItems + " Wood,");
-		
+		Poi.wood(addedItems);
+
 		addedItems = rnd.nextInt(30, 51);
-		Inventory.add("iron", (Inventory.get("iron") + addedItems));
-		System.out.println(addedItems + " Iron,");
+		Poi.iron(addedItems);
 
 		System.out.println(Colorize.SEPARATOR_SMALL);
 
@@ -41,15 +39,13 @@ public class Cave {
 		if(actuallyGotItems == 3 )
 		{
 			addedItems = rnd.nextInt(1, 3);
-			Inventory.add("potions", (Inventory.get("potions") + addedItems));
-			System.out.println(addedItems + " Potions,");
+			Poi.potions(addedItems);
 		}else{
-			System.out.println("No Potions");
+			Poi.potions(false);
 		}
 
 		addedItems = rnd.nextInt(5, 11);
-		Inventory.add("gems", (Inventory.get("gems") + addedItems));
-		System.out.println(1 + " Gems,");
+		Poi.gems(addedItems);
 
 		// Monsters
 		actuallyGotItems = rnd.nextInt(4);
@@ -59,7 +55,7 @@ public class Cave {
 			sc.nextLine();
 			addedItems = rnd.nextInt(1, 5);
 			addedItems++;
-			BattleManager.startBattle(addedItems, 1, 0);
+			BattleManager.startBattle(addedItems, 3, 0);
 		}else{
 			System.out.println(Colorize.GREEN + "\nYou didn't meet any Enemies" + Colorize.RESET);
 		}

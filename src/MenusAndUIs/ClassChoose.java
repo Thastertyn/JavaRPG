@@ -1,7 +1,9 @@
 package MenusAndUIs;
 
 import java.util.Scanner;
+import java.util.Random;
 
+import Classes.ASCII;
 import Classes.DataAndOtherStuff;
 import Classes.Inventory;
 import Classes.Player;
@@ -18,33 +20,35 @@ public class ClassChoose {
 		System.out.println(Colorize.MAGENTA + Colorize.UNDERLINE +"> Wizard" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 		System.out.println("You choose Wizard");
-		System.out.println(" > HP: " + DataAndOtherStuff.WIZARD_HP);
-		System.out.println(" > Strength: " + DataAndOtherStuff.WIZARD_STRENGTH);
-		System.out.println(" > Speciality: Very high damage, but lower hp");
-		
-		System.out.println("");
+		System.out.println(" > " + Colorize.RED + "HP" + Colorize.RESET + ": " + DataAndOtherStuff.WIZARD_HP);
+		System.out.println(" > " + Colorize.YELLOW + "Strength" + Colorize.RESET + ": " + DataAndOtherStuff.WIZARD_STRENGTH);
+		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println(" > " + Colorize.MAGENTA + "Max Weapon Tier" + Colorize.RESET + ": " + DataAndOtherStuff.WIZARD_MAX_WEAPON);
+		System.out.println(" > " + Colorize.BLUE + "Max Armor Level" + Colorize.RESET + ": " + DataAndOtherStuff.WIZARD_MAX_ARMOR);
+		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println(" > " + Colorize.GREEN + "Speciality" + Colorize.RESET + ": Very high damage, but lower hp, can have only low Weapon and Armor levels");
 
-		System.out.println("Are you sure with your decision?");
-		System.out.println(" 1.> " + Colorize.GREEN + "Yes" + Colorize.RESET);
-		System.out.println(" 2.> " + Colorize.RED + "No" + Colorize.RESET);
-
-		System.out.print(Colorize.PROMPT);
-
-		switch(Colorize.sterilize(sc.next()))
+		switch(areYouSure())
 		{
-			case "yes":
-			case "y":
-			case "1":
+			case 0:
+				Random rnd = new Random();
+
+				if(rnd.nextInt(100) == 0)
+				{
+					System.out.println(ASCII.WIZARD);
+					sc.nextLine();
+					sc.nextLine();
+				}
+					
 				finish("wizard");
 				break;
-			case "no":
-			case "n":
-			case "2":
+			case 1:
 				Menu.classChoose();
 				break;
-			default:
+			case -1:
 				GameManager.missInput();
 				chooseWizard();
+				break;
 		}
 	}
 
@@ -54,33 +58,26 @@ public class ClassChoose {
 		System.out.println(Colorize.CYAN + Colorize.UNDERLINE +"> Dwarf" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 		System.out.println("You choose Dwarf");
-		System.out.println(" > HP: " + DataAndOtherStuff.DWARF_HP);
-		System.out.println(" > Strength: " + DataAndOtherStuff.DWARF_STRENGTH);
-		System.out.println(" > Ability: Has level 2 Armor and tier 2 Weapon from the start");
+		System.out.println(" > " + Colorize.RED + "HP" + Colorize.RESET + ": " + DataAndOtherStuff.DWARF_HP);
+		System.out.println(" > " + Colorize.YELLOW + "Strength" + Colorize.RESET + ": " + DataAndOtherStuff.DWARF_STRENGTH);
+		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println(" > " + Colorize.MAGENTA + "Max Weapon Tier" + Colorize.RESET + ": " + DataAndOtherStuff.DWARF_MAX_WEAPON);
+		System.out.println(" > " + Colorize.BLUE + "Max Armor Level" + Colorize.RESET + ": " + DataAndOtherStuff.DWARF_MAX_ARMOR);
+		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println(" > " + Colorize.GREEN + "Speciality" + Colorize.RESET + ": Has level 2 Armor and tier 2 Weapon from the start, can get very high tier Armor and moderate Weapon");
 		
-		System.out.println("");
-
-		System.out.println("Are you sure with your decision?");
-		System.out.println(" 1.> " + Colorize.GREEN + "Yes" + Colorize.RESET);
-		System.out.println(" 2.> " + Colorize.RED + "No" + Colorize.RESET);
-
-		System.out.print(Colorize.PROMPT);
-
-		switch(Colorize.sterilize(sc.next()))
+		switch(areYouSure())
 		{
-			case "yes":
-			case "y":
-			case "1":
+			case 0:
 				finish("dwarf");
 				break;
-			case "no":
-			case "n":
-			case "2":
+			case 1:
 				Menu.classChoose();
 				break;
-			default:
+			case -1:
 				GameManager.missInput();
 				chooseWizard();
+				break;
 		}
 	}
 
@@ -90,35 +87,26 @@ public class ClassChoose {
 		System.out.println(Colorize.WHITE + Colorize.UNDERLINE +"> Elf" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 		System.out.println("You choose Elf");
-		System.out.println(" > HP: " + DataAndOtherStuff.ELF_HP);
-		System.out.println(" > Strength: " + DataAndOtherStuff.ELF_STRENGTH);
-		System.out.println(" > Ability: None");
+		System.out.println(" > " + Colorize.RED + "HP" + Colorize.RESET + ": " + DataAndOtherStuff.ELF_HP);
+		System.out.println(" > " + Colorize.YELLOW + "Strength" + Colorize.RESET + ": " + DataAndOtherStuff.ELF_STRENGTH);
+		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println(" > " + Colorize.MAGENTA + "Max Weapon Tier" + Colorize.RESET + ": " + DataAndOtherStuff.ELF_MAX_WEAPON);
+		System.out.println(" > " + Colorize.BLUE + "Max Armor Level" + Colorize.RESET + ": " + DataAndOtherStuff.ELF_MAX_ARMOR);
+		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println(" > " + Colorize.GREEN + "Speciality" + Colorize.RESET + ": Can have very high level Armor and moderate Weapon");
 
-		System.out.println("");
-		
-		System.out.println("Are you sure with your decision?");
-		System.out.println(" 1.> " + Colorize.GREEN + "Yes" + Colorize.RESET);
-		System.out.println(" 2.> " + Colorize.RED + "No" + Colorize.RESET);
-
-		System.out.print(Colorize.PROMPT);
-		String input = sc.next();
-		input.toLowerCase();
-
-		switch(Colorize.sterilize(sc.next()))
+		switch(areYouSure())
 		{
-			case "yes":
-			case "y":
-			case "1":
+			case 0:
 				finish("elf");
 				break;
-			case "no":
-			case "n":
-			case "2":
+			case 1:
 				Menu.classChoose();
 				break;
-			default:
+			case -1:
 				GameManager.missInput();
-				chooseWizard();
+				chooseElf();
+				break;
 		}
 	}
 
@@ -128,33 +116,50 @@ public class ClassChoose {
 		System.out.println(Colorize.YELLOW + Colorize.UNDERLINE +"> Human" + Colorize.RESET);
 		System.out.println(Colorize.SEPARATOR_LARGE);
 		System.out.println("You choose Human");
-		System.out.println(" > HP: " + DataAndOtherStuff.HUMAN_HP);
-		System.out.println(" > Strength: " + DataAndOtherStuff.HUMAN_STRENGTH);
-		System.out.println(" > Ability: Starts with some items alredy (wood 200, iron 50, leather 50, potions 5, gems 3)");
-		
-		System.out.println("");
+		System.out.println(" > " + Colorize.RED + "HP" + Colorize.RESET + ": " + DataAndOtherStuff.HUMAN_HP);
+		System.out.println(" > " + Colorize.YELLOW + "Strength" + Colorize.RESET + ": " + DataAndOtherStuff.HUMAN_STRENGTH);
+		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println(" > " + Colorize.MAGENTA + "Max Weapon Tier" + Colorize.RESET + ": " + DataAndOtherStuff.HUMAN_MAX_WEAPON);
+		System.out.println(" > " + Colorize.BLUE + "Max Armor Level" + Colorize.RESET + ": " + DataAndOtherStuff.HUMAN_MAX_ARMOR);
+		System.out.println(Colorize.SEPARATOR_SMALL);
+		System.out.println(" > " + Colorize.GREEN + "Speciality" + Colorize.RESET + ": Starts with some items alredy (wood 200, iron 50, leather 50, potions 5, gems 3), can have moderate Armor and Weapon");
 
+		switch(areYouSure())
+		{
+			case 0:
+				finish("human");
+				break;
+			case 1:
+				Menu.classChoose();
+				break;
+			case -1:
+				GameManager.missInput();
+				chooseHuman();
+				break;
+		}
+	}
+
+	static int areYouSure()
+	{
+		System.out.println("");
 		System.out.println("Are you sure with your decision?");
 		System.out.println(" 1.> " + Colorize.GREEN + "Yes" + Colorize.RESET);
 		System.out.println(" 2.> " + Colorize.RED + "No" + Colorize.RESET);
 
 		System.out.print(Colorize.PROMPT);
 
-		switch(Colorize.sterilize(sc.next()))
+		switch(Colorize.scannerize(sc.next()))
 		{
 			case "yes":
 			case "y":
 			case "1":
-				finish("human");
-				break;
+				return 0;
 			case "no":
 			case "n":
 			case "2":
-				Menu.classChoose();
-				break;
+				return 1;
 			default:
-				GameManager.missInput();
-				chooseWizard();
+				return -1;
 		}
 	}
 
