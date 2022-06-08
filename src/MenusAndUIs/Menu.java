@@ -27,6 +27,7 @@ public class Menu {
 		System.out.println("----------------------------------");
 		System.out.println("Welcome to the RPG game " + Colorize.capitalize(System.getProperty("user.name")));
 		System.out.println("If you want help (mainly flags), run this program again with a \"--help\" flag (without the quotes)");
+		System.out.println("After 9 years in development hopefully it will be worth the wait");
 
 		System.out.println(" 1.> " + Colorize.GREEN + "Start" + Colorize.RESET);
 		System.out.println(" 2.> " + Colorize.YELLOW + "About" + Colorize.RESET);

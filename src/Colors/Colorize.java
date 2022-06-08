@@ -65,7 +65,9 @@ public class Colorize {
      */
     public static String scannerize(String text)
     {
-        return text.toLowerCase().replaceAll("\\s", "");
+        String finalString = text.toLowerCase();
+        finalString.replaceAll("\\s", "");
+        return finalString;
     }
 
     // Uncomment this if colors dont work (aka on windows)

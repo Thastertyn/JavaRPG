@@ -28,10 +28,10 @@ public class DataAndOtherStuff {
 	};
 
 	public static final String[] TIER1IDS = {ENEMY_IDS[0], ENEMY_IDS[1]};
-	public static final String[] TIER2IDS = {ENEMY_IDS[2], ENEMY_IDS[3], ENEMY_IDS[4]};
-	public static final String[] TIER3IDS = {ENEMY_IDS[5], ENEMY_IDS[6]};
-	public static final String[] TIER4IDS = {ENEMY_IDS[7], ENEMY_IDS[8]};
-	public static final String TIER5ID = ENEMY_IDS[9];
+	public static final String[] TIER2IDS = {ENEMY_IDS[2], ENEMY_IDS[3]};
+	public static final String[] TIER3IDS = {ENEMY_IDS[4], ENEMY_IDS[5]};
+	public static final String[] TIER4IDS = {ENEMY_IDS[6], ENEMY_IDS[7]};
+	public static final String[] TIER5IDS = {ENEMY_IDS[8], ENEMY_IDS[9]};
 	public static final String TIER6ID = ENEMY_IDS[10];
 	public static final String TIER7ID = ENEMY_IDS[11];
 
@@ -50,14 +50,6 @@ public class DataAndOtherStuff {
 		"n",
 		"d"
 	};
-
-	public static final String[] TIER1SHORT_IDS = {ENEMY_SHORT_IDS[0], ENEMY_SHORT_IDS[1]};
-	public static final String[] TIER2SHORT_IDS = {ENEMY_SHORT_IDS[2], ENEMY_SHORT_IDS[3], ENEMY_SHORT_IDS[4]};
-	public static final String[] TIER3SHORT_IDS = {ENEMY_SHORT_IDS[5], ENEMY_SHORT_IDS[6]};
-	public static final String[] TIER4SHORT_IDS = {ENEMY_SHORT_IDS[7], ENEMY_SHORT_IDS[8]};
-	public static final String TIER5SHORT_ID = ENEMY_SHORT_IDS[9];
-	public static final String TIER6SHORT_ID = ENEMY_SHORT_IDS[10];
-	public static final String TIER7SHORT_ID = ENEMY_SHORT_IDS[11];
 
 	public static final String[] ENEMY_COLORS = {
 		/* Slime */ Colorize.GREEN,
@@ -113,10 +105,10 @@ public class DataAndOtherStuff {
 	public final String[] PLAYER_IDS = {"wizard", "dwarf", "elf", "human"};
 
 	// Player HP
-	public static final int ELF_HP = 75;
-	public static final int WIZARD_HP = 50;
+	public static final int ELF_HP = 100;
+	public static final int WIZARD_HP = 75;
 	public static final int DWARF_HP = 150;
-	public static final int HUMAN_HP = 100;
+	public static final int HUMAN_HP = 125;
 
 	// Player Strength
 	public static final int HUMAN_STRENGTH = 20;
@@ -124,12 +116,12 @@ public class DataAndOtherStuff {
 	public static final int DWARF_STRENGTH = 35;
 	public static final int ELF_STRENGTH = 25; 
 
-	public static final int WIZARD_MAX_ARMOR = 10;
+	public static final int WIZARD_MAX_ARMOR = 12;
 	public static final int DWARF_MAX_ARMOR = 20;
 	public static final int ELF_MAX_ARMOR = 15;
 	public static final int HUMAN_MAX_ARMOR = 15;
 
-	public static final int WIZARD_MAX_WEAPON = 10;
+	public static final int WIZARD_MAX_WEAPON = 12;
 	public static final int DWARF_MAX_WEAPON = 15;
 	public static final int ELF_MAX_WEAPON = 20;
 	public static final int HUMAN_MAX_WEAPON = 15;

@@ -1,4 +1,4 @@
-// The 200 line limit is dumb
+// The 200 lines limit :/
 package MenusAndUIs;
 
 import Colors.Colorize;

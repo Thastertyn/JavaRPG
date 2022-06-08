@@ -43,7 +43,8 @@ public class Enemy {
 						enemyString = DataAndOtherStuff.TIER4IDS[enemyId];
 						break;
 					case 5:
-						enemyString = DataAndOtherStuff.TIER5ID;
+						enemyId = rnd.nextInt(2);
+						enemyString = DataAndOtherStuff.TIER5IDS[enemyId];
 						break;
 					}
 				break;

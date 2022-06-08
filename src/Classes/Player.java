@@ -77,8 +77,8 @@ public class Player {
 				Inventory.add("wood", 200);
 				Inventory.add("iron", 50);
 				Inventory.add("leather", 50);
-				Inventory.add("potions", 5);
-				Inventory.add("gems", 3);
+				Inventory.add("potions", 3);
+				Inventory.add("gems", 1);
 				break;
 		}
 
