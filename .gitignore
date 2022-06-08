@@ -1,2 +1,4 @@
 .directory
 *.class
+*.jar
+data.csv
